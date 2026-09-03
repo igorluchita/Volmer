@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[22016,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js","/_next/static/chunks/3xyt402c62511.js"],""]
+3:I[97367,["/_next/static/chunks/05-c3ty_6dwfk.js","/_next/static/chunks/14mrh2-p_w84d.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[[["$","meta",null,{"httpEquiv":"refresh","content":"0;url=/ro/"}],["$","script",null,{"dangerouslySetInnerHTML":{"__html":"window.location.replace('/ro/')"}}],["$","main",null,{"className":"root-redirect","aria-live":"polite","children":[["$","p",null,{"children":"Se deschide pagina Volmer…"}],["$","$L2",null,{"href":"/ro/","children":"Continuă către pagina principală"}]]}]],[["$","script","script-0",{"src":"/_next/static/chunks/3xyt402c62511.js","async":true}]],["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"YTbrVwwEZrd1tzXzoLv6L"}
+5:null

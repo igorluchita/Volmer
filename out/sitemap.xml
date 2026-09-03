@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<url>
+<loc>https://example.md/ro/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/" />
+</url>
+<url>
+<loc>https://example.md/ru/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/" />
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/aparate-auditive/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/aparate-auditive/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/aparate-auditive/" />
+</url>
+<url>
+<loc>https://example.md/ru/aparate-auditive/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/aparate-auditive/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/aparate-auditive/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/aparate-auditive/" />
+</url>
+<url>
+<loc>https://example.md/ro/test-auditiv/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/test-auditiv/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/test-auditiv/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/test-auditiv/" />
+</url>
+<url>
+<loc>https://example.md/ru/test-auditiv/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/test-auditiv/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/test-auditiv/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/test-auditiv/" />
+</url>
+<url>
+<loc>https://example.md/ro/servicii/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/servicii/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/servicii/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/servicii/" />
+</url>
+<url>
+<loc>https://example.md/ru/servicii/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/servicii/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/servicii/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/servicii/" />
+</url>
+<url>
+<loc>https://example.md/ro/despre-noi/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/despre-noi/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/despre-noi/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/despre-noi/" />
+</url>
+<url>
+<loc>https://example.md/ru/despre-noi/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/despre-noi/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/despre-noi/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/despre-noi/" />
+</url>
+<url>
+<loc>https://example.md/ro/intrebari-frecvente/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/intrebari-frecvente/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/intrebari-frecvente/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/intrebari-frecvente/" />
+</url>
+<url>
+<loc>https://example.md/ru/intrebari-frecvente/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/intrebari-frecvente/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/intrebari-frecvente/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/intrebari-frecvente/" />
+</url>
+<url>
+<loc>https://example.md/ro/contact/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/contact/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/contact/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/contact/" />
+</url>
+<url>
+<loc>https://example.md/ru/contact/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/contact/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/contact/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/contact/" />
+</url>
+<url>
+<loc>https://example.md/ro/programare/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/programare/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/programare/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/programare/" />
+</url>
+<url>
+<loc>https://example.md/ru/programare/</loc>
+<xhtml:link rel="alternate" hreflang="ro-MD" href="https://example.md/ro/programare/" />
+<xhtml:link rel="alternate" hreflang="ru-MD" href="https://example.md/ru/programare/" />
+<xhtml:link rel="alternate" hreflang="x-default" href="https://example.md/ro/programare/" />
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive-chisinau/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive-moldova/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/test-auz-chisinau/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/reglare-aparate-auditive/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive-reincarcabile/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive-bluetooth/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive-pentru-varstnici/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/aparate-auditive-discrete/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/sluhovye-apparaty-kishinev/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/sluhovye-apparaty-moldova/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/proverka-sluha-kishinev/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/nastroika-sluhovyh-apparatov/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/perezaryazhaemye-sluhovye-apparaty/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/sluhovye-apparaty-bluetooth/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/sluhovye-apparaty-dlya-pozhilyh/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/nezametnye-sluhovye-apparaty/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/blog/</loc>
+</url>
+<url>
+<loc>https://example.md/ro/blog/semne-auz-slab/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/cand-faci-test-auditiv/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/cum-functioneaza-aparat-auditiv/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/ric-bte-intraauricular/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/aparate-reincarcabile-avantaje/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/conectare-aparat-auditiv-telefon/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/aparat-auditiv-persoane-varstnice/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/importanta-reglajului/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/intretinere-aparat-auditiv/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/vorbirea-in-zgomot/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/prima-consultatie-auz/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ro/blog/unitron-tehnologii-moderne/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/</loc>
+</url>
+<url>
+<loc>https://example.md/ru/blog/priznaki-snizheniya-sluha/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/kogda-proveryat-sluh/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/kak-rabotaet-sluhovoy-apparat/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/ric-bte-vnutriushnye/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/perezaryazhaemye-apparaty/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/podklyuchenie-k-telefonu/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/apparat-dlya-pozhilyh/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/vazhnost-nastroyki/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/uhod-za-apparatom/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/rech-v-shume/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/pervaya-konsultatsiya/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+<url>
+<loc>https://example.md/ru/blog/unitron-tehnologii/</loc>
+<lastmod>2026-08-10</lastmod>
+</url>
+</urlset>
