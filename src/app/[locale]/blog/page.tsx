@@ -1,7 +1,103 @@
-import type {Metadata} from 'next';
-import {setRequestLocale} from 'next-intl/server';
-import {blogPosts,type Locale} from '@/content/seo';
+import type { Metadata } from "next";
+import { setRequestLocale } from "next-intl/server";
+import { blogPosts, type Locale } from "@/content/seo";
+import { siteConfig } from "@/config/site";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
-export function generateStaticParams(){return [{locale:'ro'},{locale:'ru'}];}
-export async function generateMetadata({params}:{params:Promise<{locale:string}>}):Promise<Metadata>{const {locale}=await params;const title=locale==='ru'?'Блог о слухе и слуховых аппаратах | Volmer':'Blog despre auz și aparate auditive | Volmer';const description=locale==='ru'?'Понятные материалы о слухе, технологиях и использовании слуховых аппаратов.':'Ghiduri clare despre auz, tehnologii și utilizarea aparatelor auditive.';return {title,description,alternates:{canonical:`/${locale}/blog/`,languages:{'ro-MD':'/ro/blog/','ru-MD':'/ru/blog/','x-default':'/ro/blog/'}},openGraph:{title,description,type:'website'},twitter:{card:'summary',title,description}};}
-export default async function Blog({params}:{params:Promise<{locale:string}>}){const {locale:raw}=await params;const locale=(raw==='ru'?'ru':'ro') as Locale;setRequestLocale(locale);const posts=blogPosts[locale];return <section className="container page blog-page"><p className="eyebrow">VOLMER · BLOG</p><h1>{locale==='ro'?'Ghiduri pentru un auz mai bine înțeles':'Понятные материалы о слухе'}</h1><p className="lead">{locale==='ro'?'Informații practice, prudente și ușor de folosit despre auz și aparate auditive.':'Практичная и бережная информация о слухе и слуховых аппаратах.'}</p><div className="blog-grid">{posts.map(post=><article className="blog-card" key={post.slug}><p className="blog-meta">{post.category} · {post.readingTime} · <time dateTime={post.publishedAt}>{post.publishedAt}</time></p><h2><a href={`/${locale}/blog/${post.slug}/`}>{post.title}</a></h2><p>{post.description}</p><a className="button ghost" href={`/${locale}/blog/${post.slug}/`}>{locale==='ro'?'Citește articolul':'Читать статью'}</a></article>)}</div></section>}
+export function generateStaticParams() {
+  return [{ locale: "ro" }, { locale: "ru" }];
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const title =
+    locale === "ru"
+      ? "Блог о слухе и слуховых аппаратах | Volmer"
+      : "Blog despre auz și aparate auditive | Volmer";
+  const description =
+    locale === "ru"
+      ? "Понятные материалы о слухе, технологиях и использовании слуховых аппаратов."
+      : "Ghiduri clare despre auz, tehnologii și utilizarea aparatelor auditive.";
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/${locale}/blog/`,
+      languages: {
+        "ro-MD": "/ro/blog/",
+        "ru-MD": "/ru/blog/",
+        "x-default": "/ro/blog/",
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      url: `/${locale}/blog/`,
+      locale: locale === "ro" ? "ro_MD" : "ru_MD",
+      alternateLocale: locale === "ro" ? ["ru_MD"] : ["ro_MD"],
+      images: [{ url: siteConfig.logoPath, alt: "Volmer" }],
+    },
+    twitter: {
+      card: "summary",
+      title,
+      description,
+      images: [siteConfig.logoPath],
+    },
+  };
+}
+export default async function Blog({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale: raw } = await params;
+  const locale = (raw === "ru" ? "ru" : "ro") as Locale;
+  setRequestLocale(locale);
+  const posts = blogPosts[locale];
+  return (
+    <>
+      <Breadcrumbs
+        locale={locale}
+        label={locale === "ro" ? "Blog" : "Блог"}
+        path="blog"
+      />
+      <section className="container page blog-page">
+        <p className="eyebrow">VOLMER · BLOG</p>
+        <h1>
+          {locale === "ro"
+            ? "Ghiduri pentru un auz mai bine înțeles"
+            : "Понятные материалы о слухе"}
+        </h1>
+        <p className="lead">
+          {locale === "ro"
+            ? "Informații practice, prudente și ușor de folosit despre auz și aparate auditive."
+            : "Практичная и бережная информация о слухе и слуховых аппаратах."}
+        </p>
+        <div className="blog-grid">
+          {posts.map((post) => (
+            <article className="blog-card" key={post.slug}>
+              <p className="blog-meta">
+                {post.category} · {post.readingTime} ·{" "}
+                <time dateTime={post.publishedAt}>{post.publishedAt}</time>
+              </p>
+              <h2>
+                <a href={`/${locale}/blog/${post.slug}/`}>{post.title}</a>
+              </h2>
+              <p>{post.description}</p>
+              <a
+                className="button ghost"
+                href={`/${locale}/blog/${post.slug}/`}
+              >
+                {locale === "ro" ? "Citește articolul" : "Читать статью"}
+              </a>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}

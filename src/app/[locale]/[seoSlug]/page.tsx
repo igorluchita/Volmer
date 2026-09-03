@@ -1,10 +1,132 @@
-import type {Metadata} from 'next';
-import {notFound} from 'next/navigation';
-import {setRequestLocale} from 'next-intl/server';
-import {siteConfig} from '@/config/site';
-import {seoPages, type Locale} from '@/content/seo';
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
+import { siteConfig } from "@/config/site";
+import { seoPages, type Locale } from "@/content/seo";
 
-export function generateStaticParams(){return (['ro','ru'] as Locale[]).flatMap(locale=>seoPages[locale].map(page=>({locale,seoSlug:page[0]})));}
-function pageFor(locale:Locale,slug:string){return seoPages[locale].find(page=>page[0]===slug);}
-export async function generateMetadata({params}:{params:Promise<{locale:string;seoSlug:string}>}):Promise<Metadata>{const p=await params;const locale=p.locale as Locale;const page=pageFor(locale,p.seoSlug);if(!page)return {};const path=`/${locale}/${p.seoSlug}/`;return {title:`${page[1]} | Volmer`,description:page[2],keywords:[page[1],'Volmer',locale==='ro'?'Chișinău':'Кишинёв'],alternates:{canonical:path,languages:{'ro-MD':locale==='ro'?path:undefined,'ru-MD':locale==='ru'?path:undefined,'x-default':path}},openGraph:{title:`${page[1]} | Volmer`,description:page[2],url:path,type:'website'},twitter:{card:'summary',title:page[1],description:page[2]}};}
-export default async function SeoPage({params}:{params:Promise<{locale:string;seoSlug:string}>}){const p=await params;const locale=(p.locale==='ru'?'ru':'ro') as Locale;setRequestLocale(locale);const page=pageFor(locale,p.seoSlug);if(!page)notFound();const [slug,title,description,intro,section,body]=page;const jsonLd={'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:locale==='ro'?'Acasă':'Главная',item:`${siteConfig.siteUrl}/${locale}/`},{'@type':'ListItem',position:2,name:title,item:`${siteConfig.siteUrl}/${locale}/${slug}/`} ]};return <article className="container page seo-page"><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(jsonLd)}}/><nav className="breadcrumb" aria-label="Breadcrumb"><a href={`/${locale}/`}>{locale==='ro'?'Acasă':'Главная'}</a> / {title}</nav><p className="eyebrow">VOLMER · {siteConfig.city}</p><h1>{title}</h1><p className="lead">{description}</p><h2>{section}</h2><p>{intro}</p><p>{body}</p><h2>{locale==='ro'?'Următorul pas':'Следующий шаг'}</h2><p>{locale==='ro'?'O evaluare și o discuție individuală pot clarifica opțiunile potrivite. Programările la Volmer se confirmă exclusiv telefonic.':'Индивидуальная оценка и беседа помогут уточнить подходящие варианты. Запись в Volmer подтверждается только по телефону.'}</p><div className="actions"><a className="button stone" href={`tel:${siteConfig.phoneInternational}`}>{siteConfig.phoneDisplay}</a><a className="button ghost" href={`/${locale}/contact/`}>{locale==='ro'?'Contact și adresă':'Контакты и адрес'}</a></div><div className="seo-links"><a href={`/${locale}/aparate-auditive/`}>{locale==='ro'?'Aparate auditive Unitron':'Слуховые аппараты Unitron'}</a><a href={`/${locale}/test-auditiv/`}>{locale==='ro'?'Evaluarea auzului':'Оценка слуха'}</a><a href={`/${locale}/blog/`}>Blog</a></div></article>}
+export function generateStaticParams() {
+  return (["ro", "ru"] as Locale[]).flatMap((locale) =>
+    seoPages[locale].map((page) => ({ locale, seoSlug: page[0] })),
+  );
+}
+function pageFor(locale: Locale, slug: string) {
+  return seoPages[locale].find((page) => page[0] === slug);
+}
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; seoSlug: string }>;
+}): Promise<Metadata> {
+  const p = await params;
+  const locale = p.locale as Locale;
+  const page = pageFor(locale, p.seoSlug);
+  if (!page) return {};
+  const path = `/${locale}/${p.seoSlug}/`;
+  const index = seoPages[locale].findIndex((item) => item[0] === p.seoSlug);
+  const otherLocale = locale === "ro" ? "ru" : "ro";
+  const otherPath = `/${otherLocale}/${seoPages[otherLocale][index][0]}/`;
+  return {
+    title: `${page[1]} | Volmer`,
+    description: page[2],
+    keywords: [page[1], "Volmer", locale === "ro" ? "Chișinău" : "Кишинёв"],
+    alternates: {
+      canonical: path,
+      languages: {
+        "ro-MD": locale === "ro" ? path : otherPath,
+        "ru-MD": locale === "ru" ? path : otherPath,
+        "x-default": locale === "ro" ? path : otherPath,
+      },
+    },
+    openGraph: {
+      title: `${page[1]} | Volmer`,
+      description: page[2],
+      url: path,
+      type: "website",
+      locale: locale === "ro" ? "ro_MD" : "ru_MD",
+      alternateLocale: locale === "ro" ? ["ru_MD"] : ["ro_MD"],
+      images: [{ url: siteConfig.logoPath, alt: "Volmer" }],
+    },
+    twitter: {
+      card: "summary",
+      title: page[1],
+      description: page[2],
+      images: [siteConfig.logoPath],
+    },
+  };
+}
+export default async function SeoPage({
+  params,
+}: {
+  params: Promise<{ locale: string; seoSlug: string }>;
+}) {
+  const p = await params;
+  const locale = (p.locale === "ru" ? "ru" : "ro") as Locale;
+  setRequestLocale(locale);
+  const page = pageFor(locale, p.seoSlug);
+  if (!page) notFound();
+  const [slug, title, description, intro, section, body] = page;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: locale === "ro" ? "Acasă" : "Главная",
+        item: `${siteConfig.siteUrl}/${locale}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: title,
+        item: `${siteConfig.siteUrl}/${locale}/${slug}/`,
+      },
+    ],
+  };
+  return (
+    <article className="container page seo-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <nav className="breadcrumb" aria-label="Breadcrumb">
+        <a href={`/${locale}/`}>{locale === "ro" ? "Acasă" : "Главная"}</a> /{" "}
+        {title}
+      </nav>
+      <p className="eyebrow">VOLMER · {siteConfig.city}</p>
+      <h1>{title}</h1>
+      <p className="lead">{description}</p>
+      <h2>{section}</h2>
+      <p>{intro}</p>
+      <p>{body}</p>
+      <h2>{locale === "ro" ? "Următorul pas" : "Следующий шаг"}</h2>
+      <p>
+        {locale === "ro"
+          ? "O evaluare și o discuție individuală pot clarifica opțiunile potrivite. Programările la Volmer se confirmă exclusiv telefonic."
+          : "Индивидуальная оценка и беседа помогут уточнить подходящие варианты. Запись в Volmer подтверждается только по телефону."}
+      </p>
+      <div className="actions">
+        <a
+          className="button stone"
+          href={`tel:${siteConfig.phoneInternational}`}
+        >
+          {siteConfig.phoneDisplay}
+        </a>
+        <a className="button ghost" href={`/${locale}/contact/`}>
+          {locale === "ro" ? "Contact și adresă" : "Контакты и адрес"}
+        </a>
+      </div>
+      <div className="seo-links">
+        <a href={`/${locale}/aparate-auditive/`}>
+          {locale === "ro"
+            ? "Aparate auditive Unitron"
+            : "Слуховые аппараты Unitron"}
+        </a>
+        <a href={`/${locale}/test-auditiv/`}>
+          {locale === "ro" ? "Evaluarea auzului" : "Оценка слуха"}
+        </a>
+        <a href={`/${locale}/blog/`}>Blog</a>
+      </div>
+    </article>
+  );
+}

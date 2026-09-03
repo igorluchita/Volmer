@@ -1,0 +1,4 @@
+nav a[aria-current="page"] {
+  border-color: var(--brand);
+  color: var(--brand);
+}

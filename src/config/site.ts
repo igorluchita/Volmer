@@ -1,6 +1,6 @@
 export const siteConfig = {
   brandName: 'Volmer',
-  demoMode: true,
+  demoMode: false,
   legalName: 'Denumirea juridică a companiei',
   phone: '079331839',
   phoneDisplay: '079 331 839',
@@ -15,10 +15,11 @@ export const siteConfig = {
     {id: 'saturday', daysKey: 'saturday', hours: '09:00–13:00'},
     {id: 'sunday', daysKey: 'sunday', hoursKey: 'closed'}
   ],
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://example.md',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://volmer.md',
   googleMapsEmbedUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL ?? '',
   googleMapsDirectionsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_DIRECTIONS_URL ?? 'https://maps.google.com/?q=Str.%20Mitropolit%20Varlaam%2069%2C%20Chi%C8%99in%C4%83u',
   logoPath: '/logo-volmer-clean.png',
+  faviconPath: '/favicon.png',
   services: [
     {id: 'hearing-evaluation', titleKey: 'evaluation.title', descriptionKey: 'evaluation.description'},
     {id: 'hearing-aid-consultation', titleKey: 'consultation.title', descriptionKey: 'consultation.description'},
