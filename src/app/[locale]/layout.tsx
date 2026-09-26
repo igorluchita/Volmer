@@ -11,6 +11,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { siteConfig } from "@/config/site";
 import { StructuredData } from "@/components/structured-data";
+import { StickyCallBar } from "@/components/sticky-call-bar";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -60,15 +61,17 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!routing.locales.includes(locale as "ro" | "ru")) notFound();
   setRequestLocale(locale);
+  const common = await getTranslations({ locale, namespace: "Common" });
   return (
     <NextIntlClientProvider messages={await getMessages()}>
       <a className="skip" href="#content">
-        {locale === "ro" ? "Sari la conținut" : "Перейти к содержанию"}
+        {common("skip")}
       </a>
       <StructuredData />
       <Header />
       <main id="content">{children}</main>
       <Footer />
+      <StickyCallBar />
     </NextIntlClientProvider>
   );
 }

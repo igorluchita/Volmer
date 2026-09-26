@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "./home-hero.css";
+import "./home-page.css";
 import "./hearing-aids-page.css";
 import { siteConfig } from "@/config/site";
 

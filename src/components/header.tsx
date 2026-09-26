@@ -1,22 +1,23 @@
 "use client";
+
 import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link, usePathname } from "@/i18n/navigation";
 import NextLink from "next/link";
-import { siteConfig } from "@/config/site";
+import { Link } from "@/i18n/navigation";
 import { BrandLogo } from "./brand-logo";
 import { localizedBlogPath } from "@/content/blog-locales";
+import { usePathname } from "@/i18n/navigation";
 
 const items = [
-  ["/", "home"],
   ["/aparate-auditive", "aids"],
-  ["/test-auditiv", "test"],
-  ["/servicii", "services"],
-  ["/despre-noi", "about"],
-  ["/blog", "blog"],
-  ["/intrebari-frecvente", "faq"],
-  ["/contact", "contact"],
+  ["/#problem", "problem"],
+  ["/#flex-trial", "flexTrial"],
+  ["/#price", "price"],
+  ["/#why-volmer", "whyVolmer"],
+  ["/#company", "company"],
+  ["/#faq", "faq"],
+  ["/#contact", "contact"],
 ] as const;
 
 export function Header() {
@@ -27,84 +28,53 @@ export function Header() {
   const [languageOpen, setLanguageOpen] = useState(false);
   const other = locale === "ro" ? "ru" : "ro";
   const languagePath = localizedBlogPath(path, locale);
+
   return (
-    <header>
-      <div className="topline">
-        <div className="container">
-          <a href={`tel:${siteConfig.phoneInternational}`}>
-            {siteConfig.phoneDisplay}
-          </a>
-          <span>
-            {siteConfig.city} · {t("contact")}
-          </span>
-        </div>
-      </div>
-      <div className="container bar">
-        <BrandLogo />
-        <nav
-          className={open ? "open" : ""}
-          aria-label={locale === "ro" ? "Principal" : "Основная навигация"}
-        >
-          {items.map(([href, key]) => {
-            const active =
-              href === "/"
-                ? path === "/"
-                : path === href || path.startsWith(`${href}/`);
-            return (
-              <Link
-                key={href}
-                href={href}
-                aria-current={active ? "page" : undefined}
-                onClick={() => setOpen(false)}
-              >
+    <header className="site-header">
+      <div className="site-navbar">
+        <div className="container site-navbar-inner">
+          <BrandLogo />
+          <nav className={`main-nav ${open ? "is-open" : ""}`} aria-label={t("principalAria")}>
+            {items.map(([href, key]) => (
+              <Link key={href} href={href} onClick={() => setOpen(false)}>
                 {t(key)}
               </Link>
-            );
-          })}
-          <div className="language-dropdown">
+            ))}
+          </nav>
+
+          <div className="header-actions">
+            <div className="language-dropdown">
+              <button
+                type="button"
+                className="language-trigger"
+                aria-label={t("language")}
+                aria-expanded={languageOpen}
+                onClick={() => setLanguageOpen((value) => !value)}
+              >
+                {locale.toUpperCase()} <ChevronDown size={15} aria-hidden="true" />
+              </button>
+              {languageOpen && (
+                <div className="language-menu">
+                  <NextLink
+                    href={`/${other}${languagePath === "/" ? "" : languagePath}/`}
+                    onClick={() => setLanguageOpen(false)}
+                  >
+                    {other.toUpperCase()}
+                  </NextLink>
+                </div>
+              )}
+            </div>
+            <Link className="booking-mini" href="/#contact">{t("booking")}</Link>
             <button
               type="button"
-              className="language-trigger"
-              aria-label={t("language")}
-              aria-expanded={languageOpen}
-              onClick={() => setLanguageOpen(!languageOpen)}
+              className="menu"
+              aria-expanded={open}
+              aria-label={open ? t("closeMenuAria") : t("menuAria")}
+              onClick={() => setOpen((value) => !value)}
             >
-              {locale.toUpperCase()}
-              <ChevronDown size={15} />
+              {open ? <X /> : <Menu />}
             </button>
-            {languageOpen && (
-              <div className="language-menu">
-                <NextLink
-                  href={`/${other}${languagePath === "/" ? "" : languagePath}/`}
-                  onClick={() => setLanguageOpen(false)}
-                >
-                  {other.toUpperCase()}
-                </NextLink>
-              </div>
-            )}
           </div>
-        </nav>
-        <div className="header-actions">
-          <a
-            aria-label={locale === "ro" ? "Sună Volmer" : "Позвонить Volmer"}
-            href={`tel:${siteConfig.phoneInternational}`}
-          >
-            <Phone />
-          </a>
-          <a
-            className="booking-mini"
-            href={`tel:${siteConfig.phoneInternational}`}
-          >
-            {t("booking")}
-          </a>
-          <button
-            className="menu"
-            aria-expanded={open}
-            aria-label="Menu"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <X /> : <Menu />}
-          </button>
         </div>
       </div>
     </header>

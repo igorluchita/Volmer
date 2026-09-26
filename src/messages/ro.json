@@ -1,18 +1,193 @@
 {
   "Meta": {
-    "title": "Volmer Chișinău | Centru de aparate auditive",
+    "title": "Aparate auditive și evaluarea auzului | Volmer Chișinău",
     "description": "Aparate auditive Unitron, evaluarea auzului, reglare și suport în Chișinău. Volmer, Str. Mitropolit Varlaam 69. Sună la 079 331 839."
   },
   "HomePage": {
+    "trustRibbon": {
+      "title": "Aparate auditive Unitron în Chișinău",
+      "items": ["Consultație individuală", "Unitron • Sonova"]
+    },
     "hero": {
-      "eyebrow": "Aparate auditive și evaluarea auzului în Chișinău",
-      "titleLine1": "Aparate auditive în Chișinău",
-      "titleLine2": "pentru un auz mai clar",
-      "description": "Dacă ai început să auzi mai slab, să ceri oamenilor să repete sau să înțelegi mai greu conversațiile în zgomot, o evaluare a auzului poate fi primul pas. La Volmer discutăm nevoile tale și alegem împreună soluția auditivă potrivită.",
-      "primaryCta": "Sună pentru programare",
-      "secondaryCta": "Descoperă aparatele auditive",
-      "imageAlt": "Aparat auditiv modern prezentat de Volmer",
-      "locationLabel": "Magazin de aparate auditive în centrul Chișinăului"
+      "eyebrow": "Tehnologie auditivă Unitron",
+      "titleLine1": "Intră din nou în conversație.",
+      "titleLine2": "Rămâi aproape de cei dragi.",
+      "subheadline": "Primul pas — evaluarea auzului.",
+      "paragraphs": [
+        "Schimbările de auz nu înseamnă întotdeauna că nu mai auzi sunetele. Uneori pierzi fragmente din conversații, ceri mai des să se repete sau înțelegi mai greu vorbirea în zgomot.",
+        "La Volmer poți verifica modul în care auzi, discuta rezultatele și testa o soluție auditivă în situațiile tale reale de zi cu zi."
+      ],
+      "benefits": ["Evaluarea auzului și consultație", "Flex Trial 2 săptămâni", "Garanție 2 ani + suport"],
+      "primaryCta": "Sună pentru consultație",
+      "secondaryCta": "079 331 839",
+      "imageAlt": "Bunic ascultând o poveste spusă de nepoata sa",
+      "imageBadge": "Disponibil în Chișinău",
+      "floatingEyebrow": "Unitron • Sonova",
+      "floatingTitle": "Adaptare auditivă individuală",
+      "trustChecks": ["Testare la Volmer", "Selectare individuală", "Garanție 2 ani + suport"]
+    },
+    "problem": {
+      "eyebrow": "01 — Când auzul începe să se schimbe",
+      "title": "Auzi sunetele, dar nu întotdeauna și cuvintele?",
+      "subtitle": "Schimbările de auz apar adesea mai întâi în conversațiile de zi cu zi.",
+      "resultLabel": "Rezultat",
+      "cards": [
+        {
+          "label": "La serviciu",
+          "text": "Prind doar o parte din frază și încerc să completez restul.",
+          "result": "Dau din cap chiar dacă nu am înțeles tot.",
+          "imageAlt": "Persoană folosind un aparat auditiv conectat la telefon la serviciu"
+        },
+        {
+          "label": "În restaurant",
+          "text": "Aud sunetele din jur, dar îmi este greu să urmăresc cuvintele.",
+          "result": "După un timp renunț să mai urmăresc conversația.",
+          "imageAlt": "Două persoane discutând într-un restaurant"
+        },
+        {
+          "label": "Acasă",
+          "text": "Cer tot mai des familiei să repete.",
+          "result": "Conversațiile pot deveni obositoare pentru toată lumea.",
+          "imageAlt": "Grup de persoane în vârstă discutând și râzând"
+        }
+      ],
+      "panelTitle": "Semne că ar putea fi util să îți verifici auzul",
+      "signs": ["Vorbești mai tare decât înainte", "Ceri repetarea cuvintelor", "Înțelegi greu în zgomot", "Televizorul este dat mai tare", "Conversațiile telefonice sunt mai dificile", "Familia observă schimbări"],
+      "disclaimer": "Aceste situații nu reprezintă un diagnostic. O evaluare auditivă poate oferi informații mai clare.",
+      "cta": "Verifică-ți auzul"
+    },
+    "comparison": {
+      "eyebrow": "02 — O diferență importantă",
+      "title": "Amplificator sau aparat auditiv?",
+      "subtitle": "De ce este important să cunoști diferența înainte de alegere.",
+      "intro": "Un amplificator mărește sunetele în general. Un aparat auditiv poate fi programat pe baza rezultatelor auditive și reglat individual.",
+      "leftTitle": "Amplificator / dispozitiv de amplificare",
+      "leftImageAlt": "Dispozitiv simplu de amplificare a sunetului",
+      "leftPoints": ["Amplifică sunetele în mod general", "Nu este programat după audiogramă", "Controlul zgomotului este limitat", "Poate necesita reglaje manuale"],
+      "rightTitle": "Aparat auditiv Unitron",
+      "rightImageAlt": "Aparat auditiv Unitron de tip RIC",
+      "rightPoints": ["Poate fi programat după rezultatele auditive", "Poate utiliza direcționalitate și reducerea zgomotului", "Poate adapta procesarea la mediul sonor", "Funcțiile și reglajele diferă în funcție de model"],
+      "calloutTitle": "De ce contează reglarea?",
+      "calloutText": "Un aparat auditiv poate fi performant, dar rezultatul depinde și de alegerea corectă, coupling, reglare și perioada de adaptare.",
+      "cta": "Vezi aparatele auditive"
+    },
+    "flexTrial": {
+      "eyebrow": "03 — Flex Trial",
+      "title": "Flex Trial: două săptămâni de testare în viața reală",
+      "intro": "Primești un aparat auditiv de test conform recomandării și îl folosești în situațiile tale reale: acasă, la serviciu, în oraș sau în locurile unde este important pentru tine să auzi.",
+      "checksTitle": "În două săptămâni poți observa",
+      "checks": ["Cum funcționează în viața reală", "Cât de confortabil este pe parcursul zilei", "Cum te ajută în conversații"],
+      "weekOneLabel": "Săptămâna 01",
+      "weekOneBadge": "Aparatul A",
+      "weekOneTitle": "Primele zile: acomodare",
+      "weekOneText": "Primele zile sunt despre acomodare și despre observarea sunetelor și conversațiilor în situațiile obișnuite.",
+      "weekTwoLabel": "Săptămâna 02",
+      "weekTwoBadge": "Aparatul B",
+      "weekTwoTitle": "A doua săptămână: comparație",
+      "weekTwoText": "Compari aceleași situații și observi diferențele de confort, claritate și utilizare.",
+      "importanceTitle": "De ce este important",
+      "importanceText": "Te concentrezi pe ceea ce contează pentru tine și iei decizia fără grabă, după experiența din viața reală.",
+      "afterTitle": "După două săptămâni",
+      "afterText": "Înțelegi mai bine ce soluție ți se potrivește sau dacă un aparat auditiv nu este alegerea potrivită pentru tine.",
+      "banner": "Flex Trial te ajută să iei decizia după experiența reală, nu doar după specificații.",
+      "cta": "Sună pentru Flex Trial"
+    },
+    "price": {
+      "eyebrow": "04 — Alegerea potrivită",
+      "title": "De ce o alegere nepotrivită poate costa mai mult",
+      "subtitle": "Și cum reducem riscul unei alegeri greșite.",
+      "text": "Prețul aparatului este doar o parte din decizie. La fel de importante sunt confortul, reglarea, utilizarea zilnică și capacitatea de a comunica în situațiile care contează pentru tine.",
+      "outcomes": [
+        {"text": "Comunic liniștit cu oamenii și particip la conversații.", "imageAlt": "Prieteni maturi purtând o conversație relaxată"},
+        {"text": "Aud mai clar chiar și în locuri zgomotoase.", "imageAlt": "Persoană într-un spațiu public aglomerat"},
+        {"text": "Mama zâmbește mai mult și conversațiile sunt mai ușoare.", "imageAlt": "Familie petrecând timp împreună acasă"}
+      ],
+      "systemTitle": "Cum reducem riscul alegerii nepotrivite",
+      "steps": ["Evaluăm auzul și situațiile importante", "Folosim Flex Trial în viața reală", "Comparăm experiența după testare", "Reglăm soluția aleasă", "Oferim 4 vizite/an în perioada garanției de 2 ani"],
+      "cta": "Discută cu echipa Volmer"
+    },
+    "whyVolmer": {
+      "eyebrow": "05 — Avantajele Volmer",
+      "title": "De ce oamenii aleg Volmer",
+      "intro": "Trei lucruri fac diferența între un aparat purtat zilnic și unul care rămâne nefolosit.",
+      "featuredBadge": "Diferența principală",
+      "cards": [
+        {"title": "Evaluarea și consultația", "text": "Prima vizită începe cu evaluarea auzului și discutarea situațiilor în care ai dificultăți. Dacă aparatul auditiv nu este necesar, spunem acest lucru clar."},
+        {"title": "2 săptămâni Flex Trial", "text": "Testezi soluția în viața ta de zi cu zi înainte de alegerea finală."},
+        {"title": "Garanție 2 ani și suport", "text": "În perioada garanției sunt incluse 4 vizite/an pentru verificare, reglare, service și întreținere conform condițiilor Volmer."}
+      ],
+      "cta": "Sună pentru prima vizită"
+    },
+    "company": {
+      "eyebrow": "06 — Experiența companiei",
+      "title": "Companie germană cu peste 20 de ani de experiență, acum și în Moldova",
+      "subheadline": "Am venit aici pentru a aduce aceeași abordare pe care o folosim în Germania: ajutor clar și corect.",
+      "text": "Volmer este o companie germană cu peste 20 de ani de experiență în domeniul auzului. Moldova este prima țară în care compania s-a extins în afara Germaniei.",
+      "historyTitle": "Istoria Volmer",
+      "historyText": "Volmer a început în Germania cu ideea de a ajuta oamenii să audă mai bine printr-un proces clar, fără presiune. Experiența acumulată în peste două decenii stă la baza modului în care lucrăm și în Moldova.",
+      "historyListTitle": "Experiența noastră arată că aparatele sunt purtate mai constant atunci când",
+      "historyItems": ["Persoana înțelege ce se întâmplă cu auzul său", "Poate testa soluția înainte de alegerea finală", "Primește suport și reglaje după achiziție"],
+      "principlesTitle": "Principiile noastre",
+      "principles": [
+        {"title": "Evaluare înainte de recomandare", "text": "Dacă aparatul nu este necesar, spunem acest lucru clar."},
+        {"title": "Testare înainte de alegerea finală", "text": "Flex Trial permite verificarea soluției în viața reală."},
+        {"title": "Suport continuu după achiziție", "text": "4 vizite pe an sunt incluse în perioada de garanție de 2 ani."},
+        {"title": "Respect față de persoană", "text": "Indiferent de vârstă sau statut."}
+      ],
+      "principlesStrip": "Aceste principii sunt baza modului în care lucrăm în Germania și le aducem acum și în Moldova.",
+      "unitronTitle": "De ce Unitron",
+      "unitronText": "Am ales aparatele auditive Unitron, brand din grupul Sonova, pentru combinația dintre claritatea vorbirii, adaptarea la diferite medii sonore și conectivitatea modernă.",
+      "platforms": [
+        {"label": "Platforma 01", "title": "Smile", "text": "Platformă modernă orientată spre utilizare simplă, conectivitate și adaptare la diferite situații de ascultare.", "badge": "Pentru cei care apreciază simplitatea", "imageAlt": "Aparat auditiv Unitron Smile"},
+        {"label": "Platforma 02", "title": "Vivante", "text": "Platformă concepută pentru o experiență naturală și flexibilă în medii sonore variate.", "badge": "Pentru cei care comunică mult în contexte diferite", "imageAlt": "Aparat auditiv Unitron Vivante"},
+        {"label": "Platforma 03", "title": "Blu", "text": "Platformă orientată spre personalizarea sunetului și conectivitate wireless pe modelele compatibile.", "badge": "Pentru utilizatorii care folosesc frecvent smartphone-ul", "imageAlt": "Aparat auditiv Unitron Blu"}
+      ],
+      "typesTitle": "Trei tipuri de aparate auditive, alese individual",
+      "types": [
+        {"title": "RIC — receiver în canal", "text": "Design discret, opțiuni reîncărcabile și conectivitate pe variantele compatibile."},
+        {"title": "BTE — retroauricular", "text": "Construcție robustă, niveluri diferite de putere și o gamă largă de utilizări."},
+        {"title": "ITE — intraauricular", "text": "Realizat după forma urechii, compact și adaptat pentru confort individual."}
+      ],
+      "trustEyebrow": "Peste 20 de ani de experiență în Germania",
+      "trustText": "La Volmer beneficiezi de un proces construit în timp și adaptat pentru Moldova: evaluare, testare, alegere individuală și suport după achiziție.",
+      "cta": "Sună pentru o consultație"
+    },
+    "faq": {
+      "eyebrow": "Întrebări frecvente",
+      "title": "Întrebări și răspunsuri",
+      "intro": "Răspunsuri clare la întrebările care apar înaintea primei vizite la Volmer.",
+      "items": [
+        {"question": "Cred că aud destul de bine. De ce să îmi verific auzul?", "answer": "Dacă repeți întrebările, mărești volumul sau înțelegi greu în zgomot, o evaluare poate clarifica situația. Un astfel de semn nu este singur un diagnostic."},
+        {"question": "Cât costă un aparat auditiv?", "answer": "Prețul depinde de model, tehnologie și configurație. După evaluare și discuție, echipa Volmer îți explică opțiunile potrivite și costurile lor."},
+        {"question": "Se observă aparatul auditiv?", "answer": "Există formate discrete, inclusiv RIC și soluții intraauriculare. Forma potrivită depinde însă de auz, anatomie, dexteritate și funcțiile necesare."},
+        {"question": "Ce se întâmplă dacă aparatul nu mă ajută?", "answer": "Flex Trial îți permite să testezi soluția timp de două săptămâni și să compari experiența înaintea alegerii finale."},
+        {"question": "Ce aparate auditive oferă Volmer?", "answer": "Volmer lucrează cu aparate Unitron din grupul Sonova, în formate RIC, BTE și intraauriculare, în funcție de disponibilitate și recomandare."},
+        {"question": "Cât de des sunt necesare vizitele?", "answer": "Nevoia de reglare este individuală. În condițiile Volmer sunt incluse 4 vizite pe an în perioada garanției de 2 ani."},
+        {"question": "Cum funcționează garanția?", "answer": "Garanția este de 2 ani. Condițiile și serviciile incluse sunt explicate înaintea achiziției."},
+        {"question": "Pot conecta aparatul la smartphone?", "answer": "Da, pe modelele compatibile. Funcțiile disponibile depind de modelul aparatului, telefon și sistemul de operare."},
+        {"question": "Ce fac dacă pierd aparatul?", "answer": "Contactează echipa Volmer cât mai repede. Opțiunile disponibile depind de model și de condițiile aplicabile aparatului tău."},
+        {"question": "Care este diferența între RIC și BTE?", "answer": "La RIC, receptorul este în canalul auditiv, iar corpul rămâne în spatele urechii. BTE este o soluție robustă, disponibilă în mai multe niveluri de putere."},
+        {"question": "Există aparate reîncărcabile?", "answer": "Da, anumite modele au acumulator și stație de încărcare. Autonomia diferă în funcție de model și modul de utilizare."}
+      ]
+    },
+    "contact": {
+      "eyebrow": "Consultație individuală în Chișinău",
+      "title": "Contact",
+      "text": "Sună pentru evaluarea auzului, informații despre aparate sau programarea unei consultații.",
+      "phoneLabel": "Telefon",
+      "addressLabel": "Adresă",
+      "hoursLabel": "Program",
+      "emailLabel": "Email",
+      "cardTitle": "Programează o consultație",
+      "cardText": "Sună-ne și stabilim împreună ziua și ora.",
+      "primaryCta": "Sună 079 331 839",
+      "secondaryCta": "Trimite email",
+      "note": "Fără formular sau confirmare automată — discuți direct cu echipa Volmer."
+    },
+    "sticky": {
+      "label": "Programează o consultație",
+      "button": "Sună 079 331 839",
+      "mobileButton": "Sună pentru programare"
     }
   },
   "HearingAidsPage": {
@@ -244,16 +419,22 @@
     }
   },
   "Nav": {
-    "home": "Acasă",
     "aids": "Aparate auditive",
-    "test": "Test auditiv",
-    "services": "Servicii",
-    "about": "Despre noi",
-    "blog": "Blog",
-    "faq": "Întrebări frecvente",
-    "contact": "Contact",
-    "booking": "Sună pentru programare",
-    "language": "Schimbă limba"
+    "problem": "Problema",
+    "flexTrial": "Flex Trial",
+    "price": "Preț",
+    "whyVolmer": "De ce Volmer",
+    "company": "Despre companie",
+    "faq": "Întrebări și răspunsuri",
+    "contact": "Contacte",
+    "booking": "Programează-te",
+    "language": "Schimbă limba",
+    "hoursShort": "L–V 09:00–18:00 · S 09:00–13:00",
+    "consultation": "Evaluarea auzului și consultație",
+    "principalAria": "Navigație principală",
+    "callAria": "Sună Volmer",
+    "menuAria": "Deschide meniul",
+    "closeMenuAria": "Închide meniul"
   },
   "Home": {
     "eyebrow": "APARATE AUDITIVE ȘI EVALUAREA AUZULUI",
@@ -299,7 +480,16 @@
       "description": "Oferim verificare, curățare și suport pentru folosirea corectă a aparatului."
     }
   },
-  "Footer": { "note": "Un spațiu calm pentru conversații importante." },
+  "Footer": {
+    "note": "Volmer — soluții pentru auz și aparate auditive Unitron în Chișinău. Experiență dezvoltată în Germania și adusă acum în Moldova.",
+    "pagesTitle": "Pagini",
+    "unitronTitle": "Unitron",
+    "contactTitle": "Contact",
+    "hearingAids": "Aparate auditive Unitron",
+    "sonova": "Unitron, brand din grupul Sonova",
+    "germanStandard": "Peste 20 de ani de experiență în Germania",
+    "copyright": "Toate drepturile rezervate."
+  },
   "BusinessHours": {
     "title": "Program",
     "weekdays": "Luni–Vineri",
@@ -311,6 +501,7 @@
   "Common": {
     "hours": "Luni–Vineri: 09:00–18:00 · Pauză de masă: 13:00–14:00 · Sâmbătă: 09:00–13:00",
     "address": "Chișinău, Str. Mitropolit Varlaam 69",
-    "learn": "Află mai multe"
+    "learn": "Află mai multe",
+    "skip": "Sari la conținut"
   }
 }
