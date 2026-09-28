@@ -6,14 +6,12 @@ import {
   Bluetooth,
   BrainCircuit,
   Ear,
-  Gauge,
   MessageCircle,
   Phone,
-  RefreshCw,
   Settings2,
   ShieldCheck,
-  Smartphone,
   Sparkles,
+  Smartphone,
   Volume2,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -23,7 +21,6 @@ import {
   hearingAidBenefits,
   hearingAidCategories,
   hearingAidFaq,
-  personalizationCriteria,
   selectionSteps,
   unitronPlatforms,
 } from "@/content/hearing-aids";
@@ -38,6 +35,8 @@ type Copy = {
     primaryCta: string;
     secondaryCta: string;
     imageAlt: string;
+    proof: string;
+    breadcrumb: string;
   };
   unitron: {
     title: string;
@@ -56,7 +55,8 @@ type Copy = {
     title: string;
     intro: string;
     note: string;
-    items: Record<string, TextItem>;
+    whenLabel: string;
+    items: Record<string, TextItem & { when?: string }>;
   };
   technology: { title: string; intro: string; items: Record<string, TextItem> };
   connectivity: {
@@ -71,8 +71,8 @@ type Copy = {
     highlight: string;
     items: Record<string, string>;
   };
-  selection: { title: string; items: Record<string, TextItem> };
-  sonova: { title: string; text: string };
+  selection: { title: string; intro: string; resultLabel: string; result: string; items: Record<string, TextItem> };
+  sonova: { title: string; text: string; points: string[] };
   faq: {
     title: string;
     items: Record<string, { question: string; answer: string }>;
@@ -144,19 +144,18 @@ export default async function HearingAidsPage({
     })),
   };
   return (
-    <>
+    <div className="aids-page">
       <Breadcrumbs
         locale={locale === "ru" ? "ru" : "ro"}
-        label={c.hero.title}
+        label={c.hero.breadcrumb}
         path="aparate-auditive"
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <section className="unitron-hero">
-        <div className="unitron-container unitron-hero-grid">
-          <div>
+      <section className="aids-hero hp-container">
+        <div className="aids-hero-copy">
             <p className="unitron-eyebrow">
               <Sparkles size={16} />
               {c.hero.eyebrow}
@@ -165,181 +164,114 @@ export default async function HearingAidsPage({
             <p className="unitron-lead">{c.hero.description}</p>
             <p>{c.hero.secondary}</p>
             <div className="unitron-actions">
-              <a
-                className="unitron-primary"
-                href={`tel:${siteConfig.phoneInternational}`}
-              >
-                <Phone size={19} />
+              <a className="unitron-primary" href="#platforme">
+                <Sparkles size={17} />
                 {c.hero.primaryCta}
               </a>
-              <a className="unitron-secondary" href="#technology">
+              <a className="unitron-secondary" href="#tipuri">
                 {c.hero.secondaryCta}
               </a>
             </div>
+        </div>
+        <div className="aids-hero-visual">
+          <div className="unitron-hero-image unitron-hero-video">
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-label={c.hero.imageAlt}
+            >
+              <source src="/videos/unitron-vista-sr.mp4" type="video/mp4" />
+            </video>
           </div>
-          <div className="unitron-hero-image">
-            <Image
-              src="/images/hearing-aids/unitron-hero.webp"
-              alt={c.hero.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 52vw"
-            />
-          </div>
+          <div className="aids-hero-proof"><ShieldCheck aria-hidden="true" /><span>{c.hero.proof}</span></div>
         </div>
       </section>
 
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 01</p>
-        <div className="unitron-split">
-          <div>
-            <h2>{c.unitron.title}</h2>
-            <p className="unitron-lead">{c.unitron.text1}</p>
-            <p>{c.unitron.text2}</p>
-            <ul className="unitron-checks">
-              {c.unitron.points.map((point) => (
-                <li key={point}>
-                  <ShieldCheck />
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="unitron-flow" aria-label={c.unitron.title}>
-            {c.unitron.flow.map((item, index) => (
-              <div key={item}>
-                <strong>{item}</strong>
-                {index < c.unitron.flow.length - 1 && (
-                  <span aria-hidden="true">↓</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="unitron-soft unitron-section" id="technology">
-        <div className="unitron-container">
-          <p className="unitron-index">•••• 02</p>
+      <section className="aids-section hp-container" id="platforme">
+        <div className="aids-section-heading">
+          <p className="aids-index">01 — UNITRON</p>
           <h2>{c.platforms.title}</h2>
-          <p className="unitron-lead">{c.platforms.intro}</p>
-          <div className="unitron-platforms">
-            {unitronPlatforms.map((id, index) => (
-              <article key={id}>
-                <span>0{index + 1}</span>
-                <h3>{c.platforms.items[id].title}</h3>
-                <p>{c.platforms.items[id].description}</p>
-              </article>
-            ))}
-          </div>
-          <p className="unitron-note">{c.platforms.note}</p>
+          <p>{c.platforms.intro}</p>
         </div>
+        <div className="aids-platforms">
+          {unitronPlatforms.map((id, index) => (
+            <article key={id}>
+              <span className="aids-number">0{index + 1}</span>
+              <h3>{c.platforms.items[id].title}</h3>
+              <p>{c.platforms.items[id].description}</p>
+              <div className="aids-platform-image">
+                <Image
+                  src={`/images/homepage/${id}.webp`}
+                  alt={c.platforms.items[id].title}
+                  fill
+                  sizes="(max-width: 700px) 80vw, 28vw"
+                />
+              </div>
+            </article>
+          ))}
+        </div>
+        <p className="aids-note">{c.platforms.note}</p>
       </section>
 
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 03</p>
-        <h2>{c.styles.title}</h2>
-        <p className="unitron-lead">{c.styles.intro}</p>
-        <div className="unitron-types">
-          {hearingAidCategories.map((id) => {
-            const Icon = categoryIcons[id];
-            const item = c.styles.items[id];
-            return (
-              <article key={id}>
-                <Icon />
+      <section className="aids-section aids-section-soft" id="tipuri">
+        <div className="hp-container">
+          <div className="aids-section-heading">
+            <p className="aids-index">02 — FORME</p>
+            <h2>{c.styles.title}</h2>
+            <p>{c.styles.intro}</p>
+          </div>
+          <div className="aids-types">
+            {hearingAidCategories.map((id, index) => {
+              const Icon = categoryIcons[id];
+              const item = c.styles.items[id];
+              return <article key={id}>
+                <div className="aids-type-top"><span className="aids-number">0{index + 1}</span><Icon aria-hidden="true" /></div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
-                <ul>
-                  {item.benefits?.map((value) => (
-                    <li key={value}>{value}</li>
-                  ))}
-                </ul>
-              </article>
-            );
-          })}
-        </div>
-        <p className="unitron-highlight">{c.styles.note}</p>
-      </section>
-
-      <section className="unitron-dark unitron-section">
-        <div className="unitron-container">
-          <p className="unitron-index">•••• 04</p>
-          <h2>{c.technology.title}</h2>
-          <p className="unitron-lead">{c.technology.intro}</p>
-          <div className="unitron-benefits">
-            {hearingAidBenefits.map((id) => {
-              const Icon = benefitIcons[id];
-              const item = c.technology.items[id];
-              return (
-                <article key={id}>
-                  <Icon />
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </article>
-              );
+                <ul>{item.benefits?.map((value) => <li key={value}>{value}</li>)}</ul>
+                {item.when && <p className="aids-when"><b>{c.styles.whenLabel}</b> {item.when}</p>}
+                <div className="aids-type-image">
+                  <Image
+                    src={`/images/hearing-aids/${id.toUpperCase()}.png`}
+                    alt={item.title}
+                    fill
+                    sizes="(max-width: 700px) 85vw, 28vw"
+                  />
+                </div>
+              </article>;
             })}
           </div>
+          <p className="aids-note">{c.styles.note}</p>
         </div>
       </section>
 
-      <section className="unitron-section unitron-container">
-        <div className="unitron-connect">
-          <div>
-            <p className="unitron-index">•••• 05</p>
-            <h2>{c.connectivity.title}</h2>
-            <p className="unitron-lead">{c.connectivity.description}</p>
-            <p className="unitron-note">{c.connectivity.note}</p>
-          </div>
-          <div className="unitron-digital" aria-label={c.connectivity.title}>
-            {c.connectivity.flow.map((item, index) => (
-              <div key={item}>
-                <span>
-                  {index === 0 ? (
-                    <Smartphone />
-                  ) : index === 1 ? (
-                    <Ear />
-                  ) : (
-                    <Gauge />
-                  )}
-                </span>
-                <b>{item}</b>
-                {index < c.connectivity.flow.length - 1 && (
-                  <i aria-hidden="true">↔</i>
-                )}
-              </div>
-            ))}
-          </div>
+      <section className="aids-section hp-container" id="technology">
+        <div className="aids-section-heading">
+          <p className="aids-index">03 — FUNCȚII</p>
+          <h2>{c.technology.title}</h2>
+          <p>{c.technology.intro}</p>
+        </div>
+        <div className="aids-benefits">
+          {hearingAidBenefits.map((id) => {
+            const Icon = benefitIcons[id];
+            const item = c.technology.items[id];
+            return <article key={id}><Icon aria-hidden="true" /><h3>{item.title}</h3><p>{item.description}</p></article>;
+          })}
         </div>
       </section>
 
-      <section className="unitron-soft unitron-section">
-        <div className="unitron-container unitron-split">
-          <div>
-            <p className="unitron-index">•••• 06</p>
-            <h2>{c.personalization.title}</h2>
-            <p className="unitron-lead">{c.personalization.text}</p>
-            <p className="unitron-highlight">{c.personalization.highlight}</p>
-          </div>
-          <div className="unitron-criteria">
-            {personalizationCriteria.map((id, index) => (
-              <article key={id}>
-                <b>0{index + 1}</b>
-                <p>{c.personalization.items[id]}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 07</p>
-        <h2>{c.selection.title}</h2>
-        <div className="unitron-steps">
+      <section className="aids-section aids-section-soft" id="alegere">
+        <div className="hp-container">
+          <div className="aids-section-heading"><p className="aids-index">04 — VOLMER</p><h2>{c.selection.title}</h2><p>{c.selection.intro}</p></div>
+          <div className="aids-steps">
           {selectionSteps.map((id, index) => {
             const item = c.selection.items[id];
             return (
               <article key={id}>
-                <span>{index + 1}</span>
+                <span className="aids-step-number">0{index + 1}</span>
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
@@ -347,23 +279,22 @@ export default async function HearingAidsPage({
               </article>
             );
           })}
-        </div>
-      </section>
-
-      <section className="unitron-sonova">
-        <div className="unitron-container">
-          <RefreshCw />
-          <div>
-            <h2>{c.sonova.title}</h2>
-            <p>{c.sonova.text}</p>
           </div>
+          <p className="aids-result"><b>{c.selection.resultLabel}</b> {c.selection.result}</p>
         </div>
       </section>
 
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 08</p>
-        <h2>{c.faq.title}</h2>
-        <div className="unitron-faq">
+      <section className="aids-company" id="sonova">
+        <div className="hp-container aids-company-inner">
+          <p className="aids-index">05 — SONOVA</p>
+          <div><h2>{c.sonova.title}</h2><p>{c.sonova.text}</p></div>
+          <div className="aids-company-points">{c.sonova.points.map((point) => <p key={point}><ShieldCheck aria-hidden="true" />{point}</p>)}</div>
+        </div>
+      </section>
+
+      <section className="aids-section hp-container" id="faq">
+        <div className="aids-section-heading"><p className="aids-index">06 — FAQ</p><h2>{c.faq.title}</h2></div>
+        <div className="aids-faq">
           {hearingAidFaq.map((id) => (
             <details key={id}>
               <summary>{c.faq.items[id].question}</summary>
@@ -373,7 +304,7 @@ export default async function HearingAidsPage({
         </div>
       </section>
 
-      <section className="unitron-final unitron-container">
+      <section className="aids-final hp-container" id="contact">
         <div>
           <h2>{c.finalCta.title}</h2>
           <p>{c.finalCta.text}</p>
@@ -386,11 +317,11 @@ export default async function HearingAidsPage({
             <Phone size={19} />
             {c.finalCta.primary}
           </a>
-          <Link className="unitron-secondary" href="/contact">
+          <Link className="unitron-secondary" href="/#flex-trial">
             {c.finalCta.secondary}
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }

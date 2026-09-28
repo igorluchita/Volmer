@@ -1,23 +1,26 @@
 "use client";
 
 import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { useState } from "react";
+import { ChevronDown, Clock3, MapPin, Menu, Phone, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import { BrandLogo } from "./brand-logo";
 import { localizedBlogPath } from "@/content/blog-locales";
 import { usePathname } from "@/i18n/navigation";
+import { siteConfig } from "@/config/site";
 
 const items = [
   ["/aparate-auditive", "aids"],
-  ["/#problem", "problem"],
+  ["/test-auditiv", "test"],
+  ["/#problema", "problem"],
   ["/#flex-trial", "flexTrial"],
-  ["/#price", "price"],
-  ["/#why-volmer", "whyVolmer"],
-  ["/#company", "company"],
+  ["/#pret", "price"],
+  ["/#de-ce-volmer", "whyVolmer"],
+  ["/#companie", "company"],
   ["/#faq", "faq"],
   ["/#contact", "contact"],
+  ["/blog", "blog"],
 ] as const;
 
 export function Header() {
@@ -29,8 +32,35 @@ export function Header() {
   const other = locale === "ro" ? "ru" : "ro";
   const languagePath = localizedBlogPath(path, locale);
 
+  useEffect(() => {
+    if (!open && !languageOpen) return;
+
+    const closeOverlays = () => {
+      setOpen(false);
+      setLanguageOpen(false);
+    };
+
+    window.addEventListener("scroll", closeOverlays, { passive: true });
+    return () => window.removeEventListener("scroll", closeOverlays);
+  }, [open, languageOpen]);
+
   return (
     <header className="site-header">
+      <div className="site-topbar">
+        <div className="hp-container site-topbar-inner">
+          <div className="site-topbar-group">
+            <a className="site-topbar-phone" href={`tel:${siteConfig.phoneInternational}`}>
+              <Phone size={15} aria-hidden="true" /> <strong>{siteConfig.phoneDisplay}</strong>
+            </a>
+            <span className="site-topbar-hours"><Clock3 size={14} aria-hidden="true" />{t("hoursShort")}</span>
+            <span className="site-consultation"><span aria-hidden="true">✓</span>{t("consultation")}</span>
+          </div>
+          <div className="site-topbar-right">
+            <span><MapPin size={14} aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span>
+            <Link href="/#contact">{t("contact")}</Link>
+          </div>
+        </div>
+      </div>
       <div className="site-navbar">
         <div className="container site-navbar-inner">
           <BrandLogo />
@@ -64,7 +94,7 @@ export function Header() {
                 </div>
               )}
             </div>
-            <Link className="booking-mini" href="/#contact">{t("booking")}</Link>
+            <a className="booking-mini" href={`tel:${siteConfig.phoneInternational}`}><Phone size={17} aria-hidden="true" />{t("booking")}</a>
             <button
               type="button"
               className="menu"

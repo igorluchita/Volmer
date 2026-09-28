@@ -2,7 +2,7 @@ import {existsSync, readdirSync, readFileSync, statSync} from 'node:fs';
 import {join, relative} from 'node:path';
 
 const root = new URL('../out/', import.meta.url).pathname;
-const required = ['index.html','404.html','_next','ro/index.html','ru/index.html','ro/aparate-auditive/index.html','ru/aparate-auditive/index.html','ro/test-auditiv/index.html','ru/test-auditiv/index.html','ro/servicii/index.html','ru/servicii/index.html','ro/despre-noi/index.html','ru/despre-noi/index.html','ro/intrebari-frecvente/index.html','ru/intrebari-frecvente/index.html','ro/contact/index.html','ru/contact/index.html'];
+const required = ['index.html','404.html','_next','ro/index.html','ru/index.html','ro/aparate-auditive/index.html','ru/aparate-auditive/index.html','ro/test-auditiv/index.html','ru/test-auditiv/index.html','ro/blog/index.html','ru/blog/index.html','ro/programare/index.html','ru/programare/index.html'];
 const errors = [];
 if (!existsSync(root)) errors.push('Directorul out lipsește. Rulează npm run build.');
 for (const path of required) if (!existsSync(join(root,path))) errors.push(`Lipsește ${path}`);

@@ -7,10 +7,6 @@ const pages = [
   "",
   "aparate-auditive",
   "test-auditiv",
-  "servicii",
-  "despre-noi",
-  "intrebari-frecvente",
-  "contact",
   "programare",
 ];
 export default function sitemap(): MetadataRoute.Sitemap {

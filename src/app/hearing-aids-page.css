@@ -1,1 +1,179 @@
-.unitron-container{width:min(1280px,calc(100% - 64px));margin:auto}.unitron-section{padding:96px 0}.unitron-soft{background:#f3f6fc}.unitron-hero{background:#fff;border-bottom:1px solid var(--line)}.unitron-hero-grid{min-height:640px;padding:72px 0;display:grid;grid-template-columns:48fr 52fr;gap:64px;align-items:center}.unitron-eyebrow,.unitron-index{display:flex;align-items:center;gap:8px;color:#29408e;font:700 13px/1.4 'DM Mono',monospace;letter-spacing:.09em;text-transform:uppercase}.unitron-hero h1,.unitron-section h2,.unitron-final h2{font-family:Fraunces,Georgia,serif;letter-spacing:-.045em}.unitron-hero h1{max-width:680px;margin:15px 0 24px;font-size:clamp(50px,5vw,72px);line-height:1}.unitron-lead{max-width:760px;color:#435273;font-size:19px;line-height:1.65}.unitron-hero-image{position:relative;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:#f3f6fc;box-shadow:0 20px 60px rgba(41,64,142,.12)}.unitron-hero-image img{object-fit:cover;object-position:center}.unitron-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}.unitron-primary,.unitron-secondary{min-height:50px;padding:12px 20px;display:inline-flex;align-items:center;justify-content:center;gap:9px;border:2px solid #29408e;border-radius:8px;font-weight:700;transition:transform 160ms cubic-bezier(.23,1,.32,1),background-color 160ms ease,color 160ms ease}.unitron-primary{background:#29408e;color:#fff}.unitron-secondary{background:#fff;color:#29408e}.unitron-primary:hover{background:#17285f;border-color:#17285f}.unitron-secondary:hover{background:#f3f6fc}.unitron-primary:active,.unitron-secondary:active{transform:scale(.97)}.unitron-primary:focus-visible,.unitron-secondary:focus-visible,details summary:focus-visible{outline:3px solid #7b8ed0;outline-offset:3px}.unitron-section h2,.unitron-final h2{max-width:850px;margin:12px 0 20px;font-size:clamp(38px,4.5vw,62px);line-height:1.02}.unitron-split,.unitron-connect{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}.unitron-checks{list-style:none;padding:0;margin-top:28px;display:grid;gap:12px}.unitron-checks li{display:flex;align-items:center;gap:10px}.unitron-checks svg{width:21px;color:#29408e}.unitron-flow{padding:34px;background:#17285f;color:#fff;border-radius:28px 10px 30px 12px}.unitron-flow div{min-height:92px;display:grid;place-items:center;text-align:center}.unitron-flow strong{font:600 26px Fraunces,serif}.unitron-flow span{color:#aebdeb;font-size:30px}.unitron-platforms,.unitron-types,.unitron-benefits{display:grid;gap:18px;margin-top:38px}.unitron-platforms{grid-template-columns:repeat(3,1fr)}.unitron-platforms article,.unitron-types article{padding:30px;border:1px solid var(--line);background:#fff;border-radius:10px 22px 14px 25px}.unitron-platforms span{font:700 14px 'DM Mono',monospace;color:#29408e}.unitron-platforms h3,.unitron-types h3,.unitron-benefits h3,.unitron-steps h3{font:600 27px Fraunces,serif;margin:13px 0 8px}.unitron-note,.unitron-highlight{margin-top:30px;padding:18px 22px;border-left:4px solid #29408e;background:#fff;font-weight:600}.unitron-types{grid-template-columns:repeat(3,1fr)}.unitron-types svg{color:#29408e}.unitron-types ul{padding-left:18px;line-height:1.8}.unitron-highlight{background:#e9edf8}.unitron-dark{background:#17285f;color:#fff}.unitron-dark .unitron-index,.unitron-dark .unitron-lead{color:#d9e0ff}.unitron-benefits{grid-template-columns:repeat(3,1fr)}.unitron-benefits article{padding:28px;border:1px solid #6575aa;border-radius:18px 10px 21px 12px}.unitron-benefits svg{color:#cbd6ff}.unitron-benefits p{color:#d9e0ff}.unitron-digital{display:flex;align-items:center;justify-content:center;gap:16px;padding:34px;background:#f3f6fc;border-radius:24px}.unitron-digital div{display:flex;align-items:center;gap:12px}.unitron-digital span{width:58px;height:58px;display:grid;place-items:center;border-radius:50%;background:#29408e;color:#fff}.unitron-digital i{font-style:normal;font-size:25px;color:#29408e}.unitron-criteria{display:grid;grid-template-columns:1fr 1fr;gap:14px}.unitron-criteria article{min-height:130px;padding:22px;background:#fff;border:1px solid var(--line)}.unitron-criteria b{font:700 14px 'DM Mono',monospace;color:#29408e}.unitron-steps{margin-top:38px;border-top:1px solid var(--line)}.unitron-steps article{padding:24px 0;display:grid;grid-template-columns:80px 1fr;gap:20px;border-bottom:1px solid var(--line)}.unitron-steps span{font:600 48px Fraunces,serif;color:#29408e}.unitron-steps h3{margin:0 0 5px}.unitron-steps p{margin:0;color:var(--muted)}.unitron-sonova{padding:54px 0;background:#e9edf8}.unitron-sonova .unitron-container{max-width:950px;display:flex;align-items:flex-start;gap:22px}.unitron-sonova svg{width:36px;height:36px;color:#29408e;flex:none}.unitron-sonova h2{margin:0 0 12px;font:600 38px Fraunces,serif}.unitron-faq{margin-top:35px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.unitron-faq details{padding:0 22px;border:1px solid var(--line);border-radius:12px;background:#fff}.unitron-faq summary{min-height:64px;display:flex;align-items:center;cursor:pointer;font-weight:700}.unitron-faq p{margin:0 0 22px;color:var(--muted)}.unitron-final{margin-bottom:90px;padding:52px;display:flex;align-items:end;justify-content:space-between;gap:30px;background:#29408e;color:#fff;border-radius:30px 10px 32px 13px}.unitron-final h2{margin:0}.unitron-final p{max-width:700px}.unitron-final .unitron-primary{background:#fff;color:#29408e;border-color:#fff}.unitron-final .unitron-secondary{background:transparent;color:#fff;border-color:#fff}@media(max-width:900px){.unitron-hero-grid,.unitron-split,.unitron-connect{grid-template-columns:1fr}.unitron-hero-grid{padding:58px 0}.unitron-platforms,.unitron-types,.unitron-benefits{grid-template-columns:1fr 1fr}.unitron-faq{grid-template-columns:1fr}.unitron-final{align-items:flex-start;flex-direction:column}}@media(max-width:600px){.unitron-container{width:calc(100% - 40px)}.unitron-section{padding:68px 0}.unitron-hero-grid{min-height:0;padding:48px 0;gap:40px}.unitron-hero h1{font-size:44px}.unitron-hero-image{border-radius:20px}.unitron-platforms,.unitron-types,.unitron-benefits,.unitron-criteria{grid-template-columns:1fr}.unitron-actions{display:grid}.unitron-primary,.unitron-secondary{width:100%}.unitron-digital{align-items:stretch;flex-direction:column}.unitron-digital div{justify-content:space-between}.unitron-digital i{transform:rotate(90deg)}.unitron-final{width:calc(100% - 40px);padding:32px;margin-bottom:58px}.unitron-sonova .unitron-container{display:block}.unitron-sonova svg{margin-bottom:16px}}
+.aids-page {
+  --aids-navy: #0a1d36;
+  --aids-blue: #17395f;
+  --aids-orange: #ea580c;
+  --aids-amber: #fbbf24;
+  --aids-muted: #53657b;
+  padding-bottom: 1px;
+  background: #f5f7f9;
+  color: var(--aids-navy);
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+.aids-page .breadcrumb {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 12px 0;
+  color: #66768a;
+  font-size: 12px;
+}
+.aids-page .breadcrumb a { color: var(--aids-navy); }
+.aids-page h1,
+.aids-page h2,
+.aids-page h3 { font-family: "Playfair Display", Georgia, "Times New Roman", serif; letter-spacing: -.025em; }
+
+.aids-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, .98fr);
+  align-items: center;
+  gap: 46px;
+  margin-top: 26px;
+  border-radius: 28px;
+  padding: 44px;
+  background: radial-gradient(ellipse at 78% 18%, #1d4774 0, transparent 44%), linear-gradient(125deg, #17385e, #0a1d36 82%);
+  box-shadow: 0 18px 44px rgba(10, 29, 54, .16);
+  color: #fff;
+}
+.aids-hero-copy { min-width: 0; }
+.aids-page .unitron-eyebrow,
+.aids-index {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  color: var(--aids-amber);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .09em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.aids-page .unitron-eyebrow { width: fit-content; border: 1px solid rgba(251,191,36,.38); border-radius: 9px; padding: 7px 10px; background: rgba(251,191,36,.1); }
+.aids-hero h1 { max-width: 620px; margin: 0 0 18px; font-size: clamp(42px, 4.1vw, 58px); font-weight: 700; line-height: 1.02; }
+.aids-hero-copy > p:not(.unitron-eyebrow) { max-width: 610px; margin: 0 0 13px; color: #d7e1ee; font-size: 16px; line-height: 1.58; }
+.aids-page .unitron-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.aids-page .unitron-primary,
+.aids-page .unitron-secondary { min-height: 44px; border: 1px solid transparent; border-radius: 10px; padding: 10px 15px; font: 700 14px/1.25 Inter, ui-sans-serif, system-ui, sans-serif; text-align: center; }
+.aids-page .unitron-primary { background: var(--aids-orange); color: #fff; box-shadow: 0 7px 16px rgba(234,88,12,.22); }
+.aids-page .unitron-primary:hover { border-color: #c2410c; background: #c2410c; }
+.aids-page .unitron-secondary { border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.08); color: #fff; }
+.aids-page .unitron-secondary:hover { background: rgba(255,255,255,.16); }
+.aids-hero-visual { min-width: 0; }
+.aids-page .unitron-hero-image { position: relative; aspect-ratio: 1.16; overflow: hidden; border: 4px solid #fff4cf; border-radius: 21px; background: #dfe8f0; box-shadow: 0 16px 36px rgba(0,0,0,.18); }
+.aids-page .unitron-hero-image img { object-fit: cover; }
+.aids-page .unitron-hero-video {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 0;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 16px 36px rgba(0,0,0,.18);
+}
+.unitron-hero-video video { display: block; width: 100%; height: 100%; object-fit: contain; }
+.aids-hero-proof { display: flex; align-items: center; gap: 9px; margin: 12px 2px 0; color: #c9d7e7; font-size: 12px; font-weight: 600; }
+.aids-hero-proof svg { width: 16px; height: 16px; color: #34d399; }
+
+.aids-section { margin-top: 68px; border: 1px solid #e2e8f0; border-radius: 26px; padding: 44px; background: #fff; box-shadow: 0 12px 34px rgba(10,29,54,.055); }
+.aids-section-soft { border: 0; border-radius: 0; padding: 62px 0; background: #eef2f6; box-shadow: none; }
+.aids-section-heading { max-width: 850px; }
+.aids-section-heading .aids-index { margin-bottom: 11px; color: var(--aids-orange); }
+.aids-section-heading h2,
+.aids-company h2,
+.aids-final h2 { margin: 0; color: var(--aids-navy); font-size: clamp(34px, 3.5vw, 46px); font-weight: 700; line-height: 1.08; }
+.aids-section-heading > p:last-child { margin: 12px 0 0; color: var(--aids-muted); font-size: 16px; line-height: 1.6; }
+.aids-platforms { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 26px; }
+.aids-platforms article,
+.aids-types article { min-width: 0; border: 1px solid #e1e8f0; border-radius: 16px; padding: 22px; background: #f8fafc; }
+.aids-platforms article { display: flex; min-height: 310px; flex-direction: column; overflow: hidden; }
+.aids-number { display: inline-grid; width: 34px; height: 34px; place-items: center; border-radius: 9px; background: #e9eff6; color: var(--aids-navy); font-size: 14px; font-weight: 800; }
+.aids-platforms h3,
+.aids-types h3,
+.aids-benefits h3,
+.aids-steps h3 { margin: 12px 0 7px; color: var(--aids-navy); font-size: 20px; font-weight: 700; line-height: 1.25; }
+.aids-platforms p,
+.aids-types p,
+.aids-benefits p,
+.aids-steps p { margin: 0; color: var(--aids-muted); font-size: 14px; line-height: 1.55; }
+.aids-platform-image { position: relative; width: 100%; height: 125px; flex: none; margin-top: auto; padding-top: 12px; }
+.aids-platform-image img { object-fit: contain; object-position: center bottom; }
+.aids-note { margin: 18px 0 0; border-left: 3px solid var(--aids-orange); border-radius: 0 9px 9px 0; padding: 12px 15px; background: #fff7ed; color: #62452d; font-size: 13px; line-height: 1.5; }
+.aids-types { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; margin-top: 26px; }
+.aids-types article { display: flex; flex-direction: column; background: #fff; box-shadow: 0 5px 16px rgba(10,29,54,.035); }
+.aids-type-top { display: flex; align-items: center; justify-content: space-between; }
+.aids-type-top svg { width: 21px; height: 21px; color: var(--aids-orange); }
+.aids-types h3 { margin-top: 16px; }
+.aids-types ul { display: grid; gap: 7px; margin: 15px 0; padding: 0; list-style: none; }
+.aids-types li { position: relative; padding-left: 19px; color: #354b63; font-size: 13px; line-height: 1.45; }
+.aids-types li::before { position: absolute; left: 0; color: #059669; font-weight: 800; content: "✓"; }
+.aids-types .aids-when { margin-top: auto; border-top: 1px solid #e8edf3; padding-top: 12px; font-size: 12px; }
+.aids-types .aids-when b { color: var(--aids-navy); }
+.aids-type-image { position: relative; width: 100%; height: 240px; flex: none; margin-top: 15px; }
+.aids-type-image img { object-fit: contain; object-position: center bottom; }
+.aids-benefits { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; margin-top: 25px; }
+.aids-benefits article { min-width: 0; border: 1px solid #e2e8f0; border-radius: 15px; padding: 20px; background: #f8fafc; }
+.aids-benefits article > svg { width: 21px; height: 21px; color: var(--aids-orange); }
+.aids-benefits h3 { margin-top: 10px; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 16px; }
+.aids-steps { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin-top: 24px; }
+.aids-steps article { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: 13px; border: 1px solid #e1e8f0; border-radius: 14px; padding: 17px; background: #fff; }
+.aids-step-number { color: var(--aids-orange); font: 700 25px/1 "Playfair Display", Georgia, serif; }
+.aids-steps h3 { margin: 0 0 6px; font-family: Inter, ui-sans-serif, system-ui, sans-serif; font-size: 15px; }
+.aids-result { margin: 17px 0 0; border-radius: 12px; padding: 15px 18px; background: var(--aids-navy); color: #fff; font-size: 14px; line-height: 1.5; }
+.aids-result b { color: var(--aids-amber); }
+.aids-company { margin-top: 68px; padding: 52px 0; background: linear-gradient(120deg,#17385e,#0a1d36); color: #fff; }
+.aids-company-inner { display: grid; grid-template-columns: 160px minmax(0,1fr) minmax(260px,.8fr); align-items: start; gap: 28px; }
+.aids-company .aids-index { margin: 8px 0 0; }
+.aids-company h2 { color: #fff; font-size: clamp(30px,3vw,40px); }
+.aids-company-inner > div:nth-child(2) > p { margin: 12px 0 0; color: #d7e1ee; font-size: 15px; line-height: 1.6; }
+.aids-company-points { display: grid; gap: 10px; }
+.aids-company-points p { display: flex; align-items: flex-start; gap: 9px; margin: 0; color: #d7e1ee; font-size: 13px; line-height: 1.45; }
+.aids-company-points svg { width: 16px; height: 16px; flex: none; color: #34d399; }
+.aids-faq { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; margin-top: 23px; }
+.aids-faq details { min-width: 0; border: 1px solid #e1e8f0; border-radius: 13px; padding: 0 17px; background: #fff; }
+.aids-faq summary { position: relative; min-height: 58px; display: flex; align-items: center; padding-right: 28px; color: var(--aids-navy); font-size: 14px; font-weight: 700; line-height: 1.4; cursor: pointer; list-style: none; }
+.aids-faq summary::-webkit-details-marker { display: none; }
+.aids-faq summary::after { position: absolute; right: 2px; color: var(--aids-orange); font-size: 22px; font-weight: 500; content: "+"; }
+.aids-faq details[open] summary::after { content: "−"; }
+.aids-faq details > p { margin: 0 0 16px; color: var(--aids-muted); font-size: 13px; line-height: 1.6; }
+.aids-final { display: flex; align-items: center; justify-content: space-between; gap: 26px; margin-top: 68px; margin-bottom: 70px; border-radius: 24px; padding: 34px 38px; background: #fff; box-shadow: 0 12px 34px rgba(10,29,54,.08); }
+.aids-final > div:first-child { max-width: 620px; }
+.aids-final h2 { font-size: clamp(30px,3vw,40px); }
+.aids-final > div:first-child > p { margin: 11px 0 0; color: var(--aids-muted); font-size: 15px; line-height: 1.55; }
+.aids-final .unitron-actions { flex: none; margin: 0; }
+.aids-final .unitron-secondary { border-color: #d5dee8; background: #fff; color: var(--aids-navy); }
+.aids-page [id] { scroll-margin-top: 110px; }
+
+@media (max-width: 980px) {
+  .aids-hero { grid-template-columns: minmax(0,1fr) minmax(0,.82fr); gap: 28px; padding: 32px; }
+  .aids-hero h1 { font-size: clamp(38px,5vw,48px); }
+  .aids-section { padding: 34px; }
+  .aids-company-inner { grid-template-columns: minmax(0,1fr) minmax(0,1.5fr); }
+  .aids-company .aids-index { grid-column: 1/-1; }
+  .aids-final { align-items: flex-start; flex-direction: column; }
+}
+@media (max-width: 700px) {
+  .aids-page .breadcrumb { width: calc(100% - 32px); padding-block: 10px; line-height: 1.5; }
+  .aids-hero { grid-template-columns: 1fr; gap: 24px; width: calc(100% - 24px); margin-top: 15px; border-radius: 21px; padding: 25px 20px 20px; }
+  .aids-hero h1 { font-size: clamp(36px,9vw,46px); }
+  .aids-hero-copy > p:not(.unitron-eyebrow) { font-size: 15px; }
+  .aids-page .unitron-actions { display: grid; grid-template-columns: 1fr; }
+  .aids-page .unitron-primary,.aids-page .unitron-secondary { width: 100%; min-height: 46px; }
+  .aids-page .unitron-hero-image { aspect-ratio: 1.25; border-radius: 16px; }
+  .aids-page .unitron-hero-video { aspect-ratio: 16 / 9; }
+  .aids-section { width: calc(100% - 24px); margin-top: 30px; border-radius: 20px; padding: 25px 19px; }
+  .aids-section-soft { width: 100%; border-radius: 0; padding: 38px 0; }
+  .aids-section-soft > .hp-container { width: calc(100% - 24px); }
+  .aids-section-heading h2 { font-size: clamp(30px,8vw,38px); }
+  .aids-section-heading > p:last-child { font-size: 14px; }
+  .aids-platforms,.aids-types,.aids-benefits,.aids-steps,.aids-faq { grid-template-columns: 1fr; gap: 10px; margin-top: 18px; }
+  .aids-platforms article,.aids-types article,.aids-benefits article { padding: 18px; }
+  .aids-platforms article { min-height: 290px; }
+  .aids-platform-image { height: 132px; }
+  .aids-type-image { height: 195px; }
+  .aids-note { font-size: 12px; }
+  .aids-company { margin-top: 36px; padding: 36px 0; }
+  .aids-company-inner { grid-template-columns: 1fr; gap: 15px; }
+  .aids-company .aids-index { grid-column: auto; margin: 0; }
+  .aids-company h2 { font-size: 32px; }
+  .aids-final { width: calc(100% - 24px); margin-top: 30px; margin-bottom: 42px; gap: 18px; border-radius: 20px; padding: 24px 19px; }
+  .aids-final .unitron-actions { width: 100%; }
+}

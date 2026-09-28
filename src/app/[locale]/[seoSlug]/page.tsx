@@ -112,7 +112,7 @@ export default async function SeoPage({
         >
           {siteConfig.phoneDisplay}
         </a>
-        <a className="button ghost" href={`/${locale}/contact/`}>
+        <a className="button ghost" href={`/${locale}/#contact`}>
           {locale === "ro" ? "Contact și adresă" : "Контакты и адрес"}
         </a>
       </div>

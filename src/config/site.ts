@@ -18,7 +18,7 @@ export const siteConfig = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://volmer.md',
   googleMapsEmbedUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL ?? '',
   googleMapsDirectionsUrl: process.env.NEXT_PUBLIC_GOOGLE_MAPS_DIRECTIONS_URL ?? 'https://maps.google.com/?q=Str.%20Mitropolit%20Varlaam%2069%2C%20Chi%C8%99in%C4%83u',
-  logoPath: '/images/brand/volmer-logo.png',
+  logoPath: '/images/brand/volmer-logo.jpg',
   faviconPath: '/favicon.png',
   services: [
     {id: 'hearing-evaluation', titleKey: 'evaluation.title', descriptionKey: 'evaluation.description'},

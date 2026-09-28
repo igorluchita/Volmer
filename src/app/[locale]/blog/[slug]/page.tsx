@@ -104,12 +104,12 @@ export default async function Article({
     },
   ];
   return (
-    <article className="container page blog-page">
+    <article className="container page blog-page blog-article-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav className="breadcrumb" aria-label="Breadcrumb">
+      <nav className="breadcrumb blog-article-breadcrumb" aria-label={locale === "ro" ? "Fir de navigare" : "Навигационная цепочка"}>
         <a href={`/${locale}/`}>{locale === "ro" ? "Acasă" : "Главная"}</a> /{" "}
         <a href={`/${locale}/blog/`}>Blog</a> / {post.title}
       </nav>

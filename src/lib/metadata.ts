@@ -1,25 +1,5 @@
 import type { Metadata } from "next";
 const copy = {
-  about: {
-    ro: [
-      "Despre Volmer | Aparate auditive în Chișinău",
-      "Volmer este un centru de soluții pentru auz în Chișinău: evaluare, aparate auditive Unitron, reglare și suport ulterior.",
-    ],
-    ru: [
-      "О Volmer | Слуховые аппараты в Кишинёве",
-      "Volmer — центр решений для слуха в Кишинёве: проверка слуха, аппараты Unitron, индивидуальная настройка и поддержка.",
-    ],
-  },
-  faq: {
-    ro: [
-      "Întrebări despre aparate auditive și auz | Volmer",
-      "Răspunsuri clare despre evaluarea auzului, aparate auditive, reglare și programări la Volmer.",
-    ],
-    ru: [
-      "Вопросы о слухе и слуховых аппаратах | Volmer",
-      "Понятные ответы об оценке слуха, аппаратах, настройке и записи в Volmer.",
-    ],
-  },
   programare: {
     ro: [
       "Programare telefonică pentru evaluarea auzului | Volmer",
@@ -28,16 +8,6 @@ const copy = {
     ru: [
       "Запись на оценку слуха по телефону | Volmer",
       "Позвоните в Volmer, чтобы записаться на оценку слуха или консультацию в Кишинёве.",
-    ],
-  },
-  contact: {
-    ro: [
-      "Contact Volmer | Aparate auditive Chișinău",
-      "Volmer, Str. Mitropolit Varlaam 69, Chișinău. Telefon 079 331 839. Programări pentru evaluarea auzului, aparate auditive, reglare și service.",
-    ],
-    ru: [
-      "Контакты Volmer | Слуховые аппараты Кишинёв",
-      "Volmer, ул. Митрополит Варлаам 69, Кишинёв. Проверка слуха, аппараты Unitron, настройка и сервис. Запись по телефону.",
     ],
   },
   "test-auditiv": {
@@ -50,16 +20,6 @@ const copy = {
       "Проверка слуха в Кишинёве: оценка восприятия звуков и понимания речи. Запись по телефону в Volmer.",
     ],
   },
-  servicii: {
-    ro: [
-      "Reglare și service aparate auditive în Chișinău | Volmer",
-      "Reglare, ajustare, service, curățare și întreținere pentru aparate auditive în Chișinău. Suport pentru aparate Unitron.",
-    ],
-    ru: [
-      "Настройка и сервис слуховых аппаратов в Кишинёве | Volmer",
-      "Настройка, регулировка, обслуживание и чистка слуховых аппаратов в Кишинёве. Поддержка подключения к телефону.",
-    ],
-  },
 } as const;
 export function pageMetadata(
   locale: string,
@@ -67,12 +27,7 @@ export function pageMetadata(
 ): Metadata {
   const lang = locale === "ru" ? "ru" : "ro";
   const [title, description] = copy[page][lang];
-  const slug =
-    page === "about"
-      ? "despre-noi"
-      : page === "faq"
-        ? "intrebari-frecvente"
-        : page;
+  const slug = page;
   const path = `/${lang}/${slug}/`;
   return {
     title,

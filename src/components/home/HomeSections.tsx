@@ -13,6 +13,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { BusinessHours } from "@/components/business-hours";
+import { ContactRequestForm } from "@/components/home/ContactRequestForm";
 
 type SituationCard = {
   label: string;
@@ -22,7 +23,7 @@ type SituationCard = {
 };
 
 type Outcome = { text: string; imageAlt: string };
-type TextCard = { title: string; text: string };
+type TextCard = { title: string; text: string; quote?: string; features?: string[] };
 type Platform = TextCard & {
   label: string;
   badge: string;
@@ -31,7 +32,7 @@ type Platform = TextCard & {
 type FaqItem = { question: string; answer: string };
 
 const situationImages = [
-  "/images/homepage/meeting.webp",
+  "/images/homepage/meeting-video-call.png",
   "/images/homepage/restaurant.webp",
   "/images/homepage/acasa.webp",
 ];
@@ -50,12 +51,17 @@ const platformImages = [
 
 export async function HomeTrustRibbon() {
   const t = await getTranslations("HomePage.trustRibbon");
+  const nav = await getTranslations("Nav");
   const items = t.raw("items") as string[];
 
   return (
     <div className="hp-trust-ribbon">
       <div className="hp-container hp-trust-ribbon-inner">
-        <strong>{t("title")}</strong>
+        <nav className="hp-home-breadcrumb" aria-label={nav("breadcrumbAria")}>
+          <Link href="/">{nav("home")}</Link>
+          <span aria-hidden="true">/</span>
+          <strong>{t("title")}</strong>
+        </nav>
         <div>
           {items.map((item, index) => (
             <span key={item}>
@@ -98,7 +104,7 @@ export async function HomeSections() {
 
   return (
     <>
-      <section className="hp-section hp-container hp-surface" id="problem" aria-labelledby="problem-title">
+      <section className="hp-section hp-container hp-surface" id="problema" aria-labelledby="problem-title">
         <header className="hp-section-heading">
           <p className="hp-eyebrow">{t("problem.eyebrow")}</p>
           <h2 id="problem-title">{t("problem.title")}</h2>
@@ -154,6 +160,8 @@ export async function HomeSections() {
           <h2 id="comparison-title">{t("comparison.title")}</h2>
           <p className="hp-section-kicker">{t("comparison.subtitle")}</p>
           <p>{t("comparison.intro")}</p>
+          <p>{t("comparison.introMore")}</p>
+          <p>{t("comparison.introSolution")}</p>
         </header>
         <div className="hp-comparison-grid">
           <article className="hp-comparison-card is-negative">
@@ -167,7 +175,10 @@ export async function HomeSections() {
             </div>
             <h3><span aria-hidden="true">×</span>{t("comparison.leftTitle")}</h3>
             <ul>
-              {leftPoints.map((point) => <li key={point}>{point}</li>)}
+              {leftPoints.map((point) => {
+                const colon = point.indexOf(":");
+                return <li key={point}>{colon > 0 ? <><b>{point.slice(0, colon)}:</b>{point.slice(colon + 1)}</> : point}</li>;
+              })}
             </ul>
           </article>
           <article className="hp-comparison-card is-positive">
@@ -181,16 +192,21 @@ export async function HomeSections() {
             </div>
             <h3><Check size={22} aria-hidden="true" />{t("comparison.rightTitle")}</h3>
             <ul>
-              {rightPoints.map((point) => <li key={point}>{point}</li>)}
+              {rightPoints.map((point) => {
+                const colon = point.indexOf(":");
+                return <li key={point}>{colon > 0 ? <><b>{point.slice(0, colon)}:</b>{point.slice(colon + 1)}</> : point}</li>;
+              })}
             </ul>
           </article>
         </div>
+        <div className="hp-case-note">
+          <p className="hp-card-label">{t("comparison.calloutTitle")}</p>
+          <p>{t("comparison.calloutText")}</p>
+          <strong>{t("comparison.calloutConclusion")}</strong>
+        </div>
         <div className="hp-explainer">
-          <div>
-            <p className="hp-card-label">{t("comparison.calloutTitle")}</p>
-            <p>{t("comparison.calloutText")}</p>
-          </div>
-          <Link className="hp-button hp-button-navy" href="/aparate-auditive">
+          <p>{t("comparison.bottomText")}</p>
+          <Link className="hp-button hp-button-navy" href="#flex-trial">
             {t("comparison.cta")} <ArrowRight size={18} aria-hidden="true" />
           </Link>
         </div>
@@ -200,7 +216,7 @@ export async function HomeSections() {
         <header className="hp-section-heading">
           <p className="hp-eyebrow">{t("flexTrial.eyebrow")}</p>
           <h2 id="flex-title">{t("flexTrial.title")}</h2>
-          <p>{t("flexTrial.intro")}</p>
+          <p><strong>{t("flexTrial.intro").split(":")[0]}:</strong>{t("flexTrial.intro").slice(t("flexTrial.intro").indexOf(":") + 1)}</p>
         </header>
         <div className="hp-check-strip">
           <strong>{t("flexTrial.checksTitle")}</strong>
@@ -234,7 +250,7 @@ export async function HomeSections() {
         </div>
       </section>
 
-      <section className="hp-section hp-container hp-surface" id="price" aria-labelledby="price-title">
+      <section className="hp-section hp-container hp-surface" id="pret" aria-labelledby="price-title">
         <div className="hp-price-grid">
           <div>
             <header className="hp-section-heading">
@@ -266,7 +282,7 @@ export async function HomeSections() {
         </div>
       </section>
 
-      <section className="hp-section hp-container hp-surface" id="why-volmer" aria-labelledby="why-title">
+      <section className="hp-section hp-container hp-surface" id="de-ce-volmer" aria-labelledby="why-title">
         <header className="hp-section-heading">
           <p className="hp-eyebrow">{t("whyVolmer.eyebrow")}</p>
           <h2 id="why-title">{t("whyVolmer.title")}</h2>
@@ -279,6 +295,7 @@ export async function HomeSections() {
               <b className="hp-number-badge">{index + 1}</b>
               <h3>{card.title}</h3>
               <p>{card.text}</p>
+              {card.quote && <blockquote>{card.quote}</blockquote>}
             </article>
           ))}
         </div>
@@ -289,7 +306,7 @@ export async function HomeSections() {
         </div>
       </section>
 
-      <section className="hp-section hp-container hp-surface" id="company" aria-labelledby="company-title">
+      <section className="hp-section hp-container hp-surface" id="companie" aria-labelledby="company-title">
         <header className="hp-section-heading hp-heading-wide">
           <p className="hp-eyebrow">{t("company.eyebrow")}</p>
           <h2 id="company-title">{t("company.title")}</h2>
@@ -342,7 +359,7 @@ export async function HomeSections() {
         <div className="hp-subsection-heading is-green"><span aria-hidden="true" /> <h3>{t("company.typesTitle")}</h3></div>
         <div className="hp-types-grid">
           {hearingTypes.map((type) => (
-            <article key={type.title}><h4>{type.title}</h4><p>{type.text}</p></article>
+            <article key={type.title}><h4>{type.title}</h4><p>{type.text}</p>{type.features && <ul>{type.features.map((feature) => <li key={feature}>{feature}</li>)}</ul>}</article>
           ))}
         </div>
         <div className="hp-company-trust">
@@ -384,13 +401,32 @@ export async function HomeSections() {
             <a href={`mailto:${siteConfig.email}`}><Mail aria-hidden="true" /><span><small>{t("contact.emailLabel")}</small><strong>{siteConfig.email}</strong></span></a>
           </div>
         </div>
-        <aside className="hp-contact-card">
-          <h3>{t("contact.cardTitle")}</h3>
-          <p>{t("contact.cardText")}</p>
-          <a className="hp-button hp-button-primary" href={`tel:${siteConfig.phoneInternational}`}><Phone size={19} aria-hidden="true" />{t("contact.primaryCta")}</a>
-          <a className="hp-button hp-button-outline" href={`mailto:${siteConfig.email}`}><Mail size={19} aria-hidden="true" />{t("contact.secondaryCta")}</a>
-          <small>{t("contact.note")}</small>
-        </aside>
+        <ContactRequestForm />
+        <div className="hp-contact-location">
+          <figure className="hp-office-photo">
+            <Image
+              src="/images/homepage/volmer-office-facade-current.png"
+              alt={t("contact.officePhotoAlt")}
+              fill
+              sizes="(max-width: 760px) 100vw, 50vw"
+            />
+            <figcaption>{t("contact.officePhotoCaption")}</figcaption>
+          </figure>
+          <div className="hp-map-frame">
+            <div className="hp-map-heading">
+              <span><MapPin aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span>
+              <a href={siteConfig.googleMapsDirectionsUrl} target="_blank" rel="noreferrer">{t("contact.mapLink")}</a>
+            </div>
+            <iframe
+              className="hp-contact-map"
+              src={siteConfig.googleMapsEmbedUrl || `https://maps.google.com/maps?q=${encodeURIComponent(`${siteConfig.address}, ${siteConfig.city}`)}&output=embed`}
+              title={t("contact.mapTitle")}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
+          </div>
+        </div>
       </section>
 
       <script

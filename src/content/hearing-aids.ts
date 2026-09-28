@@ -22,18 +22,12 @@ export const selectionSteps = [
   "adjust",
 ] as const;
 export const hearingAidFaq = [
-  "whatIs",
   "bestType",
   "ricBte",
   "discreet",
-  "rechargeable",
   "phone",
-  "bluetooth",
-  "manufacturer",
-  "sonova",
-  "hearingNeeds",
-  "adjustment",
   "adaptation",
-  "price",
-  "availability",
+  "adjustment",
+  "lifespan",
+  "result",
 ] as const;

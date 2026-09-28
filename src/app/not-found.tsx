@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Ear, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowLeft, Ear, MapPin, Phone } from "lucide-react";
 
 import { siteConfig } from "@/config/site";
 
@@ -40,10 +40,6 @@ export default function NotFound() {
           <Link className="button ghost" href="/ro/aparate-auditive/">
             <Ear size={19} />
             Aparate auditive
-          </Link>
-          <Link className="button ghost" href="/ro/contact/">
-            <MessageCircle size={19} />
-            Contact
           </Link>
           <Link className="button ghost" href="/ru/">
             Русская версия

@@ -3,6 +3,7 @@ import "./globals.css";
 import "./home-hero.css";
 import "./home-page.css";
 import "./hearing-aids-page.css";
+import "./blog-test-pages.css";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {

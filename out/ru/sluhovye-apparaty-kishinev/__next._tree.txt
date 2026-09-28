@@ -1,2 +1,2 @@
-:HL["/_next/static/chunks/130oekl7pxe9w.css","style"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ru","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"seoSlug","param":{"type":"d","key":"sluhovye-apparaty-kishinev","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"YYTmkyibNKBb2U5UY7t_s"}
+:HL["/_next/static/chunks/14xro_dt76z7m.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"locale","param":{"type":"d","key":"ru","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"seoSlug","param":{"type":"d","key":"sluhovye-apparaty-kishinev","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"ssu8rvfTJz6MHz9d0GQwY"}
