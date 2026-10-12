@@ -3,11 +3,15 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { siteConfig } from "@/config/site";
 import { seoPages, type Locale } from "@/content/seo";
+import {editorialPath, editorialTypeFor, editorialTypes} from '@/content/editorial-pages';
+import {EditorialPage} from '@/components/editorial-page';
+import {editorialMetadata} from '@/lib/editorial-metadata';
 
 export function generateStaticParams() {
-  return (["ro", "ru"] as Locale[]).flatMap((locale) =>
-    seoPages[locale].map((page) => ({ locale, seoSlug: page[0] })),
-  );
+  return (["ro", "ru"] as Locale[]).flatMap((locale) => [
+    ...seoPages[locale].map((page) => ({ locale, seoSlug: page[0] })),
+    ...editorialTypes.map((type) => ({locale, seoSlug: editorialPath(locale, type).split('/')[2]}))
+  ]);
 }
 function pageFor(locale: Locale, slug: string) {
   return seoPages[locale].find((page) => page[0] === slug);
@@ -19,6 +23,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const p = await params;
   const locale = p.locale as Locale;
+  const editorialType = editorialTypeFor(locale, p.seoSlug);
+  if (editorialType) return editorialMetadata(locale, editorialType);
   const page = pageFor(locale, p.seoSlug);
   if (!page) return {};
   const path = `/${locale}/${p.seoSlug}/`;
@@ -62,6 +68,8 @@ export default async function SeoPage({
   const p = await params;
   const locale = (p.locale === "ru" ? "ru" : "ro") as Locale;
   setRequestLocale(locale);
+  const editorialType = editorialTypeFor(locale, p.seoSlug);
+  if (editorialType) return <EditorialPage locale={locale} type={editorialType} />;
   const page = pageFor(locale, p.seoSlug);
   if (!page) notFound();
   const [slug, title, description, intro, section, body] = page;
@@ -102,8 +110,8 @@ export default async function SeoPage({
       <h2>{locale === "ro" ? "Următorul pas" : "Следующий шаг"}</h2>
       <p>
         {locale === "ro"
-          ? "O evaluare și o discuție individuală pot clarifica opțiunile potrivite. Programările la Volmer se confirmă exclusiv telefonic."
-          : "Индивидуальная оценка и беседа помогут уточнить подходящие варианты. Запись в Volmer подтверждается только по телефону."}
+          ? "O evaluare și o discuție individuală pot clarifica opțiunile potrivite. Puteți alege online o dată și o oră disponibile."
+          : "Индивидуальная оценка и беседа помогут уточнить подходящие варианты. Свободные дату и время можно выбрать онлайн."}
       </p>
       <div className="actions">
         <a
@@ -112,7 +120,7 @@ export default async function SeoPage({
         >
           {siteConfig.phoneDisplay}
         </a>
-        <a className="button ghost" href={`/${locale}/contact/`}>
+        <a className="button ghost" href={`/${locale}/#contact`}>
           {locale === "ro" ? "Contact și adresă" : "Контакты и адрес"}
         </a>
       </div>
@@ -122,7 +130,7 @@ export default async function SeoPage({
             ? "Aparate auditive Unitron"
             : "Слуховые аппараты Unitron"}
         </a>
-        <a href={`/${locale}/test-auditiv/`}>
+        <a href={editorialPath(locale, 'test')}>
           {locale === "ro" ? "Evaluarea auzului" : "Оценка слуха"}
         </a>
         <a href={`/${locale}/blog/`}>Blog</a>

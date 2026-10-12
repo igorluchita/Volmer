@@ -2,6 +2,7 @@ import { siteConfig } from "@/config/site";
 import { Check, Clock, Mail, MapPin, Phone } from "lucide-react";
 import { BusinessHours } from "./business-hours";
 import { Breadcrumbs } from "./breadcrumbs";
+import { ConsentMap } from "./consent/ConsentMap";
 
 type Kind = "about" | "faq" | "contact";
 const copy = {
@@ -17,9 +18,9 @@ const copy = {
       "Răspunsuri la întrebările pe care le primim despre verificarea auzului, alegerea aparatului, reglare, întreținere și adaptare.",
     ],
     contact: [
-      "Contactează Volmer",
+      "Contactați Volmer",
       "Contact Volmer — aparate auditive în Chișinău",
-      "Pentru programări, verificarea auzului, informații despre aparate auditive Unitron, reglare sau service, contactează echipa Volmer.",
+      "Pentru programări, verificarea auzului, informații despre aparate auditive Unitron, reglare sau service, contactați echipa Volmer.",
     ],
   },
   ru: {
@@ -132,7 +133,7 @@ export function InfoPage({
           ],
           [
             "De ce aud vocea, dar nu înțeleg cuvintele?",
-            "Înțelegerea vorbirii poate fi influențată de modul în care percepi sunetele, vocea interlocutorului, distanță și zgomotul de fond.",
+            "Înțelegerea vorbirii poate fi influențată de modul în care percepeți sunetele, vocea interlocutorului, distanță și zgomotul de fond.",
           ],
           [
             "Cum decurge un test auditiv?",
@@ -164,7 +165,7 @@ export function InfoPage({
           ],
           [
             "Cât costă un aparat auditiv?",
-            "Prețul depinde de tehnologie, configurație și caracteristici. Pentru soluțiile și prețurile actuale, contactează Volmer.",
+            "Prețul depinde de tehnologie, configurație și caracteristici. Pentru soluțiile și prețurile actuale, contactați Volmer.",
           ],
           [
             "De ce este necesară reglarea aparatului?",
@@ -176,15 +177,15 @@ export function InfoPage({
           ],
           [
             "Cum curăț aparatul auditiv?",
-            "Folosește doar instrumentele recomandate și urmează instrucțiunile modelului. Umezeala și obiectele ascuțite îl pot deteriora.",
+            "Folosiți doar instrumentele recomandate și urmați instrucțiunile modelului. Umezeala și obiectele ascuțite îl pot deteriora.",
           ],
           [
             "Ce fac dacă aparatul nu funcționează?",
-            "Verifică alimentarea, încărcarea, filtrul și murdăria vizibilă. Dacă problema continuă, solicită o verificare tehnică.",
+            "Verificați alimentarea, încărcarea, filtrul și murdăria vizibilă. Dacă problema continuă, solicitați o verificare tehnică.",
           ],
           [
             "Este nevoie de programare?",
-            "Da. Sună echipa Volmer la 079 331 839 pentru a stabili și confirma telefonic ziua și ora.",
+            "Da. Sunați echipa Volmer la 079 331 839 pentru a stabili și confirma telefonic ziua și ora.",
           ],
         ];
   const faqJsonLd = {
@@ -216,10 +217,10 @@ export function InfoPage({
               href={`tel:${siteConfig.phoneInternational}`}
             >
               <Phone />
-              {locale === "ro" ? "Sună acum" : "Позвонить сейчас"}
+              {locale === "ro" ? "Sunați acum" : "Позвонить сейчас"}
             </a>
             <a className="button ghost" href="#details">
-              {locale === "ro" ? "Află mai multe" : "Подробнее"}
+              {locale === "ro" ? "Aflați mai multe" : "Подробнее"}
             </a>
           </div>
         </div>
@@ -272,12 +273,12 @@ export function InfoPage({
             <section className="contact-panel">
               <h2>
                 {locale === "ro"
-                  ? "Contactează-ne direct"
+                  ? "Contactați-ne direct"
                   : "Свяжитесь с нами напрямую"}
               </h2>
               <p className="contact-intro">
                 {locale === "ro"
-                  ? "Ne găsești pe Str. Mitropolit Varlaam 69, în Chișinău."
+                  ? "Ne găsiți pe Str. Mitropolit Varlaam 69, în Chișinău."
                   : "Мы находимся по адресу: ул. Митрополит Варлаам 69, Кишинёв."}
               </p>
               <div className="contact-cards">
@@ -311,10 +312,10 @@ export function InfoPage({
                   className="button stone"
                   href={`tel:${siteConfig.phoneInternational}`}
                 >
-                  {locale === "ro" ? "Sună acum" : "Позвонить сейчас"}
+                  {locale === "ro" ? "Sunați acum" : "Позвонить сейчас"}
                 </a>
                 <a className="button ghost" href={`mailto:${siteConfig.email}`}>
-                  {locale === "ro" ? "Trimite email" : "Отправить email"}
+                  {locale === "ro" ? "Trimiteți email" : "Отправить email"}
                 </a>
                 <a
                   className="button ghost"
@@ -323,21 +324,13 @@ export function InfoPage({
                   rel="noreferrer"
                 >
                   {locale === "ro"
-                    ? "Deschide în Google Maps"
+                    ? "Deschideți în Google Maps"
                     : "Открыть в Google Maps"}
                 </a>
               </div>
             </section>
             {siteConfig.googleMapsEmbedUrl && (
-              <iframe
-                className="map"
-                src={siteConfig.googleMapsEmbedUrl}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={
-                  locale === "ro" ? "Locația Volmer" : "Расположение Volmer"
-                }
-              />
+              <ConsentMap className="map" src={siteConfig.googleMapsEmbedUrl} />
             )}
           </>
         )}
@@ -354,7 +347,7 @@ export function InfoPage({
           className="button stone"
           href={`tel:${siteConfig.phoneInternational}`}
         >
-          {locale === "ro" ? "Sună acum" : "Позвонить сейчас"}
+          {locale === "ro" ? "Sunați acum" : "Позвонить сейчас"}
         </a>
       </section>
     </>

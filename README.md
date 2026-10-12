@@ -1,6 +1,6 @@
 # Volmer
 
-Website static Next.js bilingv (română/rusă) pentru Volmer. Programările se confirmă exclusiv prin telefon.
+Website Next.js bilingv (română/rusă) pentru Volmer, rulat ca aplicație Node.js. Programările din homepage sunt confirmate prin Google Calendar.
 
 ## Dezvoltare
 
@@ -12,11 +12,11 @@ npm run dev
 
 Datele comerciale se modifică în `src/config/site.ts`, traducerile în `src/messages`, iar imaginile în `public/images`.
 
-## Deployment pe IPHost Silver Start
+## Deployment
 
-Hostingul nu rulează Node.js. Proiectul se compilează local cu `npm run build`, iar în `public_html/` se încarcă numai conținutul directorului `out/`. Pentru pachetul complet rulează `npm run package:hosting`; arhiva rezultată este `deployment/volmer-static-site.zip`.
+Aplicația necesită hosting cu runtime Node.js compatibil cu versiunea Next.js instalată. Rulează `npm run build`, apoi pornește aplicația cu `npm start` (echivalent cu `next start`). Setează domeniul și variabilele de mediu necesare în panoul hostingului; nu publica fișiere `.env`.
 
-După fiecare actualizare rulează din nou verificările, build-ul și încarcă fișierele generate. Instrucțiunile complete sunt în `deployment/README-UPLOAD.md`.
+`npm run seo:audit` verifică paginile prerenderizate și semnalele SEO generate la build. Pentru programările Google Calendar vezi pașii de configurare din `deployment/README-UPLOAD.md`.
 # SEO Local Volmer
 
 După lansare:

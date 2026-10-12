@@ -1,0 +1,74 @@
+.consent-banner {
+  position: fixed;
+  z-index: 1200;
+  right: 16px;
+  bottom: calc(82px + env(safe-area-inset-bottom));
+  left: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: min(920px, calc(100% - 32px));
+  margin-inline: auto;
+  padding: 20px 24px;
+  border: 1px solid #d5deeb;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 14px 42px rgb(9 29 55 / 24%);
+  color: #0c203d;
+}
+.consent-banner h2, .consent-dialog h2 { margin: 0 0 6px; font-size: 18px; line-height: 1.3; }
+.consent-banner p, .consent-dialog p { margin: 0; font-size: 16px; line-height: 1.5; color: #3f536d; }
+.consent-actions { display: flex; flex-wrap: wrap; gap: 8px; flex-shrink: 0; }
+.consent-actions button, .consent-map-placeholder button {
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid #bac9db;
+  border-radius: 10px;
+  background: #fff;
+  color: #0b2444;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.consent-actions button:first-child, .consent-map-placeholder button { border-color: #cf4800; background: #cf4800; color: #fff; }
+.consent-actions button:hover, .consent-map-placeholder button:hover { filter: brightness(.94); }
+.consent-backdrop { position: fixed; z-index: 1300; inset: 0; display: grid; place-items: center; overflow-y: auto; padding: 16px; background: rgb(5 21 42 / 65%); }
+.consent-dialog { width: min(560px, 100%); max-height: calc(100dvh - 32px); overflow-y: auto; padding: 24px; border-radius: 18px; background: #fff; box-shadow: 0 20px 60px rgb(0 0 0 / 28%); color: #0c203d; }
+.consent-dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.consent-dialog-head button { flex: none; width: 44px; height: 44px; border: 0; border-radius: 8px; background: #edf2f8; color: #0c203d; font-size: 28px; cursor: pointer; }
+.consent-choice { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-top: 16px; padding: 14px; border: 1px solid #dce5ef; border-radius: 10px; cursor: pointer; }
+.consent-choice span { display: grid; gap: 4px; }
+.consent-choice strong { font-size: 16px; }
+.consent-choice small { color: #526783; font-size: 14px; line-height: 1.4; }
+.consent-choice input { width: 24px; height: 24px; flex: none; accent-color: #0b5ea8; cursor: pointer; }
+.consent-choice input:disabled { cursor: not-allowed; }
+.consent-dialog .consent-actions { margin-top: 22px; }
+.consent-banner :focus-visible, .consent-dialog :focus-visible, .consent-map-placeholder :focus-visible { outline: 3px solid #143660; outline-offset: 3px; }
+.site-footer-policy-links :focus-visible { outline: 3px solid #ffb300; outline-offset: 3px; }
+body:has(.consent-banner) .quick-contact-floating { visibility: hidden; pointer-events: none; }
+.consent-map-placeholder { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 24px; text-align: center; }
+.consent-map-placeholder p { max-width: 430px; margin: 0; color: #213d60; font-size: 15px; line-height: 1.5; }
+.booking-sensitive-note { margin: -6px 0 4px; color: #4a607a; font-size: 12px; line-height: 1.4; }
+.site-footer .site-footer-policy-links { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-end; gap: 8px 18px; }
+.site-footer-policy-links a, .site-footer-policy-links button { display: inline-flex; align-items: center; min-height: 44px; color: #a9bdd5; font: inherit; font-size: inherit; text-decoration: none; }
+.site-footer-policy-links button { padding: 0; border: 0; background: none; cursor: pointer; }
+.site-footer-policy-links a:hover, .site-footer-policy-links button:hover { color: #fff; text-decoration: underline; }
+.legal-page { width: min(860px, calc(100% - 32px)); margin: 56px auto 90px; color: #0b2039; }
+.legal-eyebrow { color: #c2410c; font-size: 13px; font-weight: 800; letter-spacing: .12em; }
+.legal-page h1 { margin: 12px 0 18px; font: 700 clamp(36px, 5vw, 56px)/1.1 Georgia, serif; }
+.legal-intro { color: #526783; font-size: 18px; line-height: 1.55; }
+.legal-review-note { margin: 24px 0 32px; padding: 14px 18px; border-left: 3px solid #e95400; background: #fff5ec; color: #69462e; font-size: 14px; line-height: 1.5; }
+.legal-page section { padding: 24px 0; border-top: 1px solid #e2e9f1; }
+.legal-page h2 { margin: 0 0 10px; font-size: 22px; }
+.legal-page section p { margin: 0; color: #415773; font-size: 16px; line-height: 1.7; }
+.legal-page a { color: #0c5a9e; text-decoration: underline; }
+@media (max-width: 760px) {
+  .consent-banner { display: block; bottom: calc(72px + env(safe-area-inset-bottom)); padding: 18px; }
+  .consent-actions { margin-top: 14px; }
+  .consent-banner .consent-actions button { flex: 1 1 44%; }
+  .site-footer .site-footer-legal { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .site-footer .site-footer-policy-links { justify-content: flex-start; }
+  .legal-page { margin-block: 36px 64px; }
+}

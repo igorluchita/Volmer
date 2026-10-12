@@ -6,8 +6,8 @@ export const seoPages = {
       "aparate-auditive-chisinau",
       "Aparate auditive în Chișinău",
       "Consultanță locală pentru alegerea și reglarea aparatelor auditive în Chișinău.",
-      "Alegerea unei soluții auditive pornește de la situațiile în care comunicarea a devenit dificilă, nu de la un model ales în grabă. La Volmer poți discuta despre evaluarea auzului, opțiuni Unitron, confort și conectivitate.",
-      "Ce primești la o consultație",
+      "Alegerea unei soluții auditive pornește de la situațiile în care comunicarea a devenit dificilă, nu de la un model ales în grabă. La Volmer puteți discuta despre evaluarea auzului, opțiuni Unitron, confort și conectivitate.",
+      "Ce primiți la o consultație",
       "Discutăm rutina zilnică, evaluăm nevoile și explicăm diferențele dintre forme și funcții. Recomandarea este individuală, iar disponibilitatea se confirmă telefonic.",
     ],
     [
@@ -15,16 +15,8 @@ export const seoPages = {
       "Aparate auditive în Republica Moldova",
       "Informații clare despre aparate auditive Unitron, evaluare și suport oferite de Volmer în Chișinău.",
       "Persoanele din Republica Moldova care caută o soluție auditivă pot vizita centrul Volmer din Chișinău. O alegere responsabilă include evaluare, probă, reglare și suport ulterior.",
-      "Cum alegi responsabil",
+      "Cum alegeți responsabil",
       "Contează dificultățile auditive, mediile frecvente, dexteritatea, telefonul folosit și preferințele personale. Nu există un aparat universal potrivit tuturor.",
-    ],
-    [
-      "test-auz-chisinau",
-      "Test de auz în Chișinău",
-      "Evaluarea auzului la Volmer în Chișinău, cu explicații clare și programare telefonică.",
-      "Dacă mărești frecvent volumul, ceri repetarea cuvintelor sau urmărești greu conversațiile în zgomot, poate fi utilă o evaluare a auzului.",
-      "La ce să te aștepți",
-      "Prima vizită începe cu o discuție despre situațiile observate. Rezultatele sunt explicate pe înțeles și ajută la stabilirea pașilor următori; ele nu se interpretează izolat.",
     ],
     [
       "reglare-aparate-auditive",
@@ -32,7 +24,7 @@ export const seoPages = {
       "Reglare și suport pentru aparate auditive, adaptate experienței reale de utilizare.",
       "Reglajul transformă setările tehnice într-o experiență potrivită persoanei. Sunetele prea intense, vorbirea neclară sau disconfortul merită discutate.",
       "Adaptarea este un proces",
-      "Creierul și rutina au nevoie de timp. Notează situațiile dificile și adu aparatul la verificare; ajustările succesive pot îmbunătăți confortul.",
+      "Creierul și rutina au nevoie de timp. Notați situațiile dificile și aduceți aparatul la verificare; ajustările succesive pot îmbunătăți confortul.",
     ],
     [
       "aparate-auditive-reincarcabile",
@@ -40,7 +32,7 @@ export const seoPages = {
       "Avantaje, limitări și criterii practice pentru alegerea unui aparat auditiv reîncărcabil.",
       "Modelele reîncărcabile elimină schimbarea frecventă a bateriilor și pot simplifica rutina. Autonomia depinde de model, streaming și modul de utilizare.",
       "Ce merită verificat",
-      "Întreabă despre autonomia estimată, timpul de încărcare, întreținere și soluția pentru călătorii. Alegerea rămâne legată de evaluarea auzului.",
+      "Întrebați despre autonomia estimată, timpul de încărcare, întreținere și soluția pentru călătorii. Alegerea rămâne legată de evaluarea auzului.",
     ],
     [
       "aparate-auditive-bluetooth",
@@ -48,7 +40,7 @@ export const seoPages = {
       "Conectarea aparatelor auditive la telefon pentru apeluri, audio și control prin aplicație.",
       "Bluetooth poate permite apeluri, streaming și ajustări prin aplicație pe modelele compatibile. Experiența diferă în funcție de aparat și telefon.",
       "Compatibilitatea contează",
-      "Verifică modelul telefonului, sistemul de operare și funcțiile dorite înainte de alegere. Echipa Volmer poate explica opțiunile disponibile.",
+      "Verificați modelul telefonului, sistemul de operare și funcțiile dorite înainte de alegere. Echipa Volmer poate explica opțiunile disponibile.",
     ],
     [
       "aparate-auditive-pentru-varstnici",
@@ -56,7 +48,7 @@ export const seoPages = {
       "Ghid practic pentru confort, simplitate și suport în alegerea aparatului auditiv.",
       "Pentru o persoană în vârstă, ușurința utilizării poate conta la fel de mult ca tehnologia: comenzi clare, încărcare simplă și întreținere accesibilă.",
       "Alegerea împreună",
-      "Implică persoana în discuție și pornește de la conversațiile importante pentru ea. Reglarea graduală și sprijinul familiei pot ajuta adaptarea.",
+      "Implicați persoana în discuție și porniți de la conversațiile importante pentru ea. Reglarea graduală și sprijinul familiei pot ajuta adaptarea.",
     ],
     [
       "aparate-auditive-discrete",
@@ -64,12 +56,12 @@ export const seoPages = {
       "Forme discrete de aparate auditive și compromisurile dintre dimensiune, confort și funcții.",
       "Aparatele RIC și anumite soluții intraauriculare pot fi foarte discrete. Dimensiunea nu este însă singurul criteriu relevant.",
       "Discret, dar potrivit",
-      "Forma urechii, nivelul dificultăților auditive, dexteritatea și funcțiile dorite influențează recomandarea. Compară opțiunile după o evaluare.",
+      "Forma urechii, nivelul dificultăților auditive, dexteritatea și funcțiile dorite influențează recomandarea. Comparați opțiunile după o evaluare.",
     ],
   ],
   ru: [
     [
-      "sluhovye-apparaty-kishinev",
+      "aparate-auditive-chisinau",
       "Слуховые аппараты в Кишинёве",
       "Консультация по выбору и настройке слуховых аппаратов в Кишинёве.",
       "Выбор слухового решения начинается с повседневных ситуаций, в которых стало сложнее общаться. В Volmer можно обсудить оценку слуха, решения Unitron, комфорт и подключение к телефону.",
@@ -77,7 +69,7 @@ export const seoPages = {
       "Мы обсуждаем ваш распорядок, объясняем различия между формами аппаратов и определяем важные функции. Рекомендация всегда индивидуальна.",
     ],
     [
-      "sluhovye-apparaty-moldova",
+      "aparate-auditive-moldova",
       "Слуховые аппараты в Молдове",
       "Полезная информация о слуховых аппаратах Unitron и поддержке Volmer в Кишинёве.",
       "Жители Республики Молдова могут обратиться в центр Volmer в Кишинёве. Ответственный выбор включает оценку, настройку и последующую поддержку.",
@@ -85,15 +77,7 @@ export const seoPages = {
       "Важны особенности слуха, привычные звуковые ситуации, удобство управления и совместимость с телефоном. Универсального аппарата для всех нет.",
     ],
     [
-      "proverka-sluha-kishinev",
-      "Где проверить слух в Кишинёве",
-      "Оценка слуха в Volmer с понятными объяснениями и записью по телефону.",
-      "Если вы часто увеличиваете громкость, переспрашиваете или с трудом понимаете речь в шуме, оценка слуха может быть полезна.",
-      "Как проходит визит",
-      "Сначала специалист уточняет ваши наблюдения. Результаты объясняются понятным языком и помогают определить дальнейшие шаги.",
-    ],
-    [
-      "nastroika-sluhovyh-apparatov",
+      "reglare-aparate-auditive",
       "Настройка слуховых аппаратов",
       "Индивидуальная настройка и поддержка пользователей слуховых аппаратов в Кишинёве.",
       "Настройка помогает адаптировать технические параметры к реальной жизни. Слишком громкие звуки или неясная речь стоит обсудить со специалистом.",
@@ -101,7 +85,7 @@ export const seoPages = {
       "Записывайте сложные ситуации и приходите на контроль. Последовательные корректировки могут сделать использование комфортнее.",
     ],
     [
-      "perezaryazhaemye-sluhovye-apparaty",
+      "aparate-auditive-reincarcabile",
       "Перезаряжаемые слуховые аппараты",
       "Плюсы, ограничения и практические критерии выбора перезаряжаемого аппарата.",
       "Перезаряжаемые модели упрощают ежедневный уход, но автономность зависит от модели, стриминга и режима использования.",
@@ -109,7 +93,7 @@ export const seoPages = {
       "Уточните время работы, зарядки, правила ухода и вариант для поездок. Решение выбирается с учётом оценки слуха.",
     ],
     [
-      "sluhovye-apparaty-bluetooth",
+      "aparate-auditive-bluetooth",
       "Слуховые аппараты с Bluetooth",
       "Подключение слуховых аппаратов к смартфону для звонков, аудио и управления.",
       "Совместимые модели могут передавать звонки и звук и управляться через приложение. Возможности зависят от аппарата и телефона.",
@@ -117,7 +101,7 @@ export const seoPages = {
       "До выбора уточните модель смартфона, версию системы и нужные функции. Volmer поможет сравнить доступные варианты.",
     ],
     [
-      "sluhovye-apparaty-dlya-pozhilyh",
+      "aparate-auditive-pentru-varstnici",
       "Слуховые аппараты для пожилых людей",
       "Практический выбор с учётом удобства, простоты и поддержки.",
       "Для пожилого человека простое управление, зарядка и уход могут быть важнее количества функций.",
@@ -125,7 +109,7 @@ export const seoPages = {
       "Учитывайте мнение пользователя и значимые для него разговоры. Постепенная настройка и поддержка близких помогают привыканию.",
     ],
     [
-      "nezametnye-sluhovye-apparaty",
+      "aparate-auditive-discrete",
       "Незаметные слуховые аппараты",
       "Компактные формы аппаратов и баланс между размером, комфортом и возможностями.",
       "RIC и некоторые внутриушные решения могут быть малозаметными, но размер — не единственный критерий.",
@@ -136,18 +120,18 @@ export const seoPages = {
 } as const;
 
 const roTitles = [
-  "Cum îți dai seama că auzul începe să scadă?",
+  "Cum vă dați seama că auzul începe să scadă?",
   "De ce aud vocea, dar nu înțeleg toate cuvintele?",
-  "De ce este mai greu să înțelegi vorbirea în zgomot?",
-  "Când este recomandat să faci un test auditiv?",
+  "De ce este mai greu să înțelegeți vorbirea în zgomot?",
+  "Când este recomandat să faceți un test auditiv?",
   "Cum se desfășoară un test auditiv?",
-  "Cum alegi un aparat auditiv potrivit?",
+  "Cum alegeți un aparat auditiv potrivit?",
   "RIC vs BTE: care este diferența?",
   "Aparate auditive reîncărcabile: avantaje și limitări",
   "Cum funcționează Bluetooth la aparatele auditive?",
   "Cum se întreține corect un aparat auditiv?",
   "De ce este important reglajul aparatului auditiv?",
-  "Cum ajuți o persoană apropiată care începe să audă mai slab?",
+  "Cum ajutați o persoană apropiată care începe să audă mai slab?",
 ];
 const ruTitles = [
   "Как заметить, что слух начал снижаться?",
@@ -176,20 +160,6 @@ const roSlugs = [
   "intretinere-aparat-auditiv",
   "importanta-reglajului",
   "ajutor-persoana-auz-slab",
-];
-const ruSlugs = [
-  "priznaki-snizheniya-sluha",
-  "slyshu-golos-ne-razbirayu-slova",
-  "rech-v-shume",
-  "kogda-proveryat-sluh",
-  "kak-prohodit-proverka-sluha",
-  "kak-vybrat-sluhovoy-apparat",
-  "ric-bte-vnutriushnye",
-  "perezaryazhaemye-apparaty",
-  "bluetooth-v-sluhovyh-apparatah",
-  "uhod-za-apparatom",
-  "vazhnost-nastroyki",
-  "pomoshch-blizkomu-so-sluhom",
 ];
 
 export type BlogPost = {
@@ -228,32 +198,32 @@ export const blogPosts: Record<Locale, BlogPost[]> = {
         heading: "Ce merită observat",
         paragraphs: [
           "Schimbările de auz apar adesea treptat. Situațiile concrete — conversații în familie, telefonul, televizorul sau vorbirea într-un local — oferă indicii mai utile decât presupunerile. Un singur semn nu stabilește un diagnostic, dar repetarea dificultăților poate indica nevoia unei evaluări.",
-          "Notează când apare dificultatea, cine vorbește și cât zgomot există în jur. Aceste exemple ajută specialistul să înțeleagă nevoia reală și să explice opțiunile fără concluzii pripite.",
+          "Notați când apare dificultatea, cine vorbește și cât zgomot există în jur. Aceste exemple ajută specialistul să înțeleagă nevoia reală și să explice opțiunile fără concluzii pripite.",
         ],
       },
       {
         heading: "Pași practici",
         paragraphs: [
-          "Începe cu o discuție și o evaluare individuală. Dacă se recomandă o soluție auditivă, compară confortul, forma, autonomia, conectivitatea și ușurința întreținerii. Rezultatele diferă de la persoană la persoană, iar reglajul poate necesita mai multe vizite.",
-          "Implică o persoană apropiată dacă te ajută și pregătește întrebări despre utilizarea zilnică. Evită deciziile bazate doar pe dimensiune sau pe numărul de funcții.",
+          "Începeți cu o discuție și o evaluare individuală. Dacă se recomandă o soluție auditivă, comparați confortul, forma, autonomia, conectivitatea și ușurința întreținerii. Rezultatele diferă de la persoană la persoană, iar reglajul poate necesita mai multe vizite.",
+          "Implicați o persoană apropiată dacă vă este de ajutor și pregătiți întrebări despre utilizarea zilnică. Evitați deciziile bazate doar pe dimensiune sau pe numărul de funcții.",
         ],
       },
       {
         heading: "Întrebări frecvente",
         paragraphs: [
-          "Este urgent? Dacă schimbarea este bruscă, unilaterală sau însoțită de alte simptome, cere îndrumare medicală. Pentru dificultăți progresive, programează o evaluare. Poate un aparat rezolva orice situație? Nu există rezultate universale; beneficiul depinde de nevoi, alegere, reglare și adaptare.",
+          "Este urgent? Dacă schimbarea este bruscă, unilaterală sau însoțită de alte simptome, cereți îndrumare medicală. Pentru dificultăți progresive, programați o evaluare. Poate un aparat rezolva orice situație? Nu există rezultate universale; beneficiul depinde de nevoi, alegere, reglare și adaptare.",
         ],
       },
       {
         heading: "Concluzie",
         paragraphs: [
-          "Informația bună te ajută să alegi calm. Sună Volmer la 079 331 839 pentru o discuție și programare în Chișinău.",
+          "Informația bună vă ajută să alegeți calm. Sunați la Volmer, la 079 331 839, pentru o discuție și o programare în Chișinău.",
         ],
       },
     ],
   })),
   ru: ruTitles.map((title, i) => ({
-    slug: ruSlugs[i],
+    slug: roSlugs[i],
     title,
     description: `Практический материал Volmer: ${title.replace("?", "").toLowerCase()}. Понятные объяснения и ответственные шаги.`,
     publishedAt: "2026-08-10",
@@ -268,7 +238,7 @@ export const blogPosts: Record<Locale, BlogPost[]> = {
     ][i % 5],
     readingTime: "6 мин",
     keywords: [title.split(" ").slice(0, 4).join(" "), "Volmer", "Кишинёв"],
-    relatedArticles: [ruSlugs[(i + 1) % 12], ruSlugs[(i + 2) % 12]],
+    relatedArticles: [roSlugs[(i + 1) % 12], roSlugs[(i + 2) % 12]],
     sections: [
       {
         heading: "На что обратить внимание",

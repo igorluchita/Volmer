@@ -1,18 +1,249 @@
 {
   "Meta": {
-    "title": "Volmer Chișinău | Centru de aparate auditive",
-    "description": "Aparate auditive Unitron, evaluarea auzului, reglare și suport în Chișinău. Volmer, Str. Mitropolit Varlaam 69. Sună la 079 331 839."
+    "title": "Aparate auditive și evaluarea auzului | Volmer Chișinău",
+    "description": "Aparate auditive Unitron, evaluarea auzului, reglare și suport în Chișinău. Volmer, Str. Mitropolit Varlaam 69. Sunați la 079 331 839."
   },
   "HomePage": {
+    "trustRibbon": {
+      "title": "Aparate auditive Unitron în Chișinău",
+      "items": ["Consultație gratuită", "Partener oficial Sonova Group"]
+    },
     "hero": {
-      "eyebrow": "Aparate auditive și evaluarea auzului în Chișinău",
-      "titleLine1": "Aparate auditive în Chișinău",
-      "titleLine2": "pentru un auz mai clar",
-      "description": "Dacă ai început să auzi mai slab, să ceri oamenilor să repete sau să înțelegi mai greu conversațiile în zgomot, o evaluare a auzului poate fi primul pas. La Volmer discutăm nevoile tale și alegem împreună soluția auditivă potrivită.",
-      "primaryCta": "Sună pentru programare",
-      "secondaryCta": "Descoperă aparatele auditive",
-      "imageAlt": "Aparat auditiv modern prezentat de Volmer",
-      "locationLabel": "Magazin de aparate auditive în centrul Chișinăului"
+      "eyebrow": "Tehnologie auditivă Unitron",
+      "titleLine1": "Implică-te în conversație.",
+      "titleLine2": "Fii mai aproape de cei dragi.",
+      "subheadline": "Primul pas — evaluarea gratuită. Fără obligații.",
+      "paragraphs": [
+        "Știți ce este cel mai greu când auzul scade? Nu sunetele, ci conversațiile pierdute, oamenii rugați să repete și legătura cu cei din jur care se slăbește.",
+        "Veniți la o evaluare gratuită, testați aparatul timp de două săptămâni și verificați-l în viața reală. Apoi decizia vă aparține."
+      ],
+      "benefits": ["Evaluare gratuită a auzului și consultație", "Două săptămâni de probă (Flex Trial)", "Garanție 2 ani + suport"],
+      "primaryCta": "Programați-vă la consultația gratuită",
+      "secondaryCta": "079 331 839",
+      "imageAlt": "Bunic ascultând o poveste spusă de nepoata sa",
+      "imageBadge": "Disponibil în Chișinău",
+      "floatingEyebrow": "Unitron • Sonova",
+      "floatingTitle": "Adaptare auditivă individuală",
+      "trustChecks": ["Testare la Volmer", "Selectare individuală", "Garanție 2 ani + suport"]
+    },
+    "problem": {
+      "eyebrow": "01 — Recunoașterea problemei",
+      "title": "Cum se vede în viața reală. Când auziți sunetele, dar nu cuvintele",
+      "subtitle": "Problema nu începe cu tăcerea. Începe atunci când conversația se rupe.",
+      "resultLabel": "Rezultat",
+      "cards": [
+        {
+          "label": "La ședință",
+          "text": "«Prind jumătate din fraze, iar restul îl ghicesc»",
+          "result": "«Dau din cap, deși nu știu despre ce e vorba»",
+          "imageAlt": "Bărbat cu dificultăți de auz participă la o ședință video de serviciu de pe telefon"
+        },
+        {
+          "label": "În restaurant",
+          "text": "«Aud sunetele, dar nu și cuvintele de la masă»",
+          "result": "«După 15 minute tac, sunt obosit»",
+          "imageAlt": "Două persoane discutând într-un restaurant"
+        },
+        {
+          "label": "Acasă, cu cineva drag",
+          "text": "«Întreb mereu din nou, iar familia obosește să repete același lucru»",
+          "result": "«Între noi apare tensiune și mă simt vinovat»",
+          "imageAlt": "Grup de persoane în vârstă discutând și râzând"
+        }
+      ],
+      "panelTitle": "Semne care arată începutul schimbărilor de auz",
+      "signs": ["Vorbiți mai tare decât înainte", "Oamenii vă cer să repetați", "În zgomot vă pierdeți cu totul", "Evitați situațiile sociale", "Ați observat schimbarea cu ceva timp în urmă și ați crezut că va trece", "Nu e doar un inconvenient. E izolare."],
+      "disclaimer": "Nu amânați: evaluarea gratuită la Volmer durează aproximativ 60 de minute și nu vă obligă la nimic.",
+      "cta": "Aflați ce se întâmplă cu auzul dumneavoastră"
+    },
+    "comparison": {
+      "eyebrow": "02 — Înlăturarea obiecțiilor",
+      "title": "De ce un amplificator ieftin de sunet nu este o soluție",
+      "subtitle": "Și de ce este important să știți acest lucru înainte să cumpărați ceva",
+      "intro": "Mulți se gândesc: «Cumpăr un amplificator ieftin sau folosesc căști cu amplificare».",
+      "introMore": "Iată ce se întâmplă: dispozitivul amplifică TOTUL. Vocea interlocutorului devine mai tare, dar și zgomotul. În restaurant sau la birou, asta devine imposibil.",
+      "introSolution": "Aparatul potrivit funcționează altfel. Nu doar amplifică, ci evidențiază vorbirea din zgomot.",
+      "leftTitle": "Amplificator ieftin / căști",
+      "leftImageAlt": "Dispozitiv simplu de amplificare a sunetului",
+      "leftPoints": ["Ce amplifică: Toate sunetele deodată — vocea interlocutorului, zgomotul vaselor și huruitul mașinilor", "Reglare: Trebuie să-l reglezi în fiecare minut, căutând rotița când se schimbă mediul", "Senzații: Poate provoca disconfort, dureri de cap, țiuit și suprasolicitarea auzului"],
+      "rightTitle": "Aparat auditiv Unitron de la Volmer",
+      "rightImageAlt": "Aparat auditiv Unitron de tip RIC",
+      "rightPoints": ["Ce amplifică: Evidențiază vocea și filtrează zgomotul, concentrându-se asupra direcției interlocutorului", "Reglare: Se adaptează automat situației și schimbă modurile acustice în fracțiuni de secundă", "Senzații: Este reglat individual, în funcție de audiogramă"],
+      "calloutTitle": "UN CAZ REAL",
+      "calloutText": "«O persoană și-a cumpărat un aparat. După o lună, a încetat să-l mai poarte. De ce? Evaluare superficială. Nu a fost testat în viața reală. Reglare nepotrivită situațiilor sale. Fără sprijin pentru adaptare. Nu aparatul este problema, ci abordarea. Nu se poate cumpăra fără o verificare.»",
+      "calloutConclusion": "De aceea propunem Flex Trial: două săptămâni de probă în viața reală, pentru a verifica dacă aparatul funcționează în situațiile dumneavoastră obișnuite.",
+      "bottomText": "Verificați diferența, fără obligația de a cumpăra și fără riscuri financiare.",
+      "cta": "Aflați despre Flex Trial"
+    },
+    "flexTrial": {
+      "eyebrow": "03 — Flex Trial",
+      "title": "Flex Trial: două săptămâni fără risc",
+      "intro": "Cum funcționează: vă oferim gratuit un aparat auditiv de probă, cu nivelul tehnologic recomandat. Îl testați timp de două săptămâni în viața obișnuită — acasă, la serviciu și în locurile unde este important să auziți.",
+      "checksTitle": "În două săptămâni verificați",
+      "checks": ["Cum funcționează aparatul în viața reală: afară, la ședințe, în restaurant și acasă", "Dacă este confortabil să îl purtați toată ziua", "Dacă vă ajută să auziți mai bine oamenii"],
+      "weekOneLabel": "Săptămâna 01",
+      "weekOneBadge": "Aparatul A",
+      "weekOneTitle": "Prima săptămână: poartă aparatul A",
+      "weekOneText": "Primele zile sunt pentru acomodare. Sunetele pot părea ciudate fiindcă nu le-ați mai auzit de mult. Este normal. Apoi începe adaptarea: creierul se obișnuiește, iar sunetele devin mai firești. Testați situațiile importante — la ședință, în restaurant și acasă cu cineva drag — și notați ce s-a îmbunătățit, ce vă incomodează și ce întrebări aveți.",
+      "weekTwoLabel": "Săptămâna 02",
+      "weekTwoBadge": "Aparatul B",
+      "weekTwoTitle": "A doua săptămână: poartă aparatul B",
+      "weekTwoText": "Încercați un alt tip sau o altă platformă și repetați aceleași situații. Comparați care aparat este mai confortabil, care funcționează mai bine în zgomot și care vi se potrivește mai mult.",
+      "importanceTitle": "De ce este important:",
+      "importanceText": "Vă concentrați pe întrebarea cea mai importantă: chiar mă ajută? Mai puțină presiune, mai multă sinceritate. Decizia vine după ce simțiți rezultatul, nu în momentul în care specialistul vă spune ce vi se potrivește.",
+      "afterTitle": "După două săptămâni:",
+      "afterText": "Veți ști exact ce aparat vi se potrivește sau veți înțelege că aparatul nu este potrivit. Nu riscați nimic.",
+      "banner": "FLEX:TRIAL — o șansă să revii la viață înainte să schimbi ceva.",
+      "cta": "Programați-vă la Flex Trial"
+    },
+    "price": {
+      "eyebrow": "04 — Preț și logică",
+      "title": "De ce alegerea greșită costă mai mult decât cea potrivită",
+      "subtitle": "Și cum reducem acest risc",
+      "text": "Oamenii se concentrează adesea asupra prețului aparatului. Dar prețul real înseamnă timpul și banii care se pot pierde dacă alegerea nu este potrivită. Aparatul este o investiție în purtarea regulată. Când îl purtați constant, viața se schimbă: participați la conversații, vă simțiți în siguranță la serviciu, iar cei dragi sunt mai aproape. Independența aceasta merită investiția.",
+      "outcomes": [
+        {"text": "«Vorbesc liniștit cu oamenii și particip la conversații»", "imageAlt": "Prieteni maturi purtând o conversație relaxată"},
+        {"text": "«Aud clar chiar și în locuri zgomotoase»", "imageAlt": "Persoană într-un spațiu public aglomerat"},
+        {"text": "«Mama s-a schimbat cu totul — zâmbește și nu mai ridică vocea»", "imageAlt": "Familie petrecând timp împreună acasă"}
+      ],
+      "systemTitle": "Reducem riscul la minimum prin sistemul nostru",
+      "steps": ["Evaluarea include întrebări despre situațiile importante: la serviciu, afară și acasă cu cei dragi", "Flex Trial: două săptămâni de testare în viața reală înainte de decizia de cumpărare", "Dacă nu există rezultat, veți observa acest lucru în 14 zile și nu cumpărați", "Dacă există rezultat, vă adaptați și aflați cum funcționează aparatul", "După cumpărare, oferim suport: 4 vizite pe an pentru service și reglaje"],
+      "cta": "Faceți evaluarea fără obligații"
+    },
+    "whyVolmer": {
+      "eyebrow": "05 — Avantajele Volmer",
+      "title": "De ce oamenii aleg Volmer",
+      "intro": "Trei lucruri fac diferența între un aparat purtat regulat și unul care rămâne pe raft. De aceea oamenii poartă aparatele Volmer constant: funcționează, primesc suport, iar alegerea este făcută după experiența lor personală.",
+      "featuredBadge": "DIFERENȚA PRINCIPALĂ",
+      "cards": [
+        {"title": "Evaluare și consultație — complet gratuite", "text": "Veniți la clinica noastră, unde vă facem gratuit evaluarea auzului. Sunt două posibilități: dacă auzul este în regulă, plecați liniștit. Dacă depistăm o pierdere de auz, vă arătăm rezultatele și vă prezentăm opțiunile, fără presiune.", "quote": "«Evaluarea este inclusă la prima vizită, fără costuri ascunse»"},
+        {"title": "Două săptămâni de probă (Flex Trial)", "text": "«Testați înainte să cumpărați». Vă oferim un aparat auditiv FLEX:TRIAL pentru două săptămâni. Îl purtați acasă, la serviciu și în vizite. Dacă nu vi se potrivește, îl returnați. Fără obligații și penalități.", "quote": "«Dacă aparatul nu vi se potrivește după probă, îl returnați. Fără penalități.»"},
+        {"title": "După cumpărare — garanție de 2 ani și suport", "text": "Viața se schimbă, iar aparatul necesită reglaje periodice. Patru vizite pe an sunt incluse în garanția de 2 ani: verificarea auzului, reglaje, service și curățare. Vă oferim sprijin pe tot parcursul utilizării aparatului.", "quote": "«Nu este o opțiune. Este o parte esențială a rezultatului pe termen lung.»"}
+      ],
+      "cta": "Programați-vă la prima vizită"
+    },
+    "company": {
+      "eyebrow": "06 — Experiența companiei",
+      "title": "Companie germană cu peste 20 de ani de experiență, pentru prima dată în Moldova",
+      "subheadline": "Am venit aici să facem același lucru ca în Germania: să ajutăm cu onestitate.",
+      "text": "Volmer este o companie germană care lucrează în domeniul auzului de peste 20 de ani. Ne deschidem pentru prima dată în afara Germaniei. Moldova este prima țară în care ne extindem, pentru că vedem aceeași problemă: oamenii evită aparatele din cauza rușinii, neîncrederii și experiențelor neplăcute.",
+      "historyTitle": "Istoria Volmer",
+      "historyText": "Volmer a început în Germania acum 20 de ani, cu o idee simplă: să ajute oamenii să audă cu onestitate, fără presiune și manipulare. În două decenii am ajutat zeci de mii de oameni să revină la conversații, la serviciu și în viața socială.",
+      "historyListTitle": "Experiența ne-a arătat că oamenii poartă aparatele regulat atunci când",
+      "historyItems": ["Persoana înțelege ce se întâmplă cu auzul său", "Poate testa soluția înainte de alegerea finală", "Primește suport și reglaje după achiziție"],
+      "principlesTitle": "Principiile noastre",
+      "principles": [
+        {"title": "Evaluare înainte de recomandare", "text": "Dacă aparatul nu este necesar, spunem acest lucru clar."},
+        {"title": "Testare înainte de alegerea finală", "text": "Flex Trial permite verificarea soluției în viața reală."},
+        {"title": "Suport continuu după achiziție", "text": "4 vizite pe an sunt incluse în perioada de garanție de 2 ani."},
+        {"title": "Respect față de persoană", "text": "Indiferent de vârstă sau statut."}
+      ],
+      "principlesStrip": "Aceste principii i-au ajutat pe oameni din Germania să poarte aparatele regulat: pentru că funcționează, procesul este transparent și există încredere. Am venit în Moldova să oferim același lucru.",
+      "unitronTitle": "De ce Unitron",
+      "unitronText": "Am ales aparatele elvețiene Unitron (grupul Sonova) fiindcă rezolvă probleme reale: înțelegerea vorbirii în zgomot, adaptarea la situații diferite și conectarea la tehnologiile moderne. Nu funcții de marketing, ci soluții pentru rezultate.",
+      "platforms": [
+        {"label": "Platforma 01", "title": "Smile", "text": "Platformă modernă orientată spre utilizare simplă, conectivitate și adaptare la diferite situații de ascultare.", "badge": "Pentru cei care apreciază simplitatea", "imageAlt": "Aparat auditiv Unitron Smile"},
+        {"label": "Platforma 02", "title": "Vivante", "text": "Platformă concepută pentru o experiență naturală și flexibilă în medii sonore variate.", "badge": "Pentru cei care comunică mult în contexte diferite", "imageAlt": "Aparat auditiv Unitron Vivante"},
+        {"label": "Platforma 03", "title": "Blu", "text": "Platformă orientată spre personalizarea sunetului și conectivitate wireless pe modelele compatibile.", "badge": "Pentru utilizatorii care folosesc frecvent smartphone-ul", "imageAlt": "Aparat auditiv Unitron Blu"}
+      ],
+      "typesTitle": "Trei tipuri de aparate auditive, alese individual",
+      "types": [
+        {"title": "RIC (Receiver in Canal)", "text": "Receptor în canalul auditiv, corpul aparatului în spatele urechii", "features": ["Design compact și discret", "Confort maxim la purtare", "Conectare directă la smartphone", "Acumulatori reîncărcabili"]},
+        {"title": "BTE (Behind the Ear)", "text": "Aparat clasic, purtat complet în spatele urechii", "features": ["Utilizare simplă și fiabilă", "Construcție solidă și durabilă", "Mai multe niveluri de putere și amplificare", "Potrivit pentru persoanele în vârstă"]},
+        {"title": "ITE (intraauriculare)", "text": "Se poziționează complet în interiorul urechii", "features": ["Amprentă individuală după forma urechii", "Aspect vizual foarte discret", "Confortabile împreună cu ochelarii", "Îngrijire zilnică simplă"]}
+      ],
+      "trustEyebrow": "Peste 20 de ani de experiență în Germania",
+      "trustText": "La Volmer lucrezi cu o companie cu 20 de ani de experiență și cu aparate care și-au dovedit eficiența. Nu suntem o firmă nouă, apărută pe piață luna trecută. Avem un proces verificat, adaptat pentru prima dată în Moldova.",
+      "cta": "Programați-vă la o consultație gratuită"
+    },
+    "faq": {
+      "eyebrow": "Întrebări frecvente",
+      "title": "Întrebări și răspunsuri",
+      "intro": "Răspunsuri clare la întrebările care apar înaintea primei vizite la Volmer.",
+      "items": [
+        {"question": "„Nu am nevoie — aud destul de bine”", "answer": "Verificați-vă punându-vă o întrebare simplă: cereți să vi se repete în conversație? Întoarceți urechea mai bună spre interlocutor? Evitați locurile zgomotoase? Dacă răspunsul este da la oricare dintre întrebări, este indicată o evaluare. Este gratuită."},
+        {"question": "„Este scump”", "answer": "Costul depinde de model. Dar cel mai important este că plătiți doar după ce testați aparatul timp de două săptămâni și vă convingeți că vă ajută. Puteți plăti cu cardul, prin transfer sau numerar. Ratele nu sunt disponibile momentan, dar plănuim să adăugăm această opțiune."},
+        {"question": "„Se va vedea că sunt în vârstă”", "answer": "Aparatele moderne sunt aproape imperceptibile. Modelele RIC au receptorul în ureche și corpul compact în spatele urechii. Modelele ITE se află complet în ureche și sunt adaptate formei individuale. Nimeni nu va observa. Este doar un instrument, ca ochelarii."},
+        {"question": "„Încerc, dar dacă nu mă ajută?”", "answer": "Este posibil. Dar veți putea evalua rezultatul în cele două săptămâni de probă Flex Trial. Dacă nu obțineți rezultatul dorit, returnați ambele aparate gratuit, fără penalități. Procesul nostru reduce acest risc prin evaluare corectă și reglaje adaptate vieții dumneavoastră."},
+        {"question": "„Persoana dragă nu va dori să poarte aparatul”", "answer": "Aceasta este teama principală. Dar decizia vine când persoana simte singură rezultatul. De aceea perioada Flex Trial este esențială: două săptămâni în viața reală conving mai mult decât orice cuvinte."},
+        {"question": "„Ce aparate oferiți?”", "answer": "Unitron Smile, Vivante și Blu — trei platforme. RIC, BTE și ITE — trei tipuri. Fiecare combinație funcționează diferit, în funcție de gradul pierderii de auz și de stilul de viață. Recomandarea o facem după evaluare și discuție."},
+        {"question": "„Cât de des sunt necesare vizitele?”", "answer": "Patru vizite pe an sunt gratuite și incluse în garanție. Vizitele suplimentare sunt contra cost, dar mai accesibile decât la concurență. În prima lună pot fi necesare două vizite pentru adaptare."},
+        {"question": "„Cum funcționează garanția?”", "answer": "Garanția este de 2 ani. Dacă aparatul se defectează, îl reparăm sau îl înlocuim gratuit. Dacă aparatul intră în contact cu lichide, analizăm situația. De regulă, aceasta este acoperită de garanție."},
+        {"question": "„Cum conectez aparatul la smartphone?”", "answer": "Depinde de model. Unitron Smile, Vivante și Blu acceptă conectarea prin Bluetooth. Puteți regla volumul, schimba programele și auzi apeluri și muzică direct în aparate. Vă arătăm cum funcționează la evaluare."},
+        {"question": "„Ce se întâmplă dacă pierd aparatul?”", "answer": "Este un risc. Dar aparatele Unitron sunt fiabile, nu niște căști ieftine. Pentru persoanele în vârstă se recomandă adesea BTE: sunt mai vizibile, se poartă în spatele urechii și sunt mai greu de pierdut."}
+      ],
+      "cta": "Mai aveți întrebări? Programați-vă la o evaluare"
+    },
+    "contact": {
+      "eyebrow": "Consultație individuală în Chișinău",
+      "title": "Contact",
+      "text": "Programați-vă la o evaluare gratuită a auzului sau adresați o întrebare unui specialist audiolog.",
+      "phoneLabel": "Telefon",
+      "addressLabel": "Adresă",
+      "hoursLabel": "Program",
+      "emailLabel": "Email",
+      "formTitle": "Programați-vă la o consultație gratuită",
+      "formIntro": "Alegeți ziua și ora potrivită, iar programarea va fi confirmată imediat.",
+      "nameLabel": "Nume și prenume",
+      "phoneLabel": "Telefon",
+        "phonePlaceholder": "Numărul fără prefix",
+      "dateLabel": "Data",
+      "timeLabel": "Ora",
+      "messageLabel": "Mesaj",
+      "messagePlaceholder": "Mesaj (opțional)",
+      "formSubmit": "Programați-vă la consultația gratuită",
+      "booking": {
+        "stepsLabel": "Pașii programării",
+        "stepDetails": "Date",
+        "stepSchedule": "Zi și oră",
+        "stepConfirm": "Confirmare",
+        "nextToSchedule": "Continuați la alegerea datei",
+        "nextToConfirm": "Continuați la confirmare",
+        "appointmentForQuestion": "Programarea este pentru:",
+        "appointmentForSelf": "Mine",
+        "appointmentForParent": "Un părinte",
+        "phoneCountryCode": "Prefixul internațional al țării",
+        "confirmQuestion": "Confirmați programarea pentru {date}, la ora {time}?",
+        "confirmYes": "Da, confirm programarea",
+        "confirmNo": "Nu, aleg altă dată și oră",
+        "back": "Înapoi",
+        "availableTimes": "Ore disponibile",
+        "summaryTitle": "Programarea dumneavoastră",
+        "calendarLabel": "Alegeți o dată disponibilă",
+        "previousMonth": "Luna anterioară",
+        "nextMonth": "Luna următoare",
+        "weekdays": ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"],
+        "loadingAvailability": "Verificăm intervalele disponibile…",
+        "availabilityError": "Momentan nu putem încărca disponibilitatea. Vă rugăm să încercați din nou.",
+        "selectDate": "Selectați o dată disponibilă pentru a vedea orele.",
+        "selectTime": "Alegeți ora programării",
+        "noSlots": "Nu mai sunt intervale disponibile pentru această zi. Alegeți o altă dată.",
+        "loadingSlots": "Se verifică orele disponibile…",
+        "submitError": "Programarea nu a putut fi creată. Vă rugăm să încercați din nou.",
+        "slotConflict": "Acest interval tocmai a fost rezervat. Vă rugăm să alegeți altă oră.",
+        "rateLimited": "Ați trimis prea multe solicitări. Așteptați puțin și încercați din nou.",
+        "invalidForm": "Verificați datele introduse și încercați din nou.",
+        "confirmedTitle": "Programarea a fost confirmată",
+        "confirmedText": "Vă așteptăm pe {date} la ora {time}, la adresa: Strada Mitropolit Varlaam 69, Chișinău.",
+        "confirmedReminder": "Salvați data și ora în calendar sau faceți o captură de ecran, ca să aveți programarea la îndemână.",
+        "phonePrompt": "Aveți nevoie de ajutor? Sunați-ne:",
+        "bookAnother": "Faceți o altă programare",
+        "sending": "Se confirmă…",
+        "privacyNote": "Datele sunt folosite doar pentru organizarea programării.",
+        "sensitiveMessageNote": "Nu includeți informații medicale sensibile în mesaj."
+      },
+      "mapTitle": "Hartă: adresa Volmer din Chișinău",
+      "officePhotoAlt": "Fațada reală a oficiului Volmer din Chișinău, cu intrarea și logo-ul companiei",
+      "officePhotoCaption": "Intrarea în oficiul Volmer",
+      "mapLink": "Deschideți harta"
+    },
+    "sticky": {
+      "label": "Programați-vă pentru consultație",
+      "button": "Sunați la 079 331 839",
+      "mobileButton": "Sunați la 079 331 839",
+      "namePlaceholder": "Nume",
+      "phonePlaceholder": "Telefon",
+      "requestButton": "Programați-vă"
     }
   },
   "HearingAidsPage": {
@@ -20,13 +251,15 @@
     "metaDescription": "Aparate auditive Unitron în Chișinău: RIC, BTE, reîncărcabile, Bluetooth și soluții personalizate. Evaluare, alegere și reglare la Volmer.",
     "content": {
       "hero": {
-        "eyebrow": "Tehnologie auditivă Unitron",
-        "title": "Aparate auditive Unitron în Chișinău",
-        "description": "La Volmer găsești aparate auditive Unitron și consultanță pentru alegerea unei soluții potrivite stilului tău de viață. Unitron face parte din grupul Sonova și dezvoltă tehnologii pentru claritatea conversațiilor, conectivitate și utilizare zilnică.",
-        "secondary": "Alegerea unui aparat auditiv nu începe doar cu modelul sau prețul. Evaluarea auzului, dificultățile întâlnite, mediile în care comunici, dexteritatea și preferințele personale sunt importante pentru recomandare.",
-        "primaryCta": "Sună pentru consultație",
-        "secondaryCta": "Tipuri de aparate auditive",
-        "imageAlt": "Aparat auditiv modern Unitron tip RIC"
+        "eyebrow": "TEHNOLOGII AUDITIVE UNITRON",
+        "title": "Aparate auditive Unitron. O alegere potrivită, nu la întâmplare.",
+        "description": "Alegerea unui aparat nu începe cu modele sau prețuri, ci cu o întrebare: în ce situații vă este cel mai greu să auziți? La ședințe, la restaurant sau acasă, cu familia?",
+        "secondary": "Unitron creează aparate care se adaptează vieții dumneavoastră, nu invers. Tehnologii dezvoltate de Sonova, cu peste 20 de ani de inovație în domeniul auzului.",
+        "primaryCta": "Catalog aparate auditive",
+        "secondaryCta": "Alegeți tipul aparatului",
+        "imageAlt": "Aparat auditiv modern Unitron",
+        "proof": "Tehnologiile Unitron fac parte din grupul Sonova",
+        "breadcrumb": "Aparate auditive"
       },
       "unitron": {
         "title": "Aparate auditive Unitron — tehnologie din ecosistemul Sonova",
@@ -40,9 +273,9 @@
         "flow": ["Sonova", "Unitron", "Soluții auditive pentru utilizatori"]
       },
       "platforms": {
-        "title": "Platforme și tehnologii Unitron",
-        "intro": "Platformele Unitron stau la baza mai multor generații de aparate auditive, cu funcții care pot include conectivitate wireless, procesarea automată a mediului sonor și opțiuni reîncărcabile.",
-        "note": "Disponibilitatea platformelor și aparatelor poate varia. Echipa Volmer poate confirma soluțiile disponibile în magazin.",
+        "title": "Trei platforme. Același rezultat: auziți ceea ce contează.",
+        "intro": "Diferența dintre platforme ține de nivelul tehnologiei și de modul în care aparatul procesează sunetul în medii zgomotoase.",
+        "note": "De la nivelul Smile până la platforma Blu, Unitron oferă opțiuni pentru nevoi diferite. Disponibilitatea modelelor se confirmă la specialiștii Volmer.",
         "items": {
           "smile": {
             "title": "Smile",
@@ -59,68 +292,73 @@
         }
       },
       "styles": {
-        "title": "Tipuri de aparate auditive: RIC, BTE și intraauriculare",
-        "intro": "Fiecare formă are avantaje practice. Recomandarea se face după evaluare și o discuție despre rutina zilnică.",
-        "note": "Forma aparatului nu se alege doar după aspect. Rezultatul evaluării auzului, dexteritatea, stilul de viață și preferințele sunt la fel de importante.",
+        "title": "RIC, BTE sau intraauricular — alegeți formatul potrivit",
+        "intro": "Forma se alege după evaluarea auzului, o discuție despre viața de zi cu zi și explorarea opțiunilor. Nu există un singur tip «cel mai bun», ci unul potrivit pentru dumneavoastră.",
+        "note": "Contează nu doar aspectul, ci și rezultatele evaluării auzului, rutina zilnică, dexteritatea și preferințele personale.",
+        "whenLabel": "Potrivit dacă:",
         "items": {
           "ric": {
             "title": "Aparate auditive RIC — receiver în canal",
-            "description": "O soluție discretă și modernă, cu receptorul poziționat în canalul auditiv și corpul aparatului în spatele urechii.",
+            "description": "Receptorul se află în canalul auditiv, iar carcasa compactă a aparatului se poartă în spatele urechii.",
             "benefits": [
-              "Design discret",
-              "Confort",
-              "Conectivitate pe anumite variante",
-              "Opțiuni reîncărcabile"
-            ]
+              "Design aproape invizibil",
+              "Confort pe parcursul zilei",
+              "Sunet natural",
+              "Conectare la smartphone la modelele compatibile",
+              "Sunt disponibile variante reîncărcabile"
+            ],
+            "when": "Pentru persoane active, care comunică mult și preferă un corp compact."
           },
           "bte": {
             "title": "Aparate auditive BTE — retroauriculare",
-            "description": "Aparatul este poziționat în spatele urechii și poate fi potrivit pentru o gamă largă de nevoi auditive.",
+            "description": "Carcasa aparatului se poartă în spatele urechii, iar un tub subțire conduce sunetul către oliva auriculară.",
             "benefits": [
-              "Utilizare simplă",
-              "Construcție robustă",
-              "Flexibilitate",
-              "Niveluri diferite de amplificare"
-            ]
+              "Utilizare simplă și butoane ușor accesibile",
+              "Construcție fiabilă",
+              "Opțiuni pentru diferite grade de pierdere a auzului",
+              "Baterii sau acumulator, în funcție de model"
+            ],
+            "when": "Dacă sunt importante fiabilitatea, simplitatea și controlul facil."
           },
           "ite": {
             "title": "Aparate auditive intraauriculare / personalizate",
-            "description": "Soluții realizate pentru a fi purtate în ureche și adaptate formei individuale.",
+            "description": "Aparatul este realizat după forma individuală a urechii și se poartă în pavilionul auricular.",
             "benefits": [
-              "Formă personalizată",
-              "Aspect discret",
-              "Acces facil la aparat"
-            ]
+              "Formă personalizată și potrivire confortabilă",
+              "Format compact",
+              "Microfoanele sunt poziționate în ureche"
+            ],
+            "when": "Dacă preferați o formă personalizată și compactă. Recomandarea depinde de rezultatele evaluării auzului."
           }
         }
       },
       "technology": {
-        "title": "Ce pot oferi aparatele auditive moderne?",
-        "intro": "Tehnologia modernă poate susține conversațiile și confortul în contexte diferite, fără promisiuni universale.",
+        "title": "Nu doar mai tare. Mai inteligent.",
+        "intro": "Aparatele moderne nu doar amplifică sunetul. Ele ajută la evidențierea sunetelor importante și la gestionarea zgomotului de fundal.",
         "items": {
           "conversations": {
-            "title": "Claritatea conversațiilor",
-            "description": "Sistemele moderne pot ajuta la evidențierea vorbirii în diferite medii sonore."
+            "title": "Vorbirea în medii zgomotoase",
+            "description": "Aparatul analizează mediul sonor și ajută la evidențierea vocii interlocutorului. La restaurant, poate face conversația mai ușor de urmărit în zgomotul ambiental."
           },
           "automatic": {
             "title": "Adaptare automată",
-            "description": "Aparatele moderne pot adapta modul de procesare în funcție de mediul sonor."
+            "description": "Când se schimbă mediul sonor, aparatul poate adapta automat procesarea sunetului."
           },
           "noise": {
             "title": "Reducerea zgomotului",
-            "description": "Tehnologia poate ajuta la gestionarea zgomotului ambiental pentru o experiență mai confortabilă."
+            "description": "Aparatul nu elimină toate sunetele, ci ajută la gestionarea zgomotului de fundal pentru mai mult confort."
           },
           "bluetooth": {
             "title": "Bluetooth",
-            "description": "Modelele compatibile se pot conecta la telefoane și alte dispozitive."
+            "description": "Modelele compatibile transmit apeluri și conținut audio din smartphone direct în aparatele auditive."
           },
           "rechargeable": {
             "title": "Reîncărcare",
-            "description": "Anumite soluții folosesc acumulatori și stații de încărcare."
+            "description": "Unele modele folosesc acumulatori și stații de încărcare."
           },
           "app": {
             "title": "Control prin aplicație",
-            "description": "Pentru aparatele compatibile, anumite setări pot fi controlate din smartphone."
+            "description": "La modelele compatibile, setările și programele pot fi controlate dintr-o aplicație de smartphone."
           }
         }
       },
@@ -131,47 +369,55 @@
         "note": "Compatibilitatea diferă în funcție de aparat, telefon și versiunea sistemului de operare."
       },
       "personalization": {
-        "title": "Cum alegi aparatul auditiv potrivit?",
+        "title": "Cum alegeți aparatul auditiv potrivit?",
         "text": "Rezultatul evaluării, dificultățile în zgomot, folosirea telefonului, alimentarea cu acumulator sau baterii, dimensiunea, dexteritatea și preferințele personale influențează alegerea.",
         "highlight": "Aparatul potrivit este rezultatul combinației dintre evaluarea auzului, tehnologie și reglarea individuală.",
         "items": {
           "hearing": "Nivelul și tipul dificultăților auditive",
-          "environments": "Mediile în care petreci timpul",
-          "technology": "Modul în care folosești telefonul și tehnologia",
+          "environments": "Mediile în care vă petreceți timpul",
+          "technology": "Modul în care folosiți telefonul și tehnologia",
           "preferences": "Preferințele privind dimensiunea și utilizarea"
         }
       },
       "selection": {
-        "title": "Cum alegem și reglăm un aparat auditiv la Volmer",
+        "title": "Cinci pași către aparatul potrivit pentru dumneavoastră",
+        "intro": "Nu pornim de la o listă standard de modele, ci de la o discuție despre viața dumneavoastră de zi cu zi.",
+        "resultLabel": "Rezultatul:",
+        "result": "un aparat potrivit pentru dumneavoastră — o alegere informată, nu un compromis.",
         "items": {
           "discuss": {
-            "title": "Discutăm dificultățile întâlnite",
-            "description": "Începem cu situațiile concrete în care comunicarea a devenit mai dificilă."
+            "title": "Discutăm despre viața dumneavoastră",
+            "description": "Aflăm unde vă este mai greu să auziți: la ședințe, la restaurant, acasă cu familia sau pe stradă. Fiecare situație contează."
           },
           "evaluate": {
-            "title": "Evaluăm modul în care auzi",
-            "description": "Rezultatele oferă baza pentru o recomandare responsabilă."
+            "title": "Evaluarea auzului",
+            "description": "Rezultatele evaluării oferă baza pentru recomandările ulterioare."
           },
           "prioritize": {
             "title": "Stabilim caracteristicile importante",
-            "description": "Ținem cont de rutina, confortul și tehnologia folosită zilnic."
+            "description": "Discutăm despre vizibilitatea aparatului, ușurința în utilizare, conectarea la smartphone și tipul de alimentare preferat."
           },
           "compare": {
-            "title": "Comparăm soluțiile Unitron disponibile",
-            "description": "Explicăm diferențele relevante fără a complica inutil alegerea."
+            "title": "Prezentăm opțiunile Unitron",
+            "description": "Explicăm diferențele dintre modelele disponibile și funcțiile care pot conta pentru dumneavoastră."
           },
           "adjust": {
-            "title": "Reglăm și adaptăm aparatul",
-            "description": "Setările sunt ajustate individual și pot evolua odată cu experiența de utilizare."
+            "title": "Reglare și adaptare",
+            "description": "Reglăm aparatul individual, verificăm rezultatul și ajustăm setările dacă este necesar."
           }
         }
       },
       "sonova": {
-        "title": "Unitron face parte din Sonova",
-        "text": "Sonova este un grup internațional din domeniul soluțiilor pentru auz, care operează prin mai multe branduri specializate. Unitron este unul dintre brandurile sale de aparate auditive."
+        "title": "Peste 20 de ani de inovație într-un singur brand",
+        "text": "Unitron face parte din grupul internațional Sonova, specializat în soluții pentru auz. De peste 20 de ani, Unitron dezvoltă tehnologii pentru rezultate relevante în viața de zi cu zi.",
+        "points": [
+          "Soluții pentru nevoi diferite — de la Smile la Blu și de la RIC la aparate intraauriculare.",
+          "Standarde internaționale de calitate și dezvoltare continuă a tehnologiei.",
+          "Suport, reglaje și actualizări în funcție de experiența de utilizare."
+        ]
       },
       "faq": {
-        "title": "Întrebări frecvente despre soluțiile Unitron",
+        "title": "Pe scurt despre aparatele auditive",
         "items": {
           "whatIs": {
             "question": "Ce este un aparat auditiv?",
@@ -186,12 +432,12 @@
             "answer": "Sonova este un grup internațional specializat în soluții pentru hearing care și operează mai multe branduri din domeniu, inclusiv Unitron."
           },
           "bestType": {
-            "question": "Ce tip de aparat este cel mai bun?",
-            "answer": "Nu există un tip universal potrivit pentru toată lumea. Alegerea depinde de evaluarea auzului și nevoile individuale."
+            "question": "Care aparat auditiv este mai bun?",
+            "answer": "Cel potrivit pentru dumneavoastră. Alegerea depinde de auz, stilul de viață și preferințele personale."
           },
           "ricBte": {
             "question": "Ce diferență este între RIC și BTE?",
-            "answer": "La RIC receptorul este poziționat în canal, iar la BTE componentele principale sunt în carcasa din spatele urechii. Alegerea depinde de evaluare și utilizare."
+            "answer": "RIC este o opțiune discretă, cu receptorul în canalul auditiv. BTE poate fi potrivit când contează fiabilitatea și utilizarea simplă. Recomandarea depinde de evaluare."
           },
           "rechargeable": {
             "question": "Există aparate reîncărcabile?",
@@ -207,7 +453,7 @@
           },
           "discreet": {
             "question": "Există aparate discrete?",
-            "answer": "Da, există mai multe forme și dimensiuni, inclusiv soluții foarte discrete."
+            "answer": "Da. RIC se poartă în spatele urechii, dar are un receptor subțire în canal, iar ITE se poziționează în ureche. Forma potrivită depinde de evaluare și preferințe."
           },
           "hearingNeeds": {
             "question": "Unitron are aparate pentru diferite grade de pierdere auditivă?",
@@ -215,15 +461,15 @@
           },
           "adjustment": {
             "question": "Cum se reglează aparatul?",
-            "answer": "Aparatul este configurat individual pe baza evaluării și experienței utilizatorului."
+            "answer": "După achiziție, sunt incluse patru vizite de reglare și service pe an. În perioada de adaptare pot fi necesare ajustări suplimentare, în funcție de nevoi."
           },
           "adaptation": {
             "question": "Cât durează adaptarea la aparatul auditiv?",
-            "answer": "Perioada diferă de la persoană la persoană. Purtarea consecventă și reglajele ulterioare pot susține adaptarea."
+            "answer": "Adaptarea poate dura aproximativ 2–4 săptămâni și diferă de la persoană la persoană. La început, sunetele pot părea neobișnuite; creierul are nevoie de timp să se adapteze."
           },
           "price": {
             "question": "Cât costă un aparat auditiv?",
-            "answer": "Prețul depinde de tehnologie, configurație și caracteristici. Pentru soluțiile disponibile și prețurile actuale, contactează Volmer."
+            "answer": "Prețul depinde de tehnologie, configurație și caracteristici. Pentru soluțiile disponibile și prețurile actuale, contactați Volmer."
           },
           "tryOptions": {
             "question": "Pot testa mai multe variante?",
@@ -231,54 +477,74 @@
           },
           "availability": {
             "question": "Cum aflu ce aparate sunt disponibile?",
-            "answer": "Sună echipa Volmer la 079 331 839."
+            "answer": "Sunați echipa Volmer la 079 331 839."
+          },
+          "lifespan": {
+            "question": "Cât timp funcționează un aparat auditiv?",
+            "answer": "Durata medie este de aproximativ 5–8 ani și depinde de model, îngrijire, umiditate și frecvența utilizării."
+          },
+          "result": {
+            "question": "Ce se întâmplă dacă aparatul nu mă ajută?",
+            "answer": "De aceea există Flex Trial: puteți testa aparatul în viața de zi cu zi timp de două săptămâni. Dacă nu observați un beneficiu, îl puteți returna conform condițiilor programului."
           }
         }
       },
       "finalCta": {
-        "title": "Nu trebuie să alegi singur dintre zeci de tehnologii",
-        "text": "Sună echipa Volmer și discutăm ce tip de soluție Unitron poate fi potrivită pentru nevoile tale.",
-        "primary": "Sună pentru consultație",
-        "secondary": "Contactează Volmer"
+        "title": "Alegerea începe cu dumneavoastră, nu cu un catalog",
+        "text": "Fiecare persoană aude, trăiește și comunică diferit. De aceea, la Volmer începem cu o discuție, nu cu modelele.",
+        "primary": "Programați o consultație gratuită",
+        "secondary": "Aflați despre Flex Trial"
       }
     }
   },
   "Nav": {
     "home": "Acasă",
+    "breadcrumbAria": "Fir de navigare",
     "aids": "Aparate auditive",
     "test": "Test auditiv",
     "services": "Servicii",
     "about": "Despre noi",
     "blog": "Blog",
-    "faq": "Întrebări frecvente",
-    "contact": "Contact",
-    "booking": "Sună pentru programare",
-    "language": "Schimbă limba"
+    "problem": "Problema",
+    "flexTrial": "Flex Trial",
+    "whyVolmer": "De ce Volmer",
+    "company": "Despre companie",
+    "team": "Echipa",
+    "faq": "Întrebări și răspunsuri",
+    "contact": "Contacte",
+    "booking": "Programați-vă",
+    "language": "Schimbați limba",
+    "hoursShort": "L–V 09:00–18:00 · S 09:00–13:00",
+    "consultation": "Evaluarea auzului și consultație",
+    "principalAria": "Navigație principală",
+    "callAria": "Sunați la Volmer",
+    "menuAria": "Deschideți meniul",
+    "closeMenuAria": "Închideți meniul"
   },
   "Home": {
     "eyebrow": "APARATE AUDITIVE ȘI EVALUAREA AUZULUI",
-    "title": "Auzi mai clar. Rămâi aproape de oamenii importanți.",
-    "description": "La Volmer găsești evaluarea auzului, consultanță pentru alegerea aparatului auditiv, reglare individuală și soluții moderne Unitron, în Chișinău.",
-    "booking": "Sună pentru programare",
-    "call": "Sună acum",
+    "title": "Auziți mai clar. Rămâneți aproape de oamenii importanți.",
+    "description": "La Volmer beneficiați de evaluarea auzului, consultanță pentru alegerea aparatului auditiv, reglare individuală și soluții moderne Unitron, în Chișinău.",
+    "booking": "Sunați pentru programare",
+    "call": "Sunați acum",
     "location": "Chișinău, Str. Mitropolit Varlaam 69",
     "benefitsTitle": "Lucruri simple. Ajutor adevărat.",
     "benefits": [
-      "Evaluăm modul în care percepi sunetele și vorbirea și discutăm situațiile în care auzul a devenit mai dificil.",
+      "Evaluăm modul în care percepeți sunetele și vorbirea și discutăm situațiile în care auzul a devenit mai dificil.",
       "Comparăm aparate auditive moderne, inclusiv soluții RIC, BTE sau personalizate, în funcție de nevoi.",
       "Aparatul auditiv este configurat și ajustat individual, nu doar ales după model sau aspect.",
       "Oferim reglaje ulterioare, verificare, curățare și suport pentru utilizarea zilnică."
     ],
     "processTitle": "Fără grabă. Pas cu pas.",
     "steps": [
-      "Sună pentru programare",
+      "Sunați pentru programare",
       "Discutăm problemele de auz observate",
       "Facem evaluarea auzului",
       "Alegem aparatul auditiv potrivit",
       "Reglăm aparatul și oferim suport ulterior"
     ],
     "finalTitle": "Primul pas către un auz mai clar este o discuție.",
-    "finalCta": "Sună acum"
+    "finalCta": "Sunați acum"
   },
   "Services": {
     "title": "Servicii pentru auz și aparate auditive",
@@ -288,7 +554,7 @@
     },
     "consultation": {
       "title": "Consultanță pentru aparate auditive",
-      "description": "Comparăm tipuri și funcții potrivite evaluării, rutinei și preferințelor tale."
+      "description": "Comparăm tipuri și funcții potrivite evaluării, rutinei și preferințelor dumneavoastră."
     },
     "adjustment": {
       "title": "Reglare și ajustare aparat auditiv",
@@ -299,18 +565,159 @@
       "description": "Oferim verificare, curățare și suport pentru folosirea corectă a aparatului."
     }
   },
-  "Footer": { "note": "Un spațiu calm pentru conversații importante." },
+  "EditorialUI": {
+    "book": "Programați evaluarea gratuită",
+    "cnamNotice": "Informațiile despre compensare se verifică numai din surse oficiale actualizate.",
+    "medicalNotice": "Informație generală; nu înlocuiește consultul sau evaluarea medicală.",
+    "source": "Sursă",
+    "faqTitle": "Întrebări frecvente",
+    "findUs": "Unde ne găsiți",
+    "directions": "Deschideți indicațiile de orientare",
+    "officeAlt": "Intrarea reală în oficiul Volmer din Chișinău",
+    "related": "Aflați mai multe",
+    "finalTitle": "Următorul pas poate fi simplu",
+    "finalText": "Alegeți o zi și o oră disponibile pentru o discuție despre auz, fără grabă.",
+    "quickContact": "Contact rapid",
+    "documents": "Documente verificate",
+    "team": "Echipa Volmer"
+  },
+  "QuickContact": {
+    "navigationLabel": "Contact rapid",
+    "toggleLabel": "Contact",
+    "openChannels": "Deschideți opțiunile de contact",
+    "closeChannels": "Închideți opțiunile de contact",
+    "callbackButton": "Vă sunăm noi",
+    "callbackTitle": "Solicitați să vă sunăm",
+    "callbackDescription": "Lăsați numele și numărul dumneavoastră. Pregătim mesajul în WhatsApp, iar dumneavoastră îl trimiteți către echipa Volmer.",
+    "nameLabel": "Nume",
+    "phoneLabel": "Telefon",
+    "whatsappNotice": "WhatsApp se va deschide cu mesajul completat. Cererea ajunge la noi după ce apăsați Trimite în WhatsApp.",
+    "whatsappPrepared": "Mesajul s-a deschis în WhatsApp. Apăsați Trimite pentru a solicita apelul.",
+    "submit": "Continuați în WhatsApp",
+    "close": "Închideți formularul",
+    "whatsappDraft": "Bună ziua! Aș dori să fiu sunat(ă). Nume: {name}. Telefon: {phone}."
+  },
+  "LeadForm": {
+    "eyebrow": "CERERE DE CONTACT",
+    "title": "Cum vă putem ajuta?",
+    "intro": "Lăsați datele dumneavoastră, iar echipa Volmer vă va contacta prin metoda aleasă.",
+    "name": "Nume",
+    "phone": "Telefon, cu prefix internațional",
+    "contactPreference": "Cum preferați să vă contactăm?",
+    "country": "Țara în care vă aflați",
+    "beneficiary": "Pentru cine este solicitarea?",
+    "methods": {"whatsapp": "WhatsApp", "viber": "Viber", "telegram": "Telegram", "call": "Apel"},
+    "beneficiaries": {"self": "Pentru mine", "parent": "Pentru un părinte"},
+    "errors": {"required": "Completați acest câmp.", "invalid_name": "Introduceți un nume valid.", "invalid_phone": "Introduceți un număr internațional, de exemplu +373 79 331 839.", "invalid_country": "Introduceți o țară validă."},
+    "validationError": "Verificați datele marcate și încercați din nou.",
+    "notConfigured": "Formularul nu poate transmite solicitări momentan: destinația nu este configurată. Datele nu au fost trimise. Folosiți una dintre opțiunile directe de contact.",
+    "sendFailed": "Solicitarea nu a fost confirmată. Datele introduse au rămas în formular. Încercați din nou sau contactați-ne direct.",
+    "rateLimited": "Ați trimis prea multe solicitări. Așteptați puțin sau contactați-ne direct.",
+    "fallback": "Puteți folosi una dintre aceste opțiuni:",
+    "contactAlternatives": "Contactați Volmer direct",
+    "sending": "Se trimite…",
+    "submit": "Trimiteți solicitarea",
+    "privacyBefore": "Prin trimiterea formularului confirm că am citit ",
+    "privacyLink": "Politica de confidențialitate",
+    "privacyAfter": "."
+  },
+  "Footer": {
+    "note": "Centrul auditiv Volmer din Chișinău. Soluții auditive oficiale și aparate ale brandurilor internaționale Sonova și Unitron. Peste 20 de ani de experiență în Germania.",
+    "pagesTitle": "Secțiuni",
+    "morePagesTitle": "Mai multe",
+    "symptoms": "Simptome",
+    "amplifier": "Amplificator vs aparat auditiv",
+    "flexTrial": "Flex Trial",
+    "advantages": "Avantaje",
+    "experience": "Despre Volmer",
+    "team": "Echipa Volmer",
+    "faq": "Întrebări frecvente",
+    "blog": "Blog",
+    "test": "Test auditiv",
+    "diaspora": "Pentru familia de peste hotare",
+    "dementia": "Auzul și sănătatea cognitivă",
+    "cnam": "CNAM și sprijinul public",
+    "contactPage": "Contact",
+    "unitronTitle": "Platforme Unitron",
+    "platform": "Platforma Unitron {name}",
+    "contactTitle": "Contact",
+    "hearingAids": "Aparate auditive Unitron",
+    "sonova": "Grupul internațional Sonova",
+    "country": "Moldova",
+    "phoneLabel": "Telefon",
+    "quickCall": "Sunați rapid",
+    "germanStandard": "★ Standarde germane înalte în protezarea auditivă",
+    "copyright": "Toate drepturile rezervate.",
+    "legalLinks": "Informații juridice și preferințe cookie",
+    "privacyPolicy": "Politica de confidențialitate",
+    "cookies": "Cookie-uri",
+    "terms": "Termeni și condiții",
+    "cookieSettings": "Setări cookie"
+  },
+  "Consent": {
+    "title": "Preferințe de confidențialitate",
+    "intro": "Folosim cookie-uri necesare. Cu acordul dumneavoastră, putem utiliza Google Analytics pentru statistici și Google Ads/Meta pentru publicitate. Harta Google se încarcă numai după acord. Categoriile opționale sunt dezactivate implicit.",
+    "acceptAll": "Acceptați toate",
+    "rejectOptional": "Refuzați opționalele",
+    "customize": "Personalizați",
+    "settingsTitle": "Setări cookie",
+    "settingsIntro": "Puteți modifica separat categoriile opționale. Alegerea poate fi schimbată oricând din footer.",
+    "necessary": "Necesare",
+    "necessaryDescription": "Necesare pentru funcționarea site-ului și păstrarea alegerii dumneavoastră; întotdeauna active.",
+    "analytics": "Analiză",
+    "analyticsDescription": "Google Analytics măsoară utilizarea site-ului numai dacă activați această categorie.",
+    "marketing": "Marketing și conținut extern",
+    "marketingDescription": "Google Ads și Meta pot utiliza date pentru publicitate. Această categorie permite și încărcarea hărții Google; se activează numai cu acordul dumneavoastră.",
+    "save": "Salvați preferințele",
+    "cancel": "Închideți",
+    "close": "Închideți setările cookie",
+    "mapTitle": "Hartă: adresa Volmer din Chișinău",
+    "mapBlocked": "Harta Google este dezactivată până când permiteți conținutul extern.",
+    "allowMap": "Permiteți și afișați harta"
+  },
+  "Legal": {
+    "reviewNote": "Aceste informații descriu funcționarea actuală a site-ului și urmează să fie revizuite juridic.",
+    "contactTitle": "Contact",
+    "privacy": {
+      "title": "Politica de confidențialitate",
+      "description": "Cum sunt folosite datele introduse în formularul de programare Volmer.",
+      "sections": [
+        {"title": "Date introduse pentru programare", "text": "Formularul solicită numele, prenumele, numărul de telefon, data și ora alese, precum și un mesaj opțional. Aceste informații sunt folosite pentru crearea și gestionarea programării. Vă rugăm să nu includeți informații medicale sensibile în mesaj."},
+        {"title": "Gestionarea programării", "text": "Programarea este gestionată prin Google Calendar. Formularul verifică disponibilitatea și, la confirmare, creează o intrare în calendar. Dacă aveți întrebări despre o programare, ne puteți contacta folosind datele de mai jos."},
+        {"title": "Preferințe și servicii externe", "text": "Alegerea pentru categoriile opționale este păstrată local în browser. Harta Google de pe pagina principală nu se încarcă înainte de acordul pentru conținut extern. În prezent, site-ul nu are instalate instrumente de analiză sau publicitate."}
+      ]
+    },
+    "cookies": {
+      "title": "Cookie-uri și preferințe",
+      "description": "Cum funcționează preferințele de confidențialitate și conținutul extern pe site-ul Volmer.",
+      "sections": [
+        {"title": "Alegerea dumneavoastră", "text": "Site-ul păstrează local în browser versiunea și momentul alegerii dumneavoastră, împreună cu starea categoriilor Analiză și Marketing. Categoria Necesară rămâne activă. Puteți schimba sau refuza categoriile opționale din Setări cookie, în footer."},
+        {"title": "Harta Google", "text": "Harta încorporată este blocată inițial. Dacă permiteți conținutul extern, browserul încarcă harta Google. Linkul separat pentru indicații deschide serviciul Google Maps numai dacă alegeți să îl accesați."},
+        {"title": "Instrumente opționale", "text": "În prezent nu sunt instalate instrumente de analiză a traficului sau de publicitate. Categoriile opționale există pentru controlul utilizatorului și pentru eventuale actualizări viitoare ale site-ului."}
+      ]
+    },
+    "terms": {
+      "title": "Termeni și condiții",
+      "description": "Informații practice despre utilizarea site-ului Volmer și solicitarea unei programări.",
+      "sections": [
+        {"title": "Informațiile de pe site", "text": "Site-ul prezintă informații despre evaluarea auzului, aparate auditive și serviciile Volmer. Pentru recomandări individuale și disponibilitatea aparatelor, discutați direct cu echipa Volmer."},
+        {"title": "Programarea online", "text": "Puteți alege o dată și o oră disponibile în formularul de pe pagina principală. După trimiterea cu succes, site-ul afișează confirmarea programării. Dacă trebuie să modificați o programare, contactați-ne telefonic sau prin email."},
+        {"title": "Contact și locație", "text": "Ne găsiți în Chișinău, la Str. Mitropolit Varlaam 69. Datele de contact actuale sunt afișate mai jos. Pentru orice neclaritate despre serviciile prezentate, vă rugăm să ne contactați."}
+      ]
+    }
+  },
   "BusinessHours": {
     "title": "Program",
     "weekdays": "Luni–Vineri",
-    "lunchBreak": "Pauză de masă",
     "saturday": "Sâmbătă",
     "sunday": "Duminică",
-    "closed": "Închis"
+    "closed": "Închis",
+    "break": "Pauză"
   },
   "Common": {
-    "hours": "Luni–Vineri: 09:00–18:00 · Pauză de masă: 13:00–14:00 · Sâmbătă: 09:00–13:00",
+    "hours": "Luni–Vineri: 09:00–18:00 · Sâmbătă: 09:00–13:00",
     "address": "Chișinău, Str. Mitropolit Varlaam 69",
-    "learn": "Află mai multe"
+    "learn": "Aflați mai multe",
+    "skip": "Săriți la conținut"
   }
 }

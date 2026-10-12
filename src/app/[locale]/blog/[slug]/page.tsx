@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { blogPosts, type Locale } from "@/content/seo";
 import { siteConfig } from "@/config/site";
+import {editorialPath} from '@/content/editorial-routing';
 import { localizedBlogPath } from "@/content/blog-locales";
 
 export function generateStaticParams() {
@@ -104,12 +105,12 @@ export default async function Article({
     },
   ];
   return (
-    <article className="container page blog-page">
+    <article className="container page blog-page blog-article-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <nav className="breadcrumb" aria-label="Breadcrumb">
+      <nav className="breadcrumb blog-article-breadcrumb" aria-label={locale === "ro" ? "Fir de navigare" : "Навигационная цепочка"}>
         <a href={`/${locale}/`}>{locale === "ro" ? "Acasă" : "Главная"}</a> /{" "}
         <a href={`/${locale}/blog/`}>Blog</a> / {post.title}
       </nav>
@@ -135,9 +136,12 @@ export default async function Article({
       <div className="actions">
         <a
           className="button stone"
-          href={`tel:${siteConfig.phoneInternational}`}
+          href={`/${locale}/#booking-form`}
         >
-          {locale === "ro" ? "Sună pentru programare" : "Позвонить для записи"}
+          {locale === "ro" ? "Programați evaluarea" : "Записаться на проверку"}
+        </a>
+        <a className="button ghost" href={editorialPath(locale, 'test')}>
+          {locale === "ro" ? "Cum decurge evaluarea" : "Как проходит проверка"}
         </a>
         <a className="button ghost" href={`/${locale}/aparate-auditive/`}>
           {locale === "ro" ? "Aparate auditive" : "Слуховые аппараты"}

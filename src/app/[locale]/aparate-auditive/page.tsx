@@ -1,396 +1,49 @@
-import type { Metadata } from "next";
+import type {Metadata} from "next";
 import Image from "next/image";
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import {
-  BatteryCharging,
-  Bluetooth,
-  BrainCircuit,
-  Ear,
-  Gauge,
-  MessageCircle,
-  Phone,
-  RefreshCw,
-  Settings2,
-  ShieldCheck,
-  Smartphone,
-  Sparkles,
-  Volume2,
-} from "lucide-react";
-import { Link } from "@/i18n/navigation";
-import { siteConfig } from "@/config/site";
-import { Breadcrumbs } from "@/components/breadcrumbs";
-import {
-  hearingAidBenefits,
-  hearingAidCategories,
-  hearingAidFaq,
-  personalizationCriteria,
-  selectionSteps,
-  unitronPlatforms,
-} from "@/content/hearing-aids";
+import {getTranslations, setRequestLocale} from "next-intl/server";
+import {BatteryCharging, BatteryMedium, Check, Phone, ShieldCheck, Sparkles} from "lucide-react";
+import {Link} from "@/i18n/navigation";
+import {siteConfig} from "@/config/site";
+import {seoPages} from "@/content/seo";
+import {Breadcrumbs} from "@/components/breadcrumbs";
+import {hearingAidCategories, hearingAidFaq, selectionSteps} from "@/content/hearing-aids";
+import {accessories, hearingAidFamilies, shellColors, technologyLevels, type CatalogLocale} from "@/content/hearing-aids-catalog";
 
-type TextItem = { title: string; description: string; benefits?: string[] };
-type Copy = {
-  hero: {
-    eyebrow: string;
-    title: string;
-    description: string;
-    secondary: string;
-    primaryCta: string;
-    secondaryCta: string;
-    imageAlt: string;
-  };
-  unitron: {
-    title: string;
-    text1: string;
-    text2: string;
-    points: string[];
-    flow: string[];
-  };
-  platforms: {
-    title: string;
-    intro: string;
-    note: string;
-    items: Record<string, TextItem>;
-  };
-  styles: {
-    title: string;
-    intro: string;
-    note: string;
-    items: Record<string, TextItem>;
-  };
-  technology: { title: string; intro: string; items: Record<string, TextItem> };
-  connectivity: {
-    title: string;
-    description: string;
-    flow: string[];
-    note: string;
-  };
-  personalization: {
-    title: string;
-    text: string;
-    highlight: string;
-    items: Record<string, string>;
-  };
-  selection: { title: string; items: Record<string, TextItem> };
-  sonova: { title: string; text: string };
-  faq: {
-    title: string;
-    items: Record<string, { question: string; answer: string }>;
-  };
-  finalCta: { title: string; text: string; primary: string; secondary: string };
-};
-const benefitIcons = {
-  conversations: MessageCircle,
-  automatic: BrainCircuit,
-  noise: Volume2,
-  bluetooth: Bluetooth,
-  rechargeable: BatteryCharging,
-  app: Smartphone,
-};
-const categoryIcons = { ric: Ear, bte: ShieldCheck, ite: Settings2 };
+type TextItem={title:string;description:string;benefits?:string[];when?:string};
+type Copy={hero:{eyebrow:string;title:string;description:string;secondary:string;primaryCta:string;secondaryCta:string;imageAlt:string;proof:string;breadcrumb:string};styles:{title:string;intro:string;note:string;whenLabel:string;items:Record<string,TextItem>};selection:{title:string;intro:string;resultLabel:string;result:string;items:Record<string,TextItem>};faq:{title:string;items:Record<string,{question:string;answer:string}>};finalCta:{title:string;text:string;primary:string;secondary:string}};
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "HearingAidsPage" });
-  return {
-    title: t("metaTitle"),
-    description: t("metaDescription"),
-    alternates: {
-      canonical: `/${locale}/aparate-auditive/`,
-      languages: {
-        "ro-MD": "/ro/aparate-auditive/",
-        "ru-MD": "/ru/aparate-auditive/",
-        "x-default": "/ro/aparate-auditive/",
-      },
-    },
-    openGraph: {
-      title: t("metaTitle"),
-      description: t("metaDescription"),
-      url: `/${locale}/aparate-auditive/`,
-      type: "website",
-      locale: locale === "ro" ? "ro_MD" : "ru_MD",
-      alternateLocale: locale === "ro" ? ["ru_MD"] : ["ro_MD"],
-      images: [{ url: siteConfig.logoPath, alt: "Volmer" }],
-    },
-    twitter: {
-      card: "summary",
-      title: t("metaTitle"),
-      description: t("metaDescription"),
-      images: [siteConfig.logoPath],
-    },
-  };
-}
+const ui={
+ ro:{catalog:"Catalogul Unitron disponibil prin Volmer",catalogIntro:"Modelele sunt grupate pe familii. Deschideți o familie pentru forme, alimentare, niveluri și culori confirmate în cataloagele oficiale.",models:"Modele și variante",details:"Vedeți modelele",form:"Formă",power:"Alimentare",levels:"Niveluri",colors:"Culori",technology:"Niveluri tehnologice",technologyIntro:"Nivelurile merg de la medii de ascultare complexe la simple și indică funcțiile disponibile. Nu reprezintă clase de preț.",environments:"medii",levelNote:"Nivelul 1 folosește AutoMic. Nivelurile și funcțiile disponibile depind de familie și model.",prices:"Prețuri aparate auditive",priceIntro:"Prețul depinde de nivelul tehnologic, model și tipul de alimentare. Clasele Volmer sunt prezentate separat de nivelurile Unitron.",battery:"Baterie",rechargeable:"Reîncărcabil",types:"Forme și alimentare",typesIntro:"Formatul final se alege după audiogramă, anatomia urechii, puterea necesară, dexteritate, conectivitate și stil de viață.",comparison:"Baterie sau reîncărcabil?",batteryText:"Modelele cu baterii 10, 312, 13 sau 675 permit înlocuirea bateriei. Tipul este specific fiecărui model.",rechargeText:"Modelele marcate R sau PR folosesc acumulator Li-ion și o stație compatibilă modelului.",palette:"Culori disponibile",paletteIntro:"P4 și P8 nu sunt disponibile la nivelul S1/V1/B1. Negrul are restricțiile Insera indicate de producător. Culorile ilustrate sunt orientative; configurația exactă se confirmă la Volmer.",shell:"Culori pentru aparate RIC și retroauriculare",accessories:"Accesorii și conectivitate",accessoriesIntro:"Accesoriile funcționează numai cu modelele compatibile. Aparatele Insera fără wireless nu acceptă accesoriile wireless.",source:"Informații verificate în cataloagele oficiale Unitron/SCALA 2025–2026. Disponibilitatea se confirmă la Volmer."},
+ ru:{catalog:"Каталог Unitron, доступный через Volmer",catalogIntro:"Модели сгруппированы по семействам. Откройте семейство, чтобы увидеть форм-факторы, питание, уровни и подтверждённые цвета.",models:"Модели и варианты",details:"Показать модели",form:"Форма",power:"Питание",levels:"Уровни",colors:"Цвета",technology:"Технологические уровни",technologyIntro:"Уровни идут от сложных ситуаций прослушивания к более простым и указывают доступные функции. Это не ценовые классы.",environments:"сред",levelNote:"Уровень 1 использует AutoMic. Доступные уровни и функции зависят от семейства и модели.",prices:"Цены на слуховые аппараты",priceIntro:"Цена зависит от технологического уровня, модели и типа питания. Классы Volmer показаны отдельно от уровней Unitron.",battery:"Батарейка",rechargeable:"Аккумулятор",types:"Формы и питание",typesIntro:"Форму выбирают с учётом аудиограммы, анатомии уха, требуемой мощности, моторики, подключения и образа жизни.",comparison:"Батарейка или аккумулятор?",batteryText:"В моделях используются батарейки 10, 312, 13 или 675. Тип батарейки указан отдельно для каждой модели.",rechargeText:"Модели R и PR используют литий-ионный аккумулятор и совместимое зарядное устройство.",palette:"Доступные цвета",paletteIntro:"P4 и P8 недоступны для S1/V1/B1. Для чёрного цвета Insera действуют ограничения производителя. Цвета показаны для ориентира; точную конфигурацию уточняйте в Volmer.",shell:"Цвета RIC и заушных аппаратов",accessories:"Аксессуары и подключение",accessoriesIntro:"Аксессуары работают только с совместимыми моделями. Insera без беспроводной связи не поддерживает беспроводные аксессуары.",source:"Информация проверена по официальным каталогам Unitron/SCALA 2025–2026. Наличие уточняйте в Volmer."}
+} as const;
 
-export default async function HearingAidsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
-  setRequestLocale(locale);
-  const t = await getTranslations("HearingAidsPage");
-  const c = t.raw("content") as Copy;
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: hearingAidFaq.map((id) => ({
-      "@type": "Question",
-      name: c.faq.items[id].question,
-      acceptedAnswer: { "@type": "Answer", text: c.faq.items[id].answer },
-    })),
-  };
-  return (
-    <>
-      <Breadcrumbs
-        locale={locale === "ru" ? "ru" : "ro"}
-        label={c.hero.title}
-        path="aparate-auditive"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <section className="unitron-hero">
-        <div className="unitron-container unitron-hero-grid">
-          <div>
-            <p className="unitron-eyebrow">
-              <Sparkles size={16} />
-              {c.hero.eyebrow}
-            </p>
-            <h1>{c.hero.title}</h1>
-            <p className="unitron-lead">{c.hero.description}</p>
-            <p>{c.hero.secondary}</p>
-            <div className="unitron-actions">
-              <a
-                className="unitron-primary"
-                href={`tel:${siteConfig.phoneInternational}`}
-              >
-                <Phone size={19} />
-                {c.hero.primaryCta}
-              </a>
-              <a className="unitron-secondary" href="#technology">
-                {c.hero.secondaryCta}
-              </a>
-            </div>
-          </div>
-          <div className="unitron-hero-image">
-            <Image
-              src="/images/hearing-aids/unitron-hero.webp"
-              alt={c.hero.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 52vw"
-            />
-          </div>
-        </div>
-      </section>
+const catalogEyebrows={
+ ro:["01 — UNITRON / SONOVA","02 — TEHNOLOGIE","03 — RIC / BTE / ITE","04 — CULORI","05 — CONECTIVITATE"],
+ ru:["01 — UNITRON / SONOVA","02 — ТЕХНОЛОГИИ","03 — RIC / BTE / ITE","04 — ЦВЕТА","05 — ПОДКЛЮЧЕНИЕ"],
+} as const;
 
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 01</p>
-        <div className="unitron-split">
-          <div>
-            <h2>{c.unitron.title}</h2>
-            <p className="unitron-lead">{c.unitron.text1}</p>
-            <p>{c.unitron.text2}</p>
-            <ul className="unitron-checks">
-              {c.unitron.points.map((point) => (
-                <li key={point}>
-                  <ShieldCheck />
-                  {point}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="unitron-flow" aria-label={c.unitron.title}>
-            {c.unitron.flow.map((item, index) => (
-              <div key={item}>
-                <strong>{item}</strong>
-                {index < c.unitron.flow.length - 1 && (
-                  <span aria-hidden="true">↓</span>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+export async function generateMetadata({params}:{params:Promise<{locale:string}>}):Promise<Metadata>{const{locale}=await params;const t=await getTranslations({locale,namespace:"HearingAidsPage"});return{title:t("metaTitle"),description:t("metaDescription"),alternates:{canonical:`/${locale}/aparate-auditive/`,languages:{"ro-MD":"/ro/aparate-auditive/","ru-MD":"/ru/aparate-auditive/","x-default":"/ro/aparate-auditive/"}},openGraph:{title:t("metaTitle"),description:t("metaDescription"),url:`/${locale}/aparate-auditive/`,type:"website",locale:locale==="ro"?"ro_MD":"ru_MD",alternateLocale:locale==="ro"?["ru_MD"]:["ro_MD"],images:[{url:siteConfig.logoPath,alt:"Volmer"}]},twitter:{card:"summary",title:t("metaTitle"),description:t("metaDescription"),images:[siteConfig.logoPath]}}}
 
-      <section className="unitron-soft unitron-section" id="technology">
-        <div className="unitron-container">
-          <p className="unitron-index">•••• 02</p>
-          <h2>{c.platforms.title}</h2>
-          <p className="unitron-lead">{c.platforms.intro}</p>
-          <div className="unitron-platforms">
-            {unitronPlatforms.map((id, index) => (
-              <article key={id}>
-                <span>0{index + 1}</span>
-                <h3>{c.platforms.items[id].title}</h3>
-                <p>{c.platforms.items[id].description}</p>
-              </article>
-            ))}
-          </div>
-          <p className="unitron-note">{c.platforms.note}</p>
-        </div>
-      </section>
+export default async function HearingAidsPage({params}:{params:Promise<{locale:string}>}){
+ const{locale}=await params;setRequestLocale(locale);const lang:CatalogLocale=locale==="ru"?"ru":"ro";const u=ui[lang];const t=await getTranslations("HearingAidsPage");const c=t.raw("content") as Copy;
+ const faqJsonLd={"@context":"https://schema.org","@type":"FAQPage",mainEntity:hearingAidFaq.map(id=>({"@type":"Question",name:c.faq.items[id].question,acceptedAnswer:{"@type":"Answer",text:c.faq.items[id].answer}}))};
+ return <div className="aids-page catalog-page">
+  <Breadcrumbs locale={lang} label={c.hero.breadcrumb} path="aparate-auditive"/><script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(faqJsonLd)}}/>
+  <section className="aids-hero hp-container"><div className="aids-hero-copy"><p className="unitron-eyebrow"><Sparkles size={16}/>{c.hero.eyebrow}</p><h1>{c.hero.title}</h1><p className="unitron-lead">{c.hero.description}</p><p>{c.hero.secondary}</p><div className="unitron-actions"><a className="unitron-primary" href="#catalog">{c.hero.primaryCta}</a><a className="unitron-secondary" href="#tipuri">{c.hero.secondaryCta}</a></div></div><div className="aids-hero-visual"><div className="unitron-hero-image unitron-hero-video"><video autoPlay muted loop playsInline preload="metadata" aria-label={c.hero.imageAlt}><source src="/videos/unitron-vista-sr.mp4" type="video/mp4"/></video></div><div className="aids-hero-proof"><ShieldCheck aria-hidden="true"/><span>{c.hero.proof}</span></div></div></section>
 
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 03</p>
-        <h2>{c.styles.title}</h2>
-        <p className="unitron-lead">{c.styles.intro}</p>
-        <div className="unitron-types">
-          {hearingAidCategories.map((id) => {
-            const Icon = categoryIcons[id];
-            const item = c.styles.items[id];
-            return (
-              <article key={id}>
-                <Icon />
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
-                <ul>
-                  {item.benefits?.map((value) => (
-                    <li key={value}>{value}</li>
-                  ))}
-                </ul>
-              </article>
-            );
-          })}
-        </div>
-        <p className="unitron-highlight">{c.styles.note}</p>
-      </section>
+  <section className="catalog-section hp-container" id="catalog"><header className="catalog-heading"><p className="aids-index">{catalogEyebrows[lang][0]}</p><h2>{u.catalog}</h2><p>{u.catalogIntro}</p></header><div className="catalog-families">{hearingAidFamilies.map((family,index)=><article className="catalog-family" key={family.id}><div className="catalog-family-summary"><div><span className="aids-number">0{index+1}</span><p className="catalog-kicker">{family.platform[lang]}</p><h3>{family.name}</h3><p>{family.summary[lang]}</p></div><Image src={family.image} alt={family.imageAlt[lang]} width={420} height={420} sizes="(max-width: 720px) 70vw, 260px"/></div><details><summary>{u.details}<span>{family.models.length}</span></summary><div className="catalog-models"><h4>{u.models}</h4>{family.models.map(model=><div className="catalog-model" key={model.name}><div><strong>{model.name}</strong><span className={`form-badge form-${model.form.toLowerCase()}`}>{model.form}</span></div><dl><div><dt>{u.power}</dt><dd>{model.power[lang]}</dd></div>{model.levels&&<div><dt>{u.levels}</dt><dd>{model.levels.join(" · ")}</dd></div>}<div><dt>{u.colors}</dt><dd>{model.colors.join(" · ")}</dd></div></dl>{model.note&&<p>{model.note[lang]}</p>}</div>)}</div></details></article>)}</div><p className="catalog-source">{u.source}</p></section>
 
-      <section className="unitron-dark unitron-section">
-        <div className="unitron-container">
-          <p className="unitron-index">•••• 04</p>
-          <h2>{c.technology.title}</h2>
-          <p className="unitron-lead">{c.technology.intro}</p>
-          <div className="unitron-benefits">
-            {hearingAidBenefits.map((id) => {
-              const Icon = benefitIcons[id];
-              const item = c.technology.items[id];
-              return (
-                <article key={id}>
-                  <Icon />
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </article>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+  <section className="catalog-band" id="technology"><div className="hp-container"><header className="catalog-heading"><p className="aids-index">{catalogEyebrows[lang][1]}</p><h2>{u.technology}</h2><p>{u.technologyIntro}</p></header><div className="technology-levels">{technologyLevels.map(item=><article key={item.level}><strong>{item.level}</strong><h3>{item[lang]}</h3><p>{item.environments==="AutoMic"?item.environments:`${item.environments} ${u.environments}`}</p></article>)}</div><p className="aids-note">{u.levelNote}</p></div></section>
 
-      <section className="unitron-section unitron-container">
-        <div className="unitron-connect">
-          <div>
-            <p className="unitron-index">•••• 05</p>
-            <h2>{c.connectivity.title}</h2>
-            <p className="unitron-lead">{c.connectivity.description}</p>
-            <p className="unitron-note">{c.connectivity.note}</p>
-          </div>
-          <div className="unitron-digital" aria-label={c.connectivity.title}>
-            {c.connectivity.flow.map((item, index) => (
-              <div key={item}>
-                <span>
-                  {index === 0 ? (
-                    <Smartphone />
-                  ) : index === 1 ? (
-                    <Ear />
-                  ) : (
-                    <Gauge />
-                  )}
-                </span>
-                <b>{item}</b>
-                {index < c.connectivity.flow.length - 1 && (
-                  <i aria-hidden="true">↔</i>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  <section className="aids-section aids-section-soft" id="tipuri"><div className="hp-container"><header className="catalog-heading"><p className="aids-index">{catalogEyebrows[lang][2]}</p><h2>{c.styles.title}</h2><p>{u.typesIntro}</p></header><div className="aids-types compact-types">{hearingAidCategories.map(id=>{const item=c.styles.items[id];return <article key={id}><h3>{item.title}</h3><p>{item.description}</p><ul>{item.benefits?.slice(0,3).map(value=><li key={value}><Check/>{value}</li>)}</ul><p className="aids-when"><b>{c.styles.whenLabel}</b> {item.when}</p><div className="aids-type-image"><Image src={`/images/hearing-aids/${id.toUpperCase()}.png`} alt={item.title} fill sizes="(max-width:700px) 80vw, 30vw"/></div></article>})}</div><p className="aids-note">{c.styles.note}</p><div className="power-comparison"><h3>{u.comparison}</h3><div><p><BatteryMedium/>{u.batteryText}</p><p><BatteryCharging/>{u.rechargeText}</p></div></div></div></section>
 
-      <section className="unitron-soft unitron-section">
-        <div className="unitron-container unitron-split">
-          <div>
-            <p className="unitron-index">•••• 06</p>
-            <h2>{c.personalization.title}</h2>
-            <p className="unitron-lead">{c.personalization.text}</p>
-            <p className="unitron-highlight">{c.personalization.highlight}</p>
-          </div>
-          <div className="unitron-criteria">
-            {personalizationCriteria.map((id, index) => (
-              <article key={id}>
-                <b>0{index + 1}</b>
-                <p>{c.personalization.items[id]}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+  <section className="catalog-section hp-container" id="culori"><header className="catalog-heading"><p className="aids-index">{catalogEyebrows[lang][3]}</p><h2>{u.palette}</h2><p>{u.paletteIntro}</p></header><div className="palette-groups"><div><h3>{u.shell}</h3><div className="swatches">{shellColors.map(item=><div key={item.code}><span style={{background:item.color}}/><strong>{item.code}</strong><small>{item[lang]}</small></div>)}</div></div></div></section>
 
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 07</p>
-        <h2>{c.selection.title}</h2>
-        <div className="unitron-steps">
-          {selectionSteps.map((id, index) => {
-            const item = c.selection.items[id];
-            return (
-              <article key={id}>
-                <span>{index + 1}</span>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
+  <section className="catalog-band" id="accesorii"><div className="hp-container"><header className="catalog-heading"><p className="aids-index">{catalogEyebrows[lang][4]}</p><h2>{u.accessories}</h2><p>{u.accessoriesIntro}</p></header><div className="accessory-grid">{accessories.map(item=><article key={item.name}><Image src={item.image} width={300} height={220} alt={item.name}/><h3>{item.name}</h3><p>{item.text[lang]}</p></article>)}</div></div></section>
 
-      <section className="unitron-sonova">
-        <div className="unitron-container">
-          <RefreshCw />
-          <div>
-            <h2>{c.sonova.title}</h2>
-            <p>{c.sonova.text}</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="unitron-section unitron-container">
-        <p className="unitron-index">•••• 08</p>
-        <h2>{c.faq.title}</h2>
-        <div className="unitron-faq">
-          {hearingAidFaq.map((id) => (
-            <details key={id}>
-              <summary>{c.faq.items[id].question}</summary>
-              <p>{c.faq.items[id].answer}</p>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      <section className="unitron-final unitron-container">
-        <div>
-          <h2>{c.finalCta.title}</h2>
-          <p>{c.finalCta.text}</p>
-        </div>
-        <div className="unitron-actions">
-          <a
-            className="unitron-primary"
-            href={`tel:${siteConfig.phoneInternational}`}
-          >
-            <Phone size={19} />
-            {c.finalCta.primary}
-          </a>
-          <Link className="unitron-secondary" href="/contact">
-            {c.finalCta.secondary}
-          </Link>
-        </div>
-      </section>
-    </>
-  );
+  <section className="aids-section hp-container" id="alegere"><header className="catalog-heading"><p className="aids-index">06 — VOLMER</p><h2>{c.selection.title}</h2><p>{c.selection.intro}</p></header><div className="aids-steps">{selectionSteps.map((id,index)=>{const item=c.selection.items[id];return <article key={id}><span className="aids-step-number">0{index+1}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>})}</div><p className="aids-result"><b>{c.selection.resultLabel}</b> {c.selection.result}</p></section>
+  <section className="aids-section hp-container" id="faq"><header className="catalog-heading"><p className="aids-index">07 — FAQ</p><h2>{c.faq.title}</h2></header><div className="aids-faq">{hearingAidFaq.map(id=><details key={id}><summary>{c.faq.items[id].question}</summary><p>{c.faq.items[id].answer}</p></details>)}</div></section>
+  <nav className="seo-guide-links hp-container" aria-label={lang==="ru"?"Материалы о слуховых аппаратах":"Ghiduri despre aparate auditive"}><h2>{lang==="ru"?"Узнайте больше о слуховых аппаратах":"Aflați mai multe despre aparatele auditive"}</h2><div>{seoPages[lang].map(page=><a key={page[0]} href={`/${locale}/${page[0]}/`}>{page[1]}</a>)}</div></nav>
+  <section className="aids-final hp-container" id="contact"><div><h2>{c.finalCta.title}</h2><p>{c.finalCta.text}</p></div><div className="unitron-actions"><a className="unitron-primary" href={`/${locale}/#booking-form`}><Phone size={19}/>{c.finalCta.primary}</a><Link className="unitron-secondary" href="/#flex-trial">{c.finalCta.secondary}</Link></div></section>
+ </div>
 }

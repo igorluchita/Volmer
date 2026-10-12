@@ -1,17 +1,13 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/config/site";
-import { blogPosts, seoPages } from "@/content/seo";
+import { siteConfig } from "../config/site";
+import { blogPosts, seoPages } from "../content/seo";
+import {legalPath, legalTypes} from '../content/legal-pages';
+import {editorialPath, editorialTypes} from '../content/editorial-pages';
 export const dynamic = "force-static";
 
 const pages = [
   "",
   "aparate-auditive",
-  "test-auditiv",
-  "servicii",
-  "despre-noi",
-  "intrebari-frecvente",
-  "contact",
-  "programare",
 ];
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = pages.flatMap((page) =>
@@ -63,5 +59,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: blogIndexRu, alternates: blogIndexAlternates },
     ...blogArticles,
   ];
-  return [...base, ...seo, ...blog];
+  const legal = legalTypes.flatMap((type) => {
+    const ro = `${siteConfig.siteUrl}${legalPath('ro', type)}`;
+    const ru = `${siteConfig.siteUrl}${legalPath('ru', type)}`;
+    const alternates = {languages: {'ro-MD': ro, 'ru-MD': ru, 'x-default': ro}};
+    return [{url: ro, alternates}, {url: ru, alternates}];
+  });
+  const editorial = editorialTypes.flatMap((type) => {
+    const ro = `${siteConfig.siteUrl}${editorialPath('ro', type)}`;
+    const ru = `${siteConfig.siteUrl}${editorialPath('ru', type)}`;
+    const alternates = {languages: {'ro-MD': ro, 'ru-MD': ru, 'x-default': ro}};
+    return [{url: ro, alternates}, {url: ru, alternates}];
+  });
+  return [...base, ...seo, ...blog, ...legal, ...editorial];
 }
