@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Check, Headphones, Phone, Sparkles } from "lucide-react";
+import { CalendarDays, Check, Headphones, Phone, Sparkles } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { siteConfig } from "@/config/site";
 
@@ -36,8 +36,8 @@ export async function HomeHero() {
             ))}
           </ul>
           <div className="hp-hero-actions">
-            <a className="hp-button hp-button-primary" href={`tel:${siteConfig.phoneInternational}`}>
-              <Phone size={19} aria-hidden="true" />
+            <a className="hp-button hp-button-primary" href="#booking-form">
+              <CalendarDays size={19} aria-hidden="true" />
               {t("primaryCta")}
             </a>
             <a className="hp-button hp-button-secondary" href={`tel:${siteConfig.phoneInternational}`}>
@@ -53,7 +53,7 @@ export async function HomeHero() {
             alt={t("imageAlt")}
             fill
             priority
-            sizes="(max-width: 860px) 100vw, 43vw"
+            sizes="(max-width: 860px) calc(100vw - 48px), (max-width: 1200px) 43vw, 540px"
           />
           <span className="hp-hero-image-badge">{t("imageBadge")}</span>
           <div className="hp-hero-floating-card">

@@ -2,8 +2,8 @@
   --hp-navy-dark: #0a1d36;
   --hp-navy: #0f294a;
   --hp-navy-mid: #143660;
-  --hp-orange: #ea580c;
-  --hp-orange-hover: #c2410c;
+  --hp-orange: #cf4800;
+  --hp-orange-hover: #b83d05;
   --hp-amber: #fbbf24;
   --hp-green: #10b981;
   --hp-canvas: #f8fafc;
@@ -79,12 +79,15 @@
 
 .hp-button:focus-visible,
 .hp-faq summary:focus-visible,
-.main-nav a:focus-visible,
-.site-topbar a:focus-visible,
 .sticky-callbar a:focus-visible {
   outline: 3px solid #fbbf24;
   outline-offset: 3px;
 }
+.main-nav a:focus-visible { outline: 3px solid #143660; outline-offset: 3px; }
+.site-topbar a:focus-visible { outline: 3px solid #fbbf24; outline-offset: 3px; }
+.hp-page .hp-button:focus-visible { outline-color: #143660; }
+.hp-hero .hp-button:focus-visible, .hp-contact .hp-button:focus-visible { outline-color: #fff; }
+.hp-page .hp-faq summary:focus-visible { outline: 3px solid #143660; outline-offset: 3px; }
 
 .hp-button-primary {
   background: var(--hp-orange);
@@ -258,6 +261,9 @@
 }
 
 .main-nav > a {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
   border: 0;
   white-space: nowrap;
   transition: color 150ms ease;
@@ -1836,10 +1842,6 @@
 }
 
 @media (max-width: 760px) {
-  body {
-    padding-bottom: 68px;
-  }
-
   .hp-container {
     width: min(100% - 28px, 1420px);
   }
@@ -2275,7 +2277,7 @@
 .site-footer-legal { margin-top: 32px; }
 .sticky-callbar { background: var(--hp-navy); }
 .sticky-callbar-inner { min-height: 60px; }
-.sticky-callbar a { min-height: 42px; padding: 8px 16px; border-radius: 10px; }
+.sticky-callbar a { min-height: 44px; padding: 8px 16px; border-radius: 10px; }
 
 @media (max-width: 1240px) {
   .site-navbar-inner { min-height: 64px; }
@@ -2404,6 +2406,57 @@
 .hp-contact-form input:focus-visible, .hp-contact-form textarea:focus-visible { outline: 2px solid #7aa7dd; outline-offset: 1px; }
 .hp-contact-form .hp-button { min-height: 40px; margin: 2px 0 0; border: 0; border-radius: 10px; padding: 10px 14px; cursor: pointer; font-size: 12px; }
 .hp-contact-card > small { margin-top: 12px; font-size: 9px; }
+.hp-contact-form .hp-button:disabled { cursor: not-allowed; opacity: 0.58; box-shadow: none; }
+.booking-date-fieldset,
+.booking-time-fieldset { min-width: 0; margin: 0; border: 0; padding: 0; }
+.booking-date-fieldset legend,
+.booking-time-fieldset legend { margin-bottom: 6px; color: #34445a; font-size: 11px; font-weight: 700; }
+.booking-calendar { border: 1px solid #dbe4ee; border-radius: 12px; padding: 10px; background: #f8fafc; }
+.booking-calendar-heading { display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; gap: 6px; margin-bottom: 8px; text-align: center; }
+.booking-calendar-heading strong { color: var(--hp-navy-dark); font-size: 13px; text-transform: capitalize; }
+.booking-calendar-heading button { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid #d9e2ec; border-radius: 9px; background: #fff; color: #17365b; cursor: pointer; transition: background-color 140ms ease-out, transform 140ms ease-out; }
+.booking-calendar-heading button:disabled { cursor: not-allowed; opacity: .45; }
+.booking-calendar-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+.booking-calendar-caption { margin: 0 0 5px; color: #63748a; font-size: 10px; }
+.booking-weekday { display: grid; min-height: 27px; place-items: center; color: #63748a; font-size: 10px; font-weight: 700; }
+.booking-empty-day { min-height: 38px; }
+.booking-day { display: grid; min-width: 0; min-height: 38px; place-items: center; border: 1px solid transparent; border-radius: 9px; background: #fff; color: #183451; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: background-color 140ms ease-out, border-color 140ms ease-out, color 140ms ease-out, transform 140ms ease-out; }
+.booking-day:disabled { border-color: transparent; background: transparent; color: #aab5c2; cursor: not-allowed; }
+.booking-day[aria-pressed="true"] { border-color: #f05a0a; background: #f05a0a; color: #fff; }
+.booking-calendar-status { display: flex; min-height: 22px; align-items: center; gap: 6px; margin: 5px 0 0; color: #607086; font-size: 10px; line-height: 1.4; }
+.booking-calendar-status svg { flex: 0 0 auto; color: #0da879; }
+@keyframes booking-calendar-spin { to { transform: rotate(360deg); } }
+.booking-calendar-status svg { animation: booking-calendar-spin 900ms linear infinite; }
+.booking-time-fieldset { margin-top: 1px; }
+.booking-selected-date { margin: 0 0 7px; color: #617287; font-size: 11px; }
+.booking-hint { margin: 0; color: #718096; font-size: 11px; line-height: 1.45; }
+.booking-time-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.booking-time { min-height: 39px; border: 1px solid #cfdae7; border-radius: 9px; background: #fff; color: #183451; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; transition: background-color 140ms ease-out, border-color 140ms ease-out, color 140ms ease-out, transform 140ms ease-out; }
+.booking-time[aria-pressed="true"] { border-color: #14365b; background: #14365b; color: #fff; }
+.booking-error { margin: 0; border-radius: 8px; padding: 9px 11px; background: #fff1ed; color: #a33d17; font-size: 11px; line-height: 1.4; }
+.booking-privacy-note { display: block; margin-top: 0; color: #77869a; font-size: 9px; line-height: 1.45; text-align: center; }
+.booking-honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.booking-success { display: grid; justify-items: center; padding: 14px 4px 2px; text-align: center; }
+.booking-success > svg { color: #0da879; }
+.booking-success h4 { margin: 12px 0 6px; color: var(--hp-navy-dark); font-size: 20px; line-height: 1.25; }
+.booking-success > p { margin: 0; color: #53657b; font-size: 13px; line-height: 1.5; }
+.booking-success .booking-confirmed-reminder { max-width: 520px; margin-top: 12px; }
+.booking-success .booking-phone-prompt { margin-top: 18px; font-size: 11px; }
+.booking-phone { display: inline-flex; align-items: center; gap: 8px; margin-top: 6px; color: #12375f; font-weight: 800; text-decoration: none; }
+.booking-another { min-height: 40px; margin-top: 18px; border: 1px solid #d4deea; border-radius: 9px; padding: 8px 14px; background: #f7f9fc; color: #17365b; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.booking-calendar-heading button:active,
+.booking-day:active:not(:disabled),
+.booking-time:active,
+.booking-another:active { transform: scale(.97); }
+@media (hover: hover) and (pointer: fine) {
+  .booking-calendar-heading button:hover:not(:disabled),
+  .booking-time:hover { border-color: #9eb3cb; }
+  .booking-day:hover:not(:disabled):not([aria-pressed="true"]) { border-color: #9eb3cb; background: #eef4fa; }
+  .booking-another:hover { background: #edf3fa; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .booking-calendar-status svg { animation: none; }
+}
 .hp-contact-map {
   grid-column: 1 / -1;
   width: 100%;
@@ -2442,7 +2495,7 @@
   padding: 0 18px;
   background: rgba(255, 255, 255, .13);
   color: #fff;
-  font: inherit;
+  font: 400 16px/1.4 Inter, ui-sans-serif, system-ui, sans-serif;
 }
 .sticky-callbar-form input::placeholder { color: #bdcad9; }
 .sticky-callbar-form button { height: 48px; border: 0; cursor: pointer; font: inherit; font-weight: 800; }
@@ -2661,6 +2714,9 @@
   .hp-contact-map { height: 220px; }
 }
 
+/* Keep the navbar pinned only after the full, responsive topbar has scrolled away. */
+.site-header { top: calc(-1 * var(--site-topbar-height, 32px)); }
+
 /* Footer proportions from the approved reference image. */
 .site-footer { padding: 56px 0 54px; }
 .site-footer .site-footer-grid,
@@ -2674,17 +2730,21 @@
   justify-content: space-between;
   gap: 28px;
 }
+.site-footer .footer-logo { background: transparent; border-radius: 0; }
+.site-footer .footer-logo img { object-fit: contain !important; filter: brightness(0) invert(1); }
 .site-footer .footer-logo,
 .site-footer .footer-logo img { width: 256px !important; height: 60px !important; }
 .site-footer-brand p { max-width: 330px; margin: 17px 0 20px; font-size: 13px; line-height: 1.65; }
 .site-footer-brand strong { max-width: 330px; font-size: 13px; line-height: 1.35; }
 .site-footer h2 { margin: 4px 0 14px; font-size: 15px; line-height: 1.3; }
 .site-footer nav,
-.site-footer address { gap: 8px; font-size: 13px; line-height: 1.55; }
+.site-footer address { gap: 8px; font-size: 14px; line-height: 1.55; }
+.site-footer nav a,
+.site-footer-contact address a { display: inline-flex; width: fit-content; min-height: 44px; align-items: center; }
 .site-footer-contact address .site-footer-address { font-size: 13px; }
 .site-footer-contact address a { line-height: 1.5; }
 .site-footer-hours { margin-top: 10px; font-size: 12px; line-height: 1.5; }
-.site-footer-call { min-height: 36px; margin-top: 14px; padding: 8px 14px; font-size: 13px; }
+.site-footer-call { min-height: 44px; margin-top: 14px; padding: 8px 14px; font-size: 14px; }
 .site-footer .site-footer-legal { justify-content: space-between; margin-top: 36px; padding-top: 22px; font-size: 12px; }
 .site-footer-legal > span { min-width: 0; }
 .sticky-callbar-inner { width: min(2160px, calc(100% - 48px)); min-height: 70px; }
@@ -2704,4 +2764,17 @@
   .site-footer .footer-logo img { width: 180px !important; height: 48px !important; }
   .site-footer .site-footer-legal { margin-top: 28px; padding-top: 17px; font-size: 11px; }
   .sticky-callbar-inner { width: min(100% - 32px, 620px); min-height: 60px; }
+}
+
+/* Compact footer after removing the redundant Unitron platform links. */
+.site-footer { padding: 42px 0 30px; }
+.site-footer .site-footer-grid { gap: 24px; }
+.site-footer nav { gap: 6px; }
+.site-footer .site-footer-legal { margin-top: 28px; padding-top: 18px; }
+@media (max-width: 760px) {
+  .site-footer { padding: 34px 0 24px; }
+  .site-footer .site-footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 16px; }
+  .site-footer .site-footer-brand,
+  .site-footer .site-footer-contact { grid-column: 1 / -1; }
+  .site-footer .site-footer-legal { margin-top: 24px; padding-top: 16px; }
 }

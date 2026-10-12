@@ -4,6 +4,7 @@ import { blogPosts, type Locale } from "@/content/seo";
 import { siteConfig } from "@/config/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ArrowDown, ArrowRight, BookOpen, Clock3 } from "lucide-react";
+import {editorialPath} from '@/content/editorial-routing';
 
 export function generateStaticParams() {
   return [{ locale: "ro" }, { locale: "ru" }];
@@ -60,7 +61,7 @@ export default async function Blog({
   setRequestLocale(locale);
   const posts = blogPosts[locale];
   const copy = locale === "ro"
-    ? { eyebrow: "VOLMER · JURNALUL AUZULUI", title: "Înțelege mai bine auzul. Alege informat.", lead: "Ghiduri clare și practice despre auz, tehnologii auditive și folosirea aparatelor în viața de zi cu zi.", browse: "Vezi articolele", list: "Articole și ghiduri", read: "Citește articolul", test: "Ai întrebări despre auzul tău?", testLink: "Află cum decurge evaluarea auzului" }
+    ? { eyebrow: "VOLMER · JURNALUL AUZULUI", title: "Înțelegeți mai bine auzul. Alegeți informat.", lead: "Ghiduri clare și practice despre auz, tehnologii auditive și folosirea aparatelor în viața de zi cu zi.", browse: "Vedeți articolele", list: "Articole și ghiduri", read: "Citiți articolul", test: "Aveți întrebări despre auz?", testLink: "Aflați cum decurge evaluarea auzului" }
     : { eyebrow: "VOLMER · ЖУРНАЛ О СЛУХЕ", title: "Лучше понимать слух. Выбирать осознанно.", lead: "Понятные и практичные материалы о слухе, технологиях и использовании аппаратов в повседневной жизни.", browse: "Смотреть статьи", list: "Статьи и руководства", read: "Читать статью", test: "Есть вопросы о слухе?", testLink: "Узнайте, как проходит проверка слуха" };
   return (
     <>
@@ -69,7 +70,7 @@ export default async function Blog({
         label={locale === "ro" ? "Blog" : "Блог"}
         path="blog"
       />
-      <main className="blog-index-page">
+      <div className="blog-index-page">
         <section className="blog-index-hero">
           <div className="container blog-index-hero-inner">
             <div>
@@ -105,9 +106,9 @@ export default async function Blog({
               </article>
             ))}
           </div>
-          <aside className="blog-index-cta"><div><p>{copy.test}</p><a href={`/${locale}/test-auditiv/`}>{copy.testLink}<ArrowRight size={16} aria-hidden="true" /></a></div><span><BookOpen aria-hidden="true" /></span></aside>
+          <aside className="blog-index-cta"><div><p>{copy.test}</p><a href={editorialPath(locale, 'test')}>{copy.testLink}<ArrowRight size={16} aria-hidden="true" /></a></div><span><BookOpen aria-hidden="true" /></span></aside>
         </section>
-      </main>
+      </div>
     </>
   );
 }

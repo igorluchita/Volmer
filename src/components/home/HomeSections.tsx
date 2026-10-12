@@ -14,6 +14,10 @@ import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import { BusinessHours } from "@/components/business-hours";
 import { ContactRequestForm } from "@/components/home/ContactRequestForm";
+import { ConsentMap } from "@/components/consent/ConsentMap";
+import {editorialPath} from '@/content/editorial-routing';
+import {VerifiedTrust} from '@/components/verified-trust';
+import {QuickContactLinks} from '@/components/quick-contact-links';
 
 type SituationCard = {
   label: string;
@@ -118,7 +122,7 @@ export async function HomeSections() {
                   src={situationImages[index]}
                   alt={card.imageAlt}
                   fill
-                  sizes="(max-width: 760px) 100vw, 31vw"
+                  sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1200px) 31vw, 380px"
                 />
               </div>
               <div className="hp-situation-copy">
@@ -147,9 +151,9 @@ export async function HomeSections() {
           </ul>
           <div className="hp-dark-panel-footer">
             <p>{t("problem.disclaimer")}</p>
-            <Link className="hp-button hp-button-primary" href="/test-auditiv">
+            <a className="hp-button hp-button-primary" href={editorialPath(locale === 'ru' ? 'ru' : 'ro', 'test')}>
               {t("problem.cta")} <ArrowRight size={18} aria-hidden="true" />
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -244,7 +248,7 @@ export async function HomeSections() {
         </div>
         <div className="hp-flex-banner">
           <strong>{t("flexTrial.banner")}</strong>
-          <a className="hp-button hp-button-primary" href={`tel:${siteConfig.phoneInternational}`}>
+          <a className="hp-button hp-button-primary" href={`/${locale}/#booking-form`}>
             {t("flexTrial.cta")} <ArrowRight size={18} aria-hidden="true" />
           </a>
         </div>
@@ -262,12 +266,12 @@ export async function HomeSections() {
             <div className="hp-outcome-list">
               {outcomes.map((outcome, index) => (
                 <article key={outcome.text}>
-                  <Image src={outcomeImages[index]} alt={outcome.imageAlt} width={116} height={78} />
+              <Image src={outcomeImages[index]} alt={outcome.imageAlt} width={116} height={78} sizes="116px" />
                   <strong>{outcome.text}</strong>
                 </article>
               ))}
             </div>
-            <a className="hp-button hp-button-primary" href={`tel:${siteConfig.phoneInternational}`}>
+            <a className="hp-button hp-button-primary" href={`/${locale}/#booking-form`}>
               {t("price.cta")}
             </a>
           </div>
@@ -300,7 +304,7 @@ export async function HomeSections() {
           ))}
         </div>
         <div className="hp-centered-action">
-          <a className="hp-button hp-button-navy" href={`tel:${siteConfig.phoneInternational}`}>
+          <a className="hp-button hp-button-navy" href={`/${locale}/#booking-form`}>
             {t("whyVolmer.cta")} <ArrowRight size={18} aria-hidden="true" />
           </a>
         </div>
@@ -349,7 +353,7 @@ export async function HomeSections() {
                   src={platformImages[index]}
                   alt={platform.imageAlt}
                   fill
-                  sizes="(max-width: 760px) 70vw, 24vw"
+                  sizes="(max-width: 760px) calc(100vw - 80px), (max-width: 1200px) 24vw, 360px"
                 />
               </div>
             </article>
@@ -367,11 +371,13 @@ export async function HomeSections() {
           <strong>{t("company.trustText")}</strong>
         </div>
         <div className="hp-centered-action">
-          <a className="hp-button hp-button-primary" href={`tel:${siteConfig.phoneInternational}`}>
+          <a className="hp-button hp-button-primary" href={`/${locale}/#booking-form`}>
             <Phone size={18} aria-hidden="true" /> {t("company.cta")}
           </a>
         </div>
       </section>
+
+      <VerifiedTrust />
 
       <section className="hp-faq hp-container" id="faq" aria-labelledby="faq-title">
         <header className="hp-section-heading">
@@ -390,7 +396,8 @@ export async function HomeSections() {
       </section>
 
       <section className="hp-contact hp-container" id="contact" aria-labelledby="contact-title">
-        <div className="hp-contact-copy">
+        <div className="hp-contact-left">
+          <div className="hp-contact-copy">
           <p className="hp-contact-eyebrow"><BadgeCheck size={17} aria-hidden="true" />{t("contact.eyebrow")}</p>
           <h2 id="contact-title">{t("contact.title")}</h2>
           <p>{t("contact.text")}</p>
@@ -400,31 +407,26 @@ export async function HomeSections() {
             <div><Clock3 aria-hidden="true" /><span><small>{t("contact.hoursLabel")}</small><BusinessHours /></span></div>
             <a href={`mailto:${siteConfig.email}`}><Mail aria-hidden="true" /><span><small>{t("contact.emailLabel")}</small><strong>{siteConfig.email}</strong></span></a>
           </div>
-        </div>
-        <ContactRequestForm />
-        <div className="hp-contact-location">
+          <div className="hp-contact-mobile-channels"><QuickContactLinks variant="inline" /></div>
+          </div>
           <figure className="hp-office-photo">
             <Image
               src="/images/homepage/volmer-office-facade-current.png"
               alt={t("contact.officePhotoAlt")}
               fill
-              sizes="(max-width: 760px) 100vw, 50vw"
+              sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1200px) 50vw, 550px"
             />
             <figcaption>{t("contact.officePhotoCaption")}</figcaption>
           </figure>
+        </div>
+        <div className="hp-contact-right">
+          <ContactRequestForm />
           <div className="hp-map-frame">
             <div className="hp-map-heading">
               <span><MapPin aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span>
-              <a href={siteConfig.googleMapsDirectionsUrl} target="_blank" rel="noreferrer">{t("contact.mapLink")}</a>
+              <a href={siteConfig.googleMapsDirectionsUrl}>{t("contact.mapLink")}</a>
             </div>
-            <iframe
-              className="hp-contact-map"
-              src={siteConfig.googleMapsEmbedUrl || `https://maps.google.com/maps?q=${encodeURIComponent(`${siteConfig.address}, ${siteConfig.city}`)}&output=embed`}
-              title={t("contact.mapTitle")}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
+            <ConsentMap src={siteConfig.googleMapsEmbedUrl || `https://maps.google.com/maps?q=${encodeURIComponent(`${siteConfig.address}, ${siteConfig.city}`)}&output=embed`} />
           </div>
         </div>
       </section>
