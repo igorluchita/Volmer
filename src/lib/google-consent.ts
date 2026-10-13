@@ -16,6 +16,15 @@ export type GoogleConsentState = {
   ad_personalization: 'granted' | 'denied';
 };
 
+export type Messenger = 'whatsapp' | 'viber' | 'telegram';
+
+/** Queue one GTM event per actual click on a supported messenger link. */
+export function trackMessengerClick(messenger: Messenger): void {
+  if (typeof window === 'undefined') return;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({event: 'messenger_click', messenger});
+}
+
 export const DEFAULT_GOOGLE_CONSENT: GoogleConsentState = {
   analytics_storage: 'denied',
   ad_storage: 'denied',

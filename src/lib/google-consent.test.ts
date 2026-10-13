@@ -1,6 +1,6 @@
 import {afterEach, describe, expect, it, vi} from 'vitest';
 import {createConsent, parseConsent} from './consent';
-import {createGoogleTagManagerBootstrap, DEFAULT_GOOGLE_CONSENT, googleConsentFor, GTM_CONTAINER_ID, updateGoogleConsent} from './google-consent';
+import {createGoogleTagManagerBootstrap, DEFAULT_GOOGLE_CONSENT, googleConsentFor, GTM_CONTAINER_ID, trackMessengerClick, updateGoogleConsent} from './google-consent';
 
 afterEach(() => vi.unstubAllGlobals());
 
@@ -39,6 +39,13 @@ describe('Google Tag Manager consent integration', () => {
     expect(gtag).toHaveBeenCalledWith('consent', 'update', {
       analytics_storage: 'granted', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
     });
+  });
+
+  it.each(['whatsapp', 'viber', 'telegram'] as const)('queues one messenger_click event for %s', (messenger) => {
+    const dataLayer: unknown[] = [];
+    vi.stubGlobal('window', {dataLayer});
+    trackMessengerClick(messenger);
+    expect(dataLayer).toEqual([{event: 'messenger_click', messenger}]);
   });
 
   it('keeps reject optional and accept all behavior', () => {

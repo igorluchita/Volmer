@@ -5,6 +5,7 @@ import {useState} from 'react';
 import {MessageCircle, Phone, Send} from 'lucide-react';
 import {siteConfig} from '@/config/site';
 import {configuredContactChannels} from '@/config/contact-links';
+import {trackMessengerClick} from '@/lib/google-consent';
 
 type Channel = {key: 'whatsapp' | 'viber' | 'telegram'; label: string; href: string; Icon: typeof MessageCircle};
 
@@ -24,7 +25,7 @@ export function QuickContactLinks({variant = 'floating'}: {variant?: 'floating' 
       <span className="quick-contact-toggle-indicator" aria-hidden="true">{isOpen ? '−' : '+'}</span>
     </button>}
     <nav className={`quick-contact quick-contact-${variant}${variant === 'floating' ? ` is-${isOpen ? 'open' : 'closed'}` : ''}`} aria-label={t('navigationLabel')} aria-hidden={variant === 'floating' ? !isOpen : undefined}>
-      {channels.map(({key, label, href, Icon}, index) => <a key={key} className={`quick-contact-link quick-contact-${key}`} href={href} target="_blank" rel="noopener noreferrer" data-contact-channel={key} aria-label={label} tabIndex={variant === 'floating' && !isOpen ? -1 : undefined} style={{'--contact-index': index} as React.CSSProperties}>
+      {channels.map(({key, label, href, Icon}, index) => <a key={key} className={`quick-contact-link quick-contact-${key}`} href={href} target="_blank" rel="noopener noreferrer" data-contact-channel={key} onClick={() => trackMessengerClick(key)} aria-label={label} tabIndex={variant === 'floating' && !isOpen ? -1 : undefined} style={{'--contact-index': index} as React.CSSProperties}>
         <Icon size={18} aria-hidden="true" /><span>{label}</span>
       </a>)}
     </nav>
