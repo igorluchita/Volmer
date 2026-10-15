@@ -38,10 +38,6 @@ export const hearingAidFamilies:readonly CatalogFamily[]=[
   {name:"SCALA V-312",form:"RIC",power:p("Baterie 312","Батарейка 312"),levels,colors:["P4","P6","P7","R8"]},{name:"SCALA V-M",form:"BTE",power:p("Baterie 312 + bobină T","Батарейка 312 + телекатушка"),levels,colors:["P4","P6","P7","R8"]},{name:"SCALA V-PR",form:"BTE",power:p("Acumulator Li-ion","Литий-ионный аккумулятор"),levels,colors:["P4","P6","P7","R8"]},{name:"SCALA V-SP",form:"BTE",power:p("Baterie 13 + bobină T","Батарейка 13 + телекатушка"),levels,colors:["P4","P6","P7","R8"]},
   {name:"SCALA A RIC",form:"RIC",power:p("Baterie 312","Батарейка 312"),colors:["P6","P7","R8"]},{name:"SCALA A M",form:"BTE",power:p("Baterie 312","Батарейка 312"),colors:["P6","P7","R8"]},{name:"SCALA A SP",form:"BTE",power:p("Baterie 13","Батарейка 13"),colors:["P6","P7","R8"]},{name:"SCALA A UP",form:"BTE",power:p("Baterie 675","Батарейка 675"),colors:["P6","P7","R8"]}]},
 ] as const;
-export const priceClasses=[
- {name:p("Basic / Basic+","Basic / Basic+"),battery:"400–1.000 €",rechargeable:"900–1.100 €"},{name:p("Clasa medie","Средний класс"),battery:"1.150–1.400 €",rechargeable:"1.350–1.400 €"},
- {name:p("Confort","Комфорт"),battery:"1.300–1.400 €",rechargeable:"1.550–1.600 €"},{name:p("Premium","Премиум"),battery:"1.800 €",rechargeable:"1.900–2.100 €"},
-] as const;
 export const accessories=[
  {name:"TV Connector",image:"/images/hearing-aids/catalog/tv-connector.png",text:p("Transmite wireless sunetul televizorului în aparatele compatibile.","Передаёт звук телевизора по беспроводной связи в совместимые аппараты.")},
  {name:"PartnerMic",image:"/images/hearing-aids/catalog/partner-mic.png",text:p("Microfon cu clips pentru conversații la distanță sau în zgomot.","Клип-микрофон для разговоров на расстоянии или в шуме.")},

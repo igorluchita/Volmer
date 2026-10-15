@@ -51,6 +51,44 @@ describe('RO/RU editorial pages', () => {
     expect(urls.has(`${siteConfig.siteUrl}/ru/test-auditiv/`)).toBe(false);
   });
 
+  it('keeps redirect sources and removed price routes out of sitemap', () => {
+    const urls = new Set(sitemap().map((entry) => entry.url));
+    const redirectSources = [
+      '/ru/sluhovye-apparaty-moldova/',
+      '/ru/sluhovye-apparaty-kishinev/',
+      '/ru/perezaryazhaemye-sluhovye-apparaty/',
+      '/ru/nezametnye-sluhovye-apparaty/',
+      '/ru/nastroika-sluhovyh-apparatov/',
+      '/ru/nastrojka-sluhovyh-apparatov/',
+      '/ro/test-auz-chisinau/',
+      '/ru/blog/priznaki-snizheniya-sluha/',
+      '/ru/test-auditiv/',
+      '/ro/programare/',
+      '/ro/blog/unitron-tehnologii-moderne/',
+      '/ro/blog/aparat-auditiv-persoane-varstnice/',
+    ];
+    for (const path of redirectSources) expect(urls.has(`${siteConfig.siteUrl}${path}`)).toBe(false);
+
+    for (const path of [
+      '/ru/aparate-auditive-moldova/',
+      '/ro/aparate-auditive-moldova/',
+      '/ru/aparate-auditive-chisinau/',
+      '/ro/aparate-auditive-chisinau/',
+      '/ru/aparate-auditive-reincarcabile/',
+      '/ru/aparate-auditive-discrete/',
+      '/ru/reglare-aparate-auditive/',
+      '/ro/test-auditiv-gratuit/',
+      '/ru/blog/semne-auz-slab/',
+      '/ro/',
+      '/ro/aparate-auditive/',
+      '/ro/aparate-auditive-pentru-varstnici/',
+    ]) expect(urls.has(`${siteConfig.siteUrl}${path}`)).toBe(true);
+    expect(urls.has(`${siteConfig.siteUrl}/ro/preturi/`)).toBe(false);
+    expect(urls.has(`${siteConfig.siteUrl}/ru/preturi/`)).toBe(false);
+    expect(editorialTypeFor('ro', 'preturi')).toBeNull();
+    expect(editorialTypeFor('ru', 'preturi')).toBeNull();
+  });
+
   it('uses one shared slug for every RO/RU page pair', () => {
     for (const type of editorialTypes) {
       expect(editorialPath('ro', type).slice(4)).toBe(editorialPath('ru', type).slice(4));
@@ -71,6 +109,17 @@ describe('RO/RU editorial pages', () => {
     const config = readFileSync('next.config.ts', 'utf8');
     expect(config).toContain("{source: '/ro/test-auditiv/', destination: '/ro/test-auditiv-gratuit/', permanent: true}");
     expect(config).toContain("{source: '/ru/test-auditiv/', destination: '/ru/test-auditiv-gratuit/', permanent: true}");
+  });
+
+  it('redirects reported legacy Russian commercial URLs directly to their canonical pages', () => {
+    const config = readFileSync('next.config.ts', 'utf8');
+    expect(config).toContain("['nastrojka-sluhovyh-apparatov', 'reglare-aparate-auditive']");
+  });
+
+  it('redirects old blog URLs to existing matching content', () => {
+    const config = readFileSync('next.config.ts', 'utf8');
+    expect(config).toContain("{source: '/ro/blog/unitron-tehnologii-moderne/', destination: '/ro/aparate-auditive/', permanent: true}");
+    expect(config).toContain("{source: '/ro/blog/aparat-auditiv-persoane-varstnice/', destination: '/ro/aparate-auditive-pentru-varstnici/', permanent: true}");
   });
 
   it('uses the confirmed business phone for configured messaging channels', () => {

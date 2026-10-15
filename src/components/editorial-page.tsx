@@ -12,7 +12,7 @@ import HearingTest from '@/components/hearing-test-page';
 import {siteConfig} from '@/config/site';
 import {ageOnDate, type BirthDate} from '@/lib/age';
 import {editorialContent, editorialPath, type EditorialLocale, type EditorialType} from '@/content/editorial-pages';
-import {hearingAidFamilies, priceClasses, technologyLevels} from '@/content/hearing-aids-catalog';
+import {hearingAidFamilies} from '@/content/hearing-aids-catalog';
 
 export async function EditorialPage({locale, type}: {locale: EditorialLocale; type: EditorialType}) {
   setRequestLocale(locale);
@@ -280,119 +280,6 @@ function AboutPage({locale, page}: {locale: EditorialLocale; page: ReturnType<ty
 
       <section className="about-final"><div><p className="about-kicker">{ru ? 'СЛУХОВЫЕ РЕШЕНИЯ VOLMER' : 'SOLUȚII AUDITIVE VOLMER'}</p><h2>{copy.finalTitle}</h2><p>{copy.finalText}</p></div><div><a className="editorial-primary" href={`/${locale}/#booking-form`}>{copy.finalBook}<ArrowRight size={18} aria-hidden="true" /></a><a className="about-final-secondary" href={`/${locale}/aparate-auditive/`}>{copy.finalCatalog}</a></div></section>
     </div>
-  </div>;
-}
-
-function PricesPage({locale, page}: {locale: EditorialLocale; page: ReturnType<typeof editorialContent>}) {
-  const ru = locale === 'ru';
-  const copy = ru ? {
-    priceIntro: 'Итоговая стоимость зависит от выбранной модели и конфигурации. Ниже указаны ценовые диапазоны Volmer для основных классов.',
-    battery: 'На батарейках', rechargeable: 'Перезаряжаемый',
-    range: 'От 400 € до 2 100 € — в зависимости от класса, модели и питания.',
-    pricesCta: 'Смотреть цены', booking: 'Записаться на бесплатную проверку',
-    technologyTitle: 'Что меняется с ростом технологического уровня?',
-    technologyText: 'Различия могут касаться обработки речи и шума в сложной акустической обстановке, автоматизации программ, доступных функций и подключения. Конкретные возможности зависят от семейства и модели.',
-    levelsTitle: 'Уровни Unitron', levelsNote: 'Технологические уровни Unitron (9, 7, 5, 3, 1) — не то же самое, что ценовые классы Volmer. Автоматического соответствия между ними нет.',
-    trustTitle: 'Более высокая цена не означает, что этот вариант подойдёт именно вам',
-    trustText: 'Выбор зависит от ситуаций, в которых вам важно лучше слышать. У человека, который чаще общается дома, могут быть другие потребности, чем у того, кто часто бывает на встречах, за рулём, в поездках, ресторанах и других шумных местах.',
-    trustNote: 'Цель оценки — понять, какой уровень технологий нужен именно вам, а не начинать с самого дорогого аппарата.',
-    lifeTitle: 'В каких ситуациях вам важно лучше слышать?',
-    situations: ['Дома и в спокойной беседе', 'В кругу семьи и небольшой компании', 'На работе и встречах', 'В ресторанах и шумных местах', 'В поездках и активной жизни'],
-    powerTitle: 'Батарейка или аккумулятор?',
-    batteryPoints: ['Батарейки нужно периодически менять.', 'Заряжать аппарат не требуется.', 'Доступные варианты зависят от модели и класса.'],
-    rechargeablePoints: ['В совместимых моделях есть встроенный аккумулятор.', 'Для зарядки используется подходящее к модели устройство.', 'Не нужно регулярно менять батарейки.'],
-    shapesTitle: 'Форма аппарата — часть выбора',
-    shapesText: 'RIC, BTE и ITE отличаются способом ношения и конструкцией. Подходящая форма зависит от результатов проверки слуха, особенностей уха, необходимой мощности и повседневных предпочтений. Сама форма не задаёт отдельную ценовую категорию.',
-    catalogCta: 'Сравнить RIC, BTE и ITE',
-    valueTitle: 'Аппарат — это больше, чем устройство',
-    valueIntro: 'В Volmer решение начинается с разговора о слухе и повседневных ситуациях. Этапы и стоимость аппарата обсуждаются до окончательного выбора.',
-    valueItems: [
-      ['Проверка и консультация', 'Первичная оценка слуха и консультация в Volmer бесплатны; результаты объясняются понятным языком.'],
-      ['Подбор и настройка', 'Обсуждаем варианты и их функции с учётом результатов оценки и ваших задач.'],
-      ['Поддержка', 'На аппараты действует гарантия 2 года; до 4 контрольных визитов в год предусмотрены в течение гарантии согласно условиям Volmer.'],
-    ],
-    trialTitle: 'Не выбирайте только по фотографии или таблице',
-    trialText: 'Flex Trial позволяет попробовать слуховой аппарат в повседневной жизни в течение двух недель. Конкретные условия и подходящие модели обсуждаются с командой Volmer.',
-    trialCta: 'Как работает Flex Trial',
-    productsTitle: 'Посмотрите аппараты Unitron',
-    productsText: 'В каталоге собраны семейства, модели, формы, питание и подтверждённые производителем варианты.',
-    productCta: 'Открыть каталог слуховых аппаратов',
-    faqTitle: 'Частые вопросы о ценах',
-    moreTitle: 'Полезная информация',
-    cnam: 'Информация о CNAM', test: 'Проверка слуха', flex: 'Flex Trial',
-    finalTitle: 'Выбирайте по своим потребностям, а не только по цене',
-    finalText: 'Мы оценим слух, обсудим ситуации, в которых возникают трудности, и представим подходящие варианты и их стоимость до окончательного выбора.',
-  } : {
-    priceIntro: 'Prețul final depinde de modelul ales și configurație. Mai jos sunt intervalele Volmer pentru principalele clase.',
-    battery: 'Cu baterie', rechargeable: 'Reîncărcabil',
-    range: 'Între 400 € și 2.100 €, în funcție de clasă, model și tipul de alimentare.',
-    pricesCta: 'Vedeți prețurile', booking: 'Programați evaluarea gratuită',
-    technologyTitle: 'Ce se schimbă când crește nivelul tehnologic?',
-    technologyText: 'Diferențele pot ține de procesarea vorbirii și a zgomotului în medii acustice complexe, automatizarea programelor, funcțiile disponibile și conectivitate. Funcțiile concrete diferă în funcție de familie și model.',
-    levelsTitle: 'Nivelurile Unitron', levelsNote: 'Nivelurile tehnologice Unitron (9, 7, 5, 3, 1) nu sunt același lucru cu clasele de preț Volmer. Nu există o corespondență automată între ele.',
-    trustTitle: 'Un preț mai mare nu înseamnă automat că aparatul vi se potrivește mai bine',
-    trustText: 'Alegerea depinde de situațiile în care aveți nevoie să auziți mai bine. O persoană care comunică mai ales acasă poate avea alte nevoi decât cineva care participă frecvent la întâlniri, conduce, călătorește sau merge în restaurante și alte medii zgomotoase.',
-    trustNote: 'Scopul evaluării este să alegem nivelul tehnologic de care aveți nevoie, nu să pornim de la cel mai scump aparat.',
-    lifeTitle: 'Unde aveți nevoie să auziți mai bine?',
-    situations: ['Acasă și în conversații liniștite', 'În familie și grupuri mici', 'La serviciu și la întâlniri', 'În restaurante și medii zgomotoase', 'În călătorii și viața activă'],
-    powerTitle: 'Baterie sau reîncărcabil?',
-    batteryPoints: ['Bateriile se înlocuiesc periodic.', 'Aparatul nu necesită încărcare.', 'Variantele disponibile depind de model și clasă.'],
-    rechargeablePoints: ['Modelele compatibile au acumulator integrat.', 'Încărcarea se face cu stația potrivită modelului.', 'Nu mai este necesară schimbarea periodică a bateriilor.'],
-    shapesTitle: 'Forma aparatului este o parte a alegerii',
-    shapesText: 'RIC, BTE și ITE diferă prin construcție și modul de purtare. Forma potrivită depinde de evaluarea auzului, anatomia urechii, puterea necesară și preferințele de zi cu zi. Forma, în sine, nu stabilește o clasă de preț.',
-    catalogCta: 'Comparați RIC, BTE și ITE',
-    valueTitle: 'Un aparat auditiv înseamnă mai mult decât dispozitivul',
-    valueIntro: 'La Volmer, procesul începe cu o discuție despre auz și situațiile de zi cu zi. Etapele și costul aparatului se discută înainte de alegerea finală.',
-    valueItems: [
-      ['Evaluare și consultație', 'Evaluarea inițială a auzului și consultația la Volmer sunt gratuite; rezultatele sunt explicate clar.'],
-      ['Selectare și reglaj', 'Discutăm opțiunile și funcțiile lor în raport cu rezultatele evaluării și nevoile dumneavoastră.'],
-      ['Suport', 'Aparatele au garanție de 2 ani; până la 4 vizite de control pe an sunt prevăzute în perioada garanției, conform condițiilor Volmer.'],
-    ],
-    trialTitle: 'Nu trebuie să alegeți doar dintr-o fotografie sau dintr-un tabel',
-    trialText: 'Flex Trial vă permite să testați aparatul auditiv în viața de zi cu zi timp de două săptămâni. Condițiile concrete și modelele potrivite se discută cu echipa Volmer.',
-    trialCta: 'Cum funcționează Flex Trial',
-    productsTitle: 'Vedeți aparatele Unitron',
-    productsText: 'Catalogul prezintă familiile, modelele, formele, tipurile de alimentare și variantele confirmate de producător.',
-    productCta: 'Deschideți catalogul aparatelor auditive',
-    faqTitle: 'Întrebări frecvente despre prețuri',
-    moreTitle: 'Informații utile',
-    cnam: 'Informații despre CNAM', test: 'Evaluarea auzului', flex: 'Flex Trial',
-    finalTitle: 'Alegeți după nevoile dumneavoastră, nu doar după preț',
-    finalText: 'Evaluăm auzul, discutăm situațiile în care întâmpinați dificultăți și vă prezentăm opțiunile potrivite și costurile lor înainte de alegerea finală.',
-  };
-  const levels = [...technologyLevels].reverse();
-  const faqs = page.faqs ?? [];
-  const catalogHref = `/${locale}/aparate-auditive/`;
-  return <div className="editorial-page prices-page">
-    <Breadcrumbs locale={locale} label={page.title} path="preturi" />
-    {faqs.length > 0 && <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify({'@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: faqs.map(({question, answer}) => ({'@type': 'Question', name: question, acceptedAnswer: {'@type': 'Answer', text: answer}}))})}} />}
-    <header className="prices-hero"><div className="container prices-hero-inner"><div><p className="editorial-eyebrow">{ru ? 'ЦЕНЫ НА СЛУХОВЫЕ АППАРАТЫ' : 'PREȚURI APARATE AUDITIVE'}</p><h1>{page.title}</h1><p className="prices-hero-lead">{ru ? 'Выбор зависит от технологического уровня, модели, подключения и типа питания.' : 'Alegerea depinde de nivelul tehnologic, model, conectivitate și tipul de alimentare.'}</p><div className="prices-hero-actions"><a className="editorial-primary" href="#pricing">{copy.pricesCta}<ArrowRight size={18} aria-hidden="true" /></a><a className="prices-hero-secondary" href={`/${locale}/#booking-form`}>{copy.booking}</a></div></div></div></header>
-
-    <main className="prices-content container">
-      <section className="prices-section prices-main" id="pricing" aria-labelledby="prices-main-title"><header className="prices-section-heading"><p className="prices-kicker">{ru ? 'ЦЕНЫ VOLMER' : 'PREȚURI VOLMER'}</p><h2 id="prices-main-title">{ru ? 'Цены на слуховые аппараты' : 'Prețuri aparate auditive'}</h2><p>{copy.priceIntro}</p></header><div className="prices-grid">{priceClasses.map((item, index) => <article className="prices-card" key={item.name.ro}><span className="prices-card-index">0{index + 1}</span><h3>{item.name[locale]}</h3><div className="prices-option"><span>{copy.battery}</span><strong>{item.battery}</strong></div><div className="prices-option"><span>{copy.rechargeable}</span><strong>{item.rechargeable}</strong></div></article>)}</div><p className="prices-range-note">{copy.range}</p></section>
-
-      <section className="prices-section prices-technology" aria-labelledby="prices-technology-title"><div className="prices-split"><header className="prices-section-heading"><p className="prices-kicker">{ru ? 'ТЕХНОЛОГИЯ' : 'TEHNOLOGIE'}</p><h2 id="prices-technology-title">{copy.technologyTitle}</h2><p>{copy.technologyText}</p></header><div className="prices-level-panel"><h3>{copy.levelsTitle}</h3><ol>{levels.map((level) => <li key={level.level}><strong>{level.level}</strong><span>{level[locale]}</span></li>)}</ol><p>{copy.levelsNote}</p></div></div></section>
-
-      <section className="prices-trust" aria-labelledby="prices-trust-title"><p className="prices-kicker">{ru ? 'ВЫБОР БЕЗ ДАВЛЕНИЯ' : 'ALEGEȚI FĂRĂ PRESIUNE'}</p><h2 id="prices-trust-title">{copy.trustTitle}</h2><p>{copy.trustText}</p><strong>{copy.trustNote}</strong></section>
-
-      <section className="prices-section" aria-labelledby="prices-life-title"><header className="prices-section-heading"><p className="prices-kicker">{ru ? 'ВАША ПОВСЕДНЕВНАЯ ЖИЗНЬ' : 'VIAȚA DE ZI CU ZI'}</p><h2 id="prices-life-title">{copy.lifeTitle}</h2></header><ul className="prices-situations">{copy.situations.map((situation, index) => <li key={situation}><span>0{index + 1}</span>{situation}</li>)}</ul></section>
-
-      <section className="prices-section prices-power" aria-labelledby="prices-power-title"><header className="prices-section-heading"><p className="prices-kicker">{ru ? 'ТИП ПИТАНИЯ' : 'TIPUL DE ALIMENTARE'}</p><h2 id="prices-power-title">{copy.powerTitle}</h2></header><div className="prices-power-grid"><article><span aria-hidden="true">◉</span><h3>{copy.battery}</h3><ul>{copy.batteryPoints.map((point) => <li key={point}>{point}</li>)}</ul></article><article><span aria-hidden="true">↯</span><h3>{copy.rechargeable}</h3><ul>{copy.rechargeablePoints.map((point) => <li key={point}>{point}</li>)}</ul></article></div></section>
-
-      <section className="prices-section prices-shapes" aria-labelledby="prices-shapes-title"><div><p className="prices-kicker">{ru ? 'ФОРМАТЫ' : 'FORME'}</p><h2 id="prices-shapes-title">{copy.shapesTitle}</h2><p>{copy.shapesText}</p><a className="prices-text-link" href={catalogHref}>{copy.catalogCta}<ArrowRight size={17} aria-hidden="true" /></a></div><div className="prices-shape-list"><span>RIC</span><span>BTE</span><span>ITE</span></div></section>
-
-      <section className="prices-section prices-process" aria-labelledby="prices-process-title"><header className="prices-section-heading"><p className="prices-kicker">{ru ? 'ПОДХОД VOLMER' : 'PROCESUL VOLMER'}</p><h2 id="prices-process-title">{copy.valueTitle}</h2><p>{copy.valueIntro}</p></header><div className="prices-process-grid">{copy.valueItems.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-
-      <section className="prices-trial" aria-labelledby="prices-trial-title"><div><p className="prices-kicker">FLEX TRIAL</p><h2 id="prices-trial-title">{copy.trialTitle}</h2><p>{copy.trialText}</p></div><a className="prices-light-link" href={editorialPath(locale, 'flex')}>{copy.trialCta}<ArrowRight size={18} aria-hidden="true" /></a></section>
-
-      <section className="prices-section prices-catalog-cta"><a className="editorial-primary" href={catalogHref}>{ru ? 'Смотреть каталог' : 'Vedeți catalogul'}<ArrowRight size={18} aria-hidden="true" /></a></section>
-
-      <section className="prices-section prices-faq" aria-labelledby="prices-faq-title"><header className="prices-section-heading"><p className="prices-kicker">{ru ? 'ПЕРЕД ВЫБОРОМ' : 'ÎNAINTE DE A ALEGE'}</p><h2 id="prices-faq-title">{copy.faqTitle}</h2></header><div className="editorial-faq">{faqs.map(({question, answer}) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
-
-      <nav className="prices-more" aria-label={copy.moreTitle}><h2>{copy.moreTitle}</h2><a href={catalogHref}>{copy.productCta}<ArrowRight size={16} aria-hidden="true" /></a><a href={editorialPath(locale, 'test')}>{copy.test}<ArrowRight size={16} aria-hidden="true" /></a><a href={editorialPath(locale, 'flex')}>{copy.flex}<ArrowRight size={16} aria-hidden="true" /></a><a href={editorialPath(locale, 'cnam')}>{copy.cnam}<ArrowRight size={16} aria-hidden="true" /></a></nav>
-
-      <section className="prices-final"><div><p className="prices-kicker">{ru ? 'СЛЕДУЮЩИЙ ШАГ' : 'URMĂTORUL PAS'}</p><h2>{copy.finalTitle}</h2><p>{copy.finalText}</p></div><div><a className="editorial-primary" href={`/${locale}/#booking-form`}>{copy.booking}<ArrowRight size={18} aria-hidden="true" /></a><a className="prices-final-secondary" href={catalogHref}>{copy.productCta}</a></div></section>
-    </main>
   </div>;
 }
 
