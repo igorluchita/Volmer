@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { setRequestLocale } from "next-intl/server";
-import { ArrowRight, CalendarDays, Check, Clock3, Mail, ShieldCheck } from "lucide-react";
+import { ArrowRight, CalendarDays, Check, Clock3, Headphones, Mail, ShieldCheck, Sparkles } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { hearingTestPageContent } from "@/content/hearing-test-page";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -25,23 +25,26 @@ export default async function HearingTest({locale, path}: {locale: 'ro' | 'ru'; 
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
 
-      <section className="hearing-test-hero" aria-labelledby="hearing-test-title">
-        <div className="container hearing-test-hero-grid">
-          <div className="hearing-test-hero-copy">
-            <p className="hearing-test-eyebrow"><span />{content.hero.eyebrow}</p>
+      <section className="hp-hero hp-container hearing-test-hero" aria-labelledby="hearing-test-title">
+        <div className="hp-hero-grid hearing-test-hero-grid">
+          <div className="hp-hero-copy hearing-test-hero-copy">
+            <p className="hp-hero-eyebrow hearing-test-eyebrow"><Sparkles size={17} aria-hidden="true" />{content.hero.eyebrow}</p>
             <h1 id="hearing-test-title">{content.hero.title}</h1>
-            <p className="hearing-test-lead">{content.hero.lead}</p>
-            <p className="hearing-test-statement">{content.hero.statement}</p>
-            <div className="hearing-test-actions">
-              <a className="hearing-test-primary" href={`/${locale}/#booking-form`}>
-                <CalendarDays size={17} aria-hidden="true" />{content.hero.cta}
+            <p className="hp-hero-subheadline hearing-test-lead">{content.hero.lead}</p>
+            <div className="hp-hero-body hearing-test-statement"><p>{content.hero.statement}</p></div>
+            <ul className="hp-hero-benefits" aria-label={content.hero.eyebrow}>
+              {content.hero.facts.slice(1).map((fact) => <li key={fact}><span aria-hidden="true" />{fact}</li>)}
+            </ul>
+            <div className="hp-hero-actions hearing-test-actions">
+              <a className="hp-button hp-button-primary" href={`/${locale}/#booking-form`}>
+                <CalendarDays size={19} aria-hidden="true" />{content.hero.cta}
               </a>
-              <a className="hearing-test-secondary" href="#hearing-test-process">
-                {content.hero.processLink}<ArrowRight size={16} aria-hidden="true" />
+              <a className="hp-button hp-button-secondary" href="#hearing-test-process">
+                {content.hero.processLink}<ArrowRight size={17} aria-hidden="true" />
               </a>
             </div>
           </div>
-          <div className="hearing-test-hero-art">
+          <div className="hp-hero-media hearing-test-hero-art">
             <Image
               src="/images/pages/hearing-test/hearing-test-hero-photo.png"
               alt={content.imageAlts.hero}
@@ -49,11 +52,10 @@ export default async function HearingTest({locale, path}: {locale: 'ro' | 'ru'; 
               priority
               sizes="(max-width: 800px) calc(100vw - 48px), (max-width: 1280px) 44vw, 520px"
             />
-            <div className="hearing-test-facts">
-              <p><Clock3 aria-hidden="true" /><strong>{content.hero.facts[0]}</strong></p>
-              {content.hero.facts.slice(1).map((fact) => (
-                <p key={fact}><Check aria-hidden="true" />{fact}</p>
-              ))}
+            <span className="hp-hero-image-badge">{locale === "ro" ? "EVALUARE GRATUITĂ" : "БЕСПЛАТНАЯ ОЦЕНКА"}</span>
+            <div className="hp-hero-floating-card hearing-test-facts">
+              <span className="hp-hero-floating-icon" aria-hidden="true"><Headphones size={22} /></span>
+              <span><b><Clock3 size={14} aria-hidden="true" />{content.hero.facts[0]}</b><strong>{locale === "ro" ? "Evaluarea auzului, explicată pas cu pas" : "Проверка слуха с понятными объяснениями"}</strong></span>
             </div>
           </div>
         </div>

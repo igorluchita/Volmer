@@ -28,6 +28,8 @@ deployment/volmer-app/
 Încarcă **conținutul** lui `deployment/volmer-app/` în:
 `/home/volmermd/volmer-app/`. Păstrează inclusiv directorul ascuns `.next/`. Nu încărca proiectul-sursă, `out/`, `.env*`, `.git/`, arhiva statică veche sau fișierele Google de service account.
 
+În **cPanel → File Manager**, verifică și document root-ul domeniului `volmer.md` (directorul public servit de nginx). Dacă acolo au rămas fișierele `sitemap.xml` sau `robots.txt` de la vechiul site static, mută-le într-un backup **în afara document root-ului**. Fișierele respective sunt servite direct de nginx înainte ca cererea să ajungă la generatorul Next din `src/app/sitemap.ts` și `src/app/robots.ts`. Nu încărca `out/sitemap.xml` în document root. Păstrează aplicația Next și pachetul standalone ca sursa pentru ambele URL-uri.
+
 ## 2. Configurează cPanel
 
 În **cPanel → Setup Node.js App** creează/editează aplicația cu:
@@ -88,6 +90,8 @@ Deschide și verifică:
 - <https://volmer.md/ro/aparate-auditive/>
 - <https://volmer.md/sitemap.xml>
 - <https://volmer.md/robots.txt>
+
+După upload și restart, rulează local `npm run sitemap:verify-live` folosind același build din care ai pregătit pachetul. Comanda compară toate URL-urile din sitemapul public cu cele generate de Next și eșuează dacă există pagini lipsă, pagini suplimentare sau duplicate. Dacă răspunsul public încă are `Last-Modified` de la vechiul fișier static ori lista diferă, verifică document root-ul și regulile nginx înainte să trimiți sitemapul în Search Console.
 
 Verifică în browser/network și în cPanel:
 

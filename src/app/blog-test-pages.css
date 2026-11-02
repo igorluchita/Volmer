@@ -52,26 +52,26 @@
 
 .hearing-test-page { padding-bottom: 70px; background: #f5f7f9; color: #0a1d36; }
 .hearing-test-page > .breadcrumb { width: min(1180px, calc(100% - 48px)); margin: 0 auto; padding: 13px 0; color: #69798c; font-size: 12px; }
-.hearing-test-hero { overflow: hidden; background: radial-gradient(ellipse at 75% 12%, #204a78 0, transparent 38%), linear-gradient(125deg, #17385e, #0a1d36 78%); color: #fff; }
-.hearing-test-hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(330px, .82fr); align-items: center; gap: 44px; padding-top: 52px; padding-bottom: 52px; }
+.hearing-test-hero { overflow: hidden; }
+.hearing-test-hero-grid { grid-template-columns: minmax(0, 1.18fr) minmax(320px, .82fr); }
 .hearing-test-hero-copy { min-width: 0; }
-.hearing-test-eyebrow,.hearing-test-index { display: flex; align-items: center; gap: 8px; margin: 0 0 13px; color: #fbbf24; font-size: 12px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
-.hearing-test-eyebrow > span { width: 7px; height: 7px; border-radius: 50%; background: #26c18b; box-shadow: 0 0 0 4px rgba(38,193,139,.14); }
-.hearing-test-hero h1 { max-width: 720px; margin: 0; font: 700 clamp(38px, 4.6vw, 58px)/1.03 "Playfair Display", Georgia, serif; letter-spacing: -.03em; }
-.hearing-test-lead { max-width: 680px; margin: 18px 0 0; color: #d9e3ef; font-size: 16px; line-height: 1.62; }
-.hearing-test-statement { max-width: 660px; margin: 12px 0 0; color: #c2d2e4; font-size: 14px; line-height: 1.6; }
-.hearing-test-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 22px; }
+.hearing-test-eyebrow { margin-bottom: 20px; }
+.hearing-test-hero h1 { max-width: 820px; }
+.hearing-test-lead { max-width: 680px; margin: 12px 0 0; color: var(--hp-amber); font-size: clamp(16px, 1.35vw, 19px); font-weight: 800; line-height: 1.4; }
+.hearing-test-statement { max-width: 660px; margin-top: 18px; color: #d8e2ee; font-size: 15px; line-height: 1.5; }
+.hearing-test-statement p { margin: 0; }
+.hearing-test-actions { align-items: stretch; margin-top: 22px; }
 .hearing-test-primary,.hearing-test-secondary { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 9px; border-radius: 10px; padding: 11px 15px; font-size: 13px; font-weight: 750; text-align: center; text-decoration: none; transition: background-color 150ms ease-out, transform 150ms ease-out; }
 .hearing-test-primary { background: #cf4800; color: #fff; box-shadow: 0 7px 18px rgba(234,88,12,.22); }
 .hearing-test-primary:hover { transform: translateY(-1px); background: #b83d05; }
 .hearing-test-secondary { border: 1px solid rgba(255,255,255,.28); color: #fff; }
 .hearing-test-secondary:hover { background: rgba(255,255,255,.09); }
-.hearing-test-hero-art { position: relative; min-width: 0; aspect-ratio: 1.24; overflow: hidden; border: 1px solid rgba(255,255,255,.24); border-radius: 20px; background: #f5f7fc; box-shadow: 0 22px 48px rgba(0,0,0,.22); }
+.hearing-test-hero-art { width: min(100%, 480px); min-width: 0; min-height: 0; aspect-ratio: 1.24; justify-self: end; }
 .hearing-test-hero-art > img { object-fit: cover; }
-.hearing-test-facts { position: absolute; right: 14px; bottom: 14px; left: 14px; display: grid; gap: 7px; border: 1px solid rgba(255,255,255,.75); border-radius: 13px; padding: 12px 14px; background: rgba(255,255,255,.96); box-shadow: 0 8px 22px rgba(10,29,54,.14); color: #43566d; font-size: 11px; }
-.hearing-test-facts p { display: flex; align-items: center; gap: 8px; margin: 0; line-height: 1.35; }
-.hearing-test-facts svg { width: 14px; height: 14px; flex: none; color: #0ca678; }
-.hearing-test-facts p:first-child { color: #0a1d36; font-size: 13px; }
+.hearing-test-facts { right: 18px; bottom: 18px; left: 18px; }
+.hearing-test-facts b { display: flex; align-items: center; gap: 6px; }
+.hearing-test-facts b svg { width: 14px; height: 14px; color: #0ca678; }
+.hearing-test-facts strong { line-height: 1.35; }
 .hearing-test-section { margin-top: 50px; border: 1px solid #e2e8f0; border-radius: 24px; padding: 42px; background: #fff; box-shadow: 0 12px 34px rgba(10,29,54,.045); }
 .hearing-test-heading { max-width: 820px; }
 .hearing-test-index { margin-bottom: 9px; color: #c2410c; }

@@ -6,16 +6,18 @@ import {BusinessHours} from '@/components/business-hours';
 import {ConsentMap} from '@/components/consent/ConsentMap';
 import {QuickContactLinks} from '@/components/quick-contact-links';
 import {TrackedMessengerLink} from '@/components/tracked-messenger-link';
-import {LeadForm} from '@/components/lead-form';
 import {ContactRequestForm} from '@/components/home/ContactRequestForm';
 import HearingTest from '@/components/hearing-test-page';
 import {siteConfig} from '@/config/site';
 import {ageOnDate, type BirthDate} from '@/lib/age';
 import {editorialContent, editorialPath, type EditorialLocale, type EditorialType} from '@/content/editorial-pages';
 import {hearingAidFamilies} from '@/content/hearing-aids-catalog';
+import {PageFeatureHero} from '@/components/page-feature-hero';
+import {FlexTrialPlan} from '@/components/flex-trial-plan';
 
 export async function EditorialPage({locale, type}: {locale: EditorialLocale; type: EditorialType}) {
   setRequestLocale(locale);
+  const ru = locale === 'ru';
   const page = editorialContent(locale, type);
   const t = await getTranslations({locale, namespace: 'EditorialUI'});
   const homeFaq = type === 'faq' ? await getTranslations({locale, namespace: 'HomePage.faq'}) : null;
@@ -35,11 +37,32 @@ export async function EditorialPage({locale, type}: {locale: EditorialLocale; ty
   return <div className="editorial-page">
     <Breadcrumbs locale={locale} label={page.title} path={path} />
     {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />}
-    <header className="editorial-hero">
+    {type === 'flex' || type === 'faq' ? <PageFeatureHero
+      eyebrow={page.eyebrow}
+      title={page.title}
+      lead={page.lead}
+      benefits={type === 'flex'
+        ? ru ? ['Проба в повседневных ситуациях', 'Условия обсуждаются с командой', 'Решение остаётся за вами'] : ['Probă în situațiile de zi cu zi', 'Condițiile se discută cu echipa', 'Decizia vă aparține']
+        : ru ? ['Проверка слуха', 'Слуховые аппараты', 'Понятные ответы команды'] : ['Evaluarea auzului', 'Aparate auditive', 'Răspunsuri clare de la echipă']}
+      image={type === 'flex' ? '/images/homepage/hero.webp' : '/images/pages/hearing-test/hearing-test-hero-photo.png'}
+      imageAlt={type === 'flex'
+        ? ru ? 'Семья разговаривает дома' : 'O familie stă de vorbă acasă'
+        : ru ? 'Специалист проводит проверку слуха' : 'Specialistul evaluează auzul unui pacient'}
+      imageBadge={type === 'flex' ? ru ? 'FLEX TRIAL · UNITRON' : 'FLEX TRIAL · UNITRON' : ru ? 'ОЦЕНКА СЛУХА' : 'EVALUAREA AUZULUI'}
+      cardEyebrow={type === 'flex' ? 'UNITRON · FLEX TRIAL' : ru ? 'VOLMER · КИШИНЁВ' : 'VOLMER · CHIȘINĂU'}
+      cardTitle={type === 'flex'
+        ? ru ? 'Попробуйте аппарат в обычной жизни' : 'Testați aparatul în viața de zi cu zi'
+        : ru ? 'Понятные ответы о слухе' : 'Răspunsuri despre auz, pe înțeles'}
+      primaryHref={`/${locale}/#booking-form`}
+      primaryLabel={t('book')}
+      secondaryHref={type === 'flex' ? editorialPath(locale, 'test') : `/${locale}/contact/`}
+      secondaryLabel={type === 'flex' ? ru ? 'Проверка слуха' : 'Evaluarea auzului' : ru ? 'Связаться с нами' : 'Contactați-ne'}
+    /> : <header className="editorial-hero">
       <div className="container"><p className="editorial-eyebrow">{page.eyebrow}</p><h1>{page.title}</h1><p>{page.lead}</p>
         <a className="editorial-primary" href={`/${locale}/#booking-form`}>{t('book')} <ArrowRight size={18} aria-hidden="true" /></a>
       </div>
-    </header>
+    </header>}
+    {type === 'flex' && <FlexTrialPlan locale={locale} />}
     <div className="container editorial-body">
       {type === 'dementia' && <p className="editorial-disclosure">{t('medicalNotice')}</p>}
       {page.sections.length > 0 && <div className="editorial-section-grid">
@@ -53,7 +76,7 @@ export async function EditorialPage({locale, type}: {locale: EditorialLocale; ty
       {questions.length > 0 && <section className="editorial-faq" aria-labelledby="editorial-faq-title"><h2 id="editorial-faq-title">{t('faqTitle')}</h2>
         {questions.map(({question, answer}) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}
       </section>}
-      {page.related && <nav className="editorial-related" aria-label={t('related')}><h2>{t('related')}</h2><div>{page.related.map((related) => <a href={editorialPath(locale, related)} key={related}>{editorialContent(locale, related).title}<ArrowRight size={16} aria-hidden="true" /></a>)}</div></nav>}
+      {page.related && <nav className="editorial-related" aria-label={t('related')}>{type !== 'flex' && <h2>{t('related')}</h2>}<div>{page.related.map((related) => <a href={editorialPath(locale, related)} key={related}>{editorialContent(locale, related).title}<ArrowRight size={16} aria-hidden="true" /></a>)}</div></nav>}
       <section className="editorial-final"><div><h2>{t('finalTitle')}</h2><p>{t('finalText')}</p></div><a className="editorial-primary" href={`/${locale}/#booking-form`}>{t('book')}<ArrowRight size={18} aria-hidden="true" /></a></section>
     </div>
   </div>;
@@ -115,7 +138,21 @@ function ContactPage({locale, page, questions, faqSchema}: {locale: EditorialLoc
   return <div className="editorial-page contact-page">
     <Breadcrumbs locale={locale} label={page.title} path="contact" />
     {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />}
-    <header className="contact-hero"><div className="container contact-hero-inner"><p className="editorial-eyebrow">{page.eyebrow}</p><h1>{page.title}</h1><p>{page.lead}</p><div className="contact-hero-details"><a href={`tel:${siteConfig.phoneInternational}`}><Phone aria-hidden="true" />{siteConfig.phoneDisplay}</a><span><MapPin aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span></div><div className="contact-hero-actions"><a className="editorial-primary" href={`/${locale}/#booking-form`}>{text.book}<ArrowRight size={18} aria-hidden="true" /></a><a className="contact-hero-call" href={`tel:${siteConfig.phoneInternational}`}>{text.call}</a></div></div></header>
+    <PageFeatureHero
+      eyebrow={page.eyebrow}
+      title={page.title}
+      lead={page.lead}
+      benefits={[siteConfig.phoneDisplay, `${siteConfig.address}, ${siteConfig.city}`, ru ? 'Бесплатная проверка слуха' : 'Evaluarea auzului este gratuită']}
+      image="/images/homepage/volmer-office-facade-current.png"
+      imageAlt={ru ? 'Вход в центр Volmer в Кишинёве' : 'Intrarea în centrul Volmer din Chișinău'}
+      imageBadge={ru ? 'ЦЕНТР VOLMER · КИШИНЁВ' : 'CENTRUL VOLMER · CHIȘINĂU'}
+      cardEyebrow={ru ? 'МЫ НА СВЯЗИ' : 'VOLMER · CONTACT'}
+      cardTitle={ru ? 'Позвоните или запишитесь онлайн' : 'Sunați sau programați-vă online'}
+      primaryHref={`/${locale}/#booking-form`}
+      primaryLabel={text.book}
+      secondaryHref={`tel:${siteConfig.phoneInternational}`}
+      secondaryLabel={text.call}
+    />
     <div className="container contact-content">
       <section className="contact-methods" aria-labelledby="contact-methods-title"><div className="contact-section-heading"><p className="contact-kicker">{text.contactKicker}</p><h2 id="contact-methods-title">{text.quickTitle}</h2></div><div className="contact-method-grid">
         <a href={`tel:${siteConfig.phoneInternational}`}><span>{text.phone}</span><strong>{siteConfig.phoneDisplay}</strong><small>{text.callNow}</small><Phone aria-hidden="true" /></a>
@@ -259,7 +296,21 @@ function AboutPage({locale, page}: {locale: EditorialLocale; page: ReturnType<ty
   const families = hearingAidFamilies.filter((family) => ['smile', 'vivante', 'blu'].includes(family.id));
   return <div className="editorial-page about-page">
     <Breadcrumbs locale={locale} label={page.title} path="despre-noi" />
-    <header className="about-hero"><div className="container about-hero-grid"><p className="editorial-eyebrow">{ru ? 'О VOLMER' : 'DESPRE VOLMER'}</p><h1>{copy.heroTitle}</h1><p className="about-hero-lead">{copy.heroText}</p><div className="about-hero-actions"><a className="editorial-primary" href={`/${locale}/#booking-form`}>{copy.book}<ArrowRight size={18} aria-hidden="true" /></a><a className="about-outline-link" href={`/${locale}/aparate-auditive/`}>{copy.catalog}</a></div></div></header>
+    <PageFeatureHero
+      eyebrow={ru ? 'О VOLMER' : 'DESPRE VOLMER'}
+      title={copy.heroTitle}
+      lead={copy.heroText}
+      benefits={ru ? ['Слуховые услуги в Кишинёве', 'Опыт материнской компании из Германии', 'Каталог слуховых аппаратов Unitron'] : ['Servicii pentru auz în Chișinău', 'Experiența companiei-mamă din Germania', 'Catalog de aparate auditive Unitron']}
+      image="/images/homepage/volmer-office-facade-current.png"
+      imageAlt={ru ? 'Вход в центр Volmer в Кишинёве' : 'Intrarea în centrul Volmer din Chișinău'}
+      imageBadge={ru ? 'VOLMER · КИШИНЁВ' : 'VOLMER · CHIȘINĂU'}
+      cardEyebrow={ru ? 'ЛИНГЕН · ГЕРМАНИЯ' : 'LINGEN · GERMANIA'}
+      cardTitle={ru ? 'Опыт для слуха в повседневной жизни' : 'Experiență pentru auzul de zi cu zi'}
+      primaryHref={`/${locale}/#booking-form`}
+      primaryLabel={copy.book}
+      secondaryHref={`/${locale}/aparate-auditive/`}
+      secondaryLabel={copy.catalog}
+    />
 
     <div className="container about-content">
       <section className="about-story"><div><p className="about-kicker">{copy.storyKicker}</p><h2>{copy.storyTitle}</h2></div><p>{copy.storyText}</p></section>
@@ -284,6 +335,7 @@ function AboutPage({locale, page}: {locale: EditorialLocale; page: ReturnType<ty
 
 async function DiasporaLanding({locale, page, faqSchema}: {locale: EditorialLocale; page: ReturnType<typeof editorialContent>; faqSchema: object | null}) {
   const t = await getTranslations({locale, namespace: 'EditorialUI'});
+  const homeContact = await getTranslations({locale, namespace: 'HomePage.contact'});
   const ru = locale === 'ru';
   const copy = ru ? {
     subhead: 'Центр слуха Volmer в центре Кишинёва · решения Unitron',
@@ -296,7 +348,7 @@ async function DiasporaLanding({locale, page, faqSchema}: {locale: EditorialLoca
     ],
     lancetTag: 'ЧТО ГОВОРИТ ИССЛЕДОВАНИЕ', lancetTitle: 'Проверить слух стоит без лишнего откладывания',
     lancetText: 'В докладе Lancet Commission 2024 снижение слуха указано среди 14 потенциально модифицируемых факторов риска деменции. Это популяционная оценка риска, а не диагноз и не обещание, что слуховой аппарат предотвратит деменцию. Проверка помогает понять слух и обсудить подходящие шаги.',
-    teamEyebrow: 'КОМАНДА VOLMER', teamTitle: 'Люди, с которыми можно обсудить следующий шаг', teamNote: 'Познакомьтесь с командой и заранее задайте вопросы о визите. Публикуем только подтверждённые сведения о специалистах.', teamRole: 'Команда Volmer', teamRoles: ['Акустик-техник, специалист по слухопротезированию; профильное образование в Германии', 'Основатель Volmer · акустик-техник, специалист по слухопротезированию; профильное образование в Германии'], teamPlaceholder: 'Место для нового сотрудника',
+    teamEyebrow: 'КОМАНДА VOLMER', teamTitle: 'Команда Volmer', teamNote: 'Познакомьтесь со специалистами и заранее задайте вопросы о визите.', germanyTitle: 'Специалисты из Германии', germanyNote: 'В дальнейшем они также будут работать в Volmer.', teamLink: 'Подробнее о команде',
     offerEyebrow: 'ПОНЯТНЫЕ УСЛОВИЯ', offerTitle: 'Что входит и как узнать стоимость',
     offerCards: [
       ['Бесплатная первая оценка', 'Консультация и первичная проверка слуха — около 60 минут.'],
@@ -318,7 +370,7 @@ async function DiasporaLanding({locale, page, faqSchema}: {locale: EditorialLoca
     ],
     lancetTag: 'CE SPUNE CERCETAREA', lancetTitle: 'Este util să nu amânați verificarea auzului',
     lancetText: 'Raportul Lancet Commission din 2024 include pierderea auzului între 14 factori potențial modificabili asociați riscului de demență. Este o estimare la nivel de populație, nu un diagnostic și nici o promisiune că aparatul auditiv previne demența. Evaluarea clarifică auzul și pașii care pot fi discutați.',
-    teamEyebrow: 'ECHIPA VOLMER', teamTitle: 'Oameni cu care puteți discuta următorul pas', teamNote: 'Cunoașteți echipa și adresați din timp întrebări despre vizită. Publicăm doar informații confirmate despre specialiști.', teamRole: 'Echipa Volmer', teamRoles: ['Acustician tehnician audioprotezist, cu studii de specialitate în Germania', 'Fondator Volmer · acustician tehnician audioprotezist, cu studii de specialitate în Germania'], teamPlaceholder: 'Loc pentru un nou membru',
+    teamEyebrow: 'ECHIPA VOLMER', teamTitle: 'Echipa Volmer', teamNote: 'Cunoașteți specialiștii și adresați din timp întrebări despre vizită.', germanyTitle: 'Specialiști din Germania', germanyNote: 'În perioada următoare, vor activa și la Volmer.', teamLink: 'Aflați mai multe despre echipă',
     offerEyebrow: 'CONDIȚII CLARE', offerTitle: 'Ce include vizita și cum afli costul',
     offerCards: [
       ['Evaluare inițială gratuită', 'Consultația și verificarea inițială a auzului durează aproximativ 60 de minute.'],
@@ -333,14 +385,34 @@ async function DiasporaLanding({locale, page, faqSchema}: {locale: EditorialLoca
   const mapUrl = siteConfig.googleMapsEmbedUrl || `https://maps.google.com/maps?q=${encodeURIComponent(`${siteConfig.address}, ${siteConfig.city}`)}&output=embed`;
   const sourceHref = page.source?.href ?? 'https://pubmed.ncbi.nlm.nih.gov/39096926/';
   const sourceLabel = page.source?.label ?? copy.source;
-  const team = ['Igor Luchița', 'Timofei Stratanenco', null, null, null];
+  const team = ru ? [
+    {name: 'Jens Volmer', image: '/images/team/jens-volmer.png', birthDate: {year: 1978, month: 4, day: 9}, role: 'Основатель Volmer в Германии и Молдове', detail: ''},
+    {name: 'Igor Luchița', image: '/images/team/igor-luchita.jpg', birthDate: {year: 2000, month: 8, day: 7}, role: 'Акустик-техник, специалист по слухопротезированию', detail: 'Профильное образование получил в Германии.'},
+    {name: 'Timofei Stratanenco', image: '/images/team/timofei-stratanenco.png', birthDate: {year: 1993, month: 6, day: 15}, role: 'Основатель Volmer в Молдове', detail: 'Профильное образование получил в Германии.'},
+  ] : [
+    {name: 'Jens Volmer', image: '/images/team/jens-volmer.png', birthDate: {year: 1978, month: 4, day: 9}, role: 'Fondator Volmer în Germania și Moldova', detail: ''},
+    {name: 'Igor Luchița', image: '/images/team/igor-luchita.jpg', birthDate: {year: 2000, month: 8, day: 7}, role: 'Acustician tehnician audioprotezist', detail: 'Studii de specialitate în Germania.'},
+    {name: 'Timofei Stratanenco', image: '/images/team/timofei-stratanenco.png', birthDate: {year: 1993, month: 6, day: 15}, role: 'Fondator Volmer Moldova', detail: 'Studii de specialitate în Germania.'},
+  ];
+  const germanSpecialists = [
+    {name: 'Jochen Schmidt', image: '/images/team/jochen-schmidt.png', birthDate: {year: 1983, month: 10, day: 24}, role: ru ? 'Акустик-техник, специалист по слухопротезированию' : 'Acustician tehnician audioprotezist'},
+    {name: 'Mareike Fickers', image: '/images/team/mareike-fickers.png', birthDate: {year: 1999, month: 3, day: 24}, role: ru ? 'Акустик-техник, специалист по слухопротезированию' : 'Acustician tehnician audioprotezist'},
+  ];
+  const formatAge = (birthDate: BirthDate) => {
+    const age = ageOnDate(birthDate);
+    if (!ru) return `${age} ani`;
+    const mod100 = age % 100;
+    const mod10 = age % 10;
+    const years = mod100 >= 11 && mod100 <= 14 ? 'лет' : mod10 === 1 ? 'год' : mod10 >= 2 && mod10 <= 4 ? 'года' : 'лет';
+    return `${age} ${years}`;
+  };
   return <div className="editorial-page diaspora-landing">
     <Breadcrumbs locale={locale} label={page.title} path={editorialPath(locale, 'diaspora').split('/')[2]} />
     {faqSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(faqSchema)}} />}
     <section className="diaspora-hero">
       <div className="container diaspora-hero-grid">
         <div className="diaspora-hero-copy"><p className="editorial-eyebrow">{page.eyebrow}</p><h1>{page.title}</h1><p className="diaspora-subhead">{copy.subhead}</p><p className="diaspora-lead">{page.lead}</p>
-          <div className="diaspora-hero-actions"><TrackedMessengerLink messenger="whatsapp" className="diaspora-whatsapp" href={siteConfig.quickContact.whatsapp} target="_blank" rel="noopener noreferrer"><Phone size={18} aria-hidden="true" />{copy.whatsapp}</TrackedMessengerLink><a className="diaspora-secondary" href="#diaspora-contact"><HeartHandshake size={18} aria-hidden="true" />{copy.callback}</a></div>
+          <div className="diaspora-hero-actions"><TrackedMessengerLink messenger="whatsapp" className="diaspora-whatsapp" href={siteConfig.quickContact.whatsapp} target="_blank" rel="noopener noreferrer"><Phone size={18} aria-hidden="true" />{copy.whatsapp}</TrackedMessengerLink><a className="diaspora-secondary" href="#contact"><HeartHandshake size={18} aria-hidden="true" />{copy.callback}</a></div>
           <p className="diaspora-hero-note"><Check size={17} aria-hidden="true" />{ru ? 'Первичная проверка слуха — бесплатно' : 'Evaluarea inițială a auzului este gratuită'}</p>
         </div>
         <figure className="diaspora-hero-image"><Image src="/images/homepage/mama.webp" alt={ru ? 'Семья разговаривает с пожилыми родителями дома' : 'O familie stă de vorbă cu părinții în vârstă, acasă'} width={680} height={454} priority sizes="(max-width: 800px) 100vw, 48vw" /><figcaption>{ru ? 'Поддержка близких начинается с разговора' : 'Sprijinul celor dragi începe cu o conversație'}</figcaption></figure>
@@ -351,12 +423,47 @@ async function DiasporaLanding({locale, page, faqSchema}: {locale: EditorialLoca
         <div className="diaspora-payment"><CreditCard aria-hidden="true" /><p>{ru ? 'Можно оплатить картой, переводом или наличными. Если вы хотите оплатить из-за границы, сначала подтвердите с командой доступный дистанционный способ.' : 'Puteți achita cu cardul, prin transfer sau numerar. Pentru plata din străinătate, confirmați în prealabil cu echipa metoda disponibilă la distanță.'}</p></div>
       </section>
       <section className="diaspora-lancet" aria-labelledby="diaspora-lancet-title"><div className="diaspora-lancet-mark" aria-hidden="true"><ShieldCheck /></div><div><p className="diaspora-kicker">{copy.lancetTag}</p><h2 id="diaspora-lancet-title">{copy.lancetTitle}</h2><p>{copy.lancetText}</p><a href={sourceHref} target="_blank" rel="noopener noreferrer">{copy.source}<ArrowRight size={16} aria-hidden="true" /></a></div></section>
-      <section className="diaspora-team" aria-labelledby="diaspora-team-title"><div className="diaspora-section-heading"><div><p className="diaspora-kicker">{copy.teamEyebrow}</p><h2 id="diaspora-team-title">{copy.teamTitle}</h2></div><p>{copy.teamNote}</p></div><div className="diaspora-team-grid">{team.map((name, index) => <article className={`diaspora-person${name ? '' : ' is-placeholder'}`} key={name ?? `member-${index}`}><div className="diaspora-person-mark" aria-hidden="true">{name ? (index === 0 ? 'IL' : 'TS') : '+'}</div><div>{name ? <><h3>{name}</h3><p>{copy.teamRoles[index]}</p></> : <p className="diaspora-person-placeholder">{copy.teamPlaceholder}</p>}</div></article>)}</div><a className="diaspora-team-link" href={editorialPath(locale, 'team')}>{ru ? 'Подробнее о команде' : 'Aflați mai multe despre echipă'}<ArrowRight size={16} aria-hidden="true" /></a></section>
+      <section className="diaspora-team" aria-labelledby="diaspora-team-title">
+        <div className="diaspora-section-heading"><div><p className="diaspora-kicker">{copy.teamEyebrow}</p><h2 id="diaspora-team-title">{copy.teamTitle}</h2></div><p>{copy.teamNote}</p></div>
+        <section className="team-roster-section" aria-label={copy.teamTitle}>
+          <div className="team-profile-grid">{team.map((person) => <article className="team-profile" key={person.name}><Image className="team-profile-avatar team-profile-photo" src={person.image} alt={ru ? `Фото ${person.name}` : `Fotografia lui ${person.name}`} width={132} height={132} sizes="(max-width: 760px) 88px, 132px" /><div><h3>{person.name}</h3><p className="team-profile-role">{person.role}</p>{person.detail && <p className="team-profile-detail">{person.detail}</p>}<p className="team-profile-detail">{ru ? 'Возраст' : 'Vârsta'}: {formatAge(person.birthDate)}</p></div></article>)}</div>
+        </section>
+        <section className="team-roster-section team-incoming-section" aria-label={copy.germanyTitle}>
+          <div className="team-roster-heading"><h3 className="team-roster-title">{copy.germanyTitle}</h3><p>{copy.germanyNote}</p></div>
+          <div className="team-profile-grid">{germanSpecialists.map((person) => <article className="team-profile" key={person.name}><Image className="team-profile-avatar team-profile-photo" src={person.image} alt={ru ? `Фото ${person.name}` : `Fotografia lui ${person.name}`} width={132} height={132} sizes="(max-width: 760px) 88px, 132px" /><div><h3>{person.name}</h3><p className="team-profile-role">{person.role}</p><p className="team-profile-detail">{ru ? 'Возраст' : 'Vârsta'}: {formatAge(person.birthDate)}</p></div></article>)}</div>
+        </section>
+        <a className="diaspora-team-link" href={editorialPath(locale, 'team')}>{copy.teamLink}<ArrowRight size={16} aria-hidden="true" /></a>
+      </section>
       <section className="diaspora-offer" aria-labelledby="diaspora-offer-title"><p className="diaspora-kicker">{copy.offerEyebrow}</p><h2 id="diaspora-offer-title">{copy.offerTitle}</h2><div className="diaspora-offer-grid">{copy.offerCards.map(([title, text], index) => <article key={title}><span>{index === 0 ? <Clock3 aria-hidden="true" /> : index === 1 ? <Check aria-hidden="true" /> : <ShieldCheck aria-hidden="true" />}</span><h3>{title}</h3><p>{text}</p></article>)}</div><p className="diaspora-price-note"><CreditCard aria-hidden="true" />{copy.priceNote}</p></section>
       <section className="diaspora-reviews" aria-labelledby="diaspora-reviews-title"><div className="diaspora-reviews-icon" aria-hidden="true"><HeartHandshake /></div><div><p className="diaspora-kicker">{copy.reviewsEyebrow}</p><h2 id="diaspora-reviews-title">{copy.reviewsTitle}</h2><p>{copy.reviewsText}</p></div></section>
       <section className="editorial-faq diaspora-faq" aria-labelledby="diaspora-faq-title"><p className="diaspora-kicker">{ru ? 'ВСЁ ВАЖНОЕ — ЗАРАНЕЕ' : 'RĂSPUNSURI, ÎNAINTE DE VIZITĂ'}</p><h2 id="diaspora-faq-title">{copy.faqTitle}</h2>{(page.faqs ?? []).map(({question, answer}) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</section>
-      <section className="diaspora-contact" id="diaspora-contact" aria-labelledby="diaspora-contact-title"><div className="diaspora-contact-copy"><p className="diaspora-kicker">{ru ? 'МЫ РЯДОМ В КИШИНЁВЕ' : 'APROAPE DE PĂRINȚII DUMNEAVOASTRĂ, ÎN CHIȘINĂU'}</p><h2 id="diaspora-contact-title">{copy.finalTitle}</h2><p>{copy.finalText}</p><div className="diaspora-contact-details"><p><MapPin aria-hidden="true" /><span><small>{copy.addressLabel}</small><strong>{siteConfig.address}, {siteConfig.city}</strong></span></p><p><Phone aria-hidden="true" /><a href={siteConfig.quickContact.phone}>{siteConfig.phoneDisplay}</a></p><p><Languages aria-hidden="true" /><span>{ru ? 'Русский · Română' : 'Română · Русский'}</span></p><p><Mail aria-hidden="true" /><a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a></p></div><LeadForm /><div className="diaspora-contact-actions"><TrackedMessengerLink messenger="whatsapp" className="diaspora-whatsapp" href={siteConfig.quickContact.whatsapp} target="_blank" rel="noopener noreferrer"><Phone size={18} aria-hidden="true" />{copy.whatsapp}</TrackedMessengerLink><QuickContactLinks variant="inline" /></div><a className="editorial-directions" href={siteConfig.googleMapsDirectionsUrl}>{copy.directions}<ArrowRight size={16} aria-hidden="true" /></a></div><div className="diaspora-location-media"><Image src="/images/homepage/volmer-office-facade-current.png" alt={t('officeAlt')} width={1482} height={1061} sizes="(max-width: 800px) 100vw, (max-width: 1200px) 48vw, 560px" /><ConsentMap src={mapUrl} className="hp-contact-map diaspora-map" /></div></section>
-      <section className="diaspora-final"><div><p className="diaspora-kicker">{ru ? 'СЛЕДУЮЩИЙ ШАГ' : 'URMĂTORUL PAS'}</p><h2>{copy.finalTitle}</h2><p>{copy.finalText}</p></div><TrackedMessengerLink messenger="whatsapp" className="diaspora-whatsapp" href={siteConfig.quickContact.whatsapp} target="_blank" rel="noopener noreferrer"><Phone size={18} aria-hidden="true" />{copy.book}</TrackedMessengerLink></section>
+      <section className="hp-contact hp-container diaspora-home-contact" id="contact" aria-labelledby="diaspora-contact-title">
+        <div className="hp-contact-left">
+          <div className="hp-contact-copy">
+            <p className="hp-contact-eyebrow"><HeartHandshake size={17} aria-hidden="true" />{ru ? 'МЫ РЯДОМ С ВАШИМИ РОДИТЕЛЯМИ В КИШИНЁВЕ' : 'APROAPE DE PĂRINȚII DUMNEAVOASTRĂ, ÎN CHIȘINĂU'}</p>
+            <h2 id="diaspora-contact-title">{copy.finalTitle}</h2>
+            <p>{copy.finalText}</p>
+            <p><a href={`/${locale}/aparate-auditive-chisinau/`}>{ru ? 'Слуховые аппараты в Кишинёве' : 'Aparate auditive în Chișinău'} <ArrowRight size={15} aria-hidden="true" /></a></p>
+            <div className="hp-contact-list">
+              <a href={`tel:${siteConfig.phoneInternational}`}><Phone aria-hidden="true" /><span><small>{homeContact('phoneLabel')}</small><strong>{siteConfig.phoneDisplay}</strong></span></a>
+              <a href={siteConfig.googleMapsDirectionsUrl} target="_blank" rel="noreferrer"><MapPin aria-hidden="true" /><span><small>{homeContact('addressLabel')}</small><strong>{siteConfig.address}, {siteConfig.city}</strong></span></a>
+              <div><Clock3 aria-hidden="true" /><span><small>{homeContact('hoursLabel')}</small><BusinessHours /></span></div>
+              <a href={`mailto:${siteConfig.email}`}><Mail aria-hidden="true" /><span><small>{homeContact('emailLabel')}</small><strong>{siteConfig.email}</strong></span></a>
+            </div>
+          </div>
+          <figure className="hp-office-photo"><Image src="/images/homepage/volmer-office-facade-current.png" alt={homeContact('officePhotoAlt')} fill sizes="(max-width: 760px) calc(100vw - 48px), (max-width: 1200px) 50vw, 550px" /><figcaption>{homeContact('officePhotoCaption')}</figcaption></figure>
+        </div>
+        <div className="hp-contact-right">
+          <ContactRequestForm />
+          <div className="hp-map-frame">
+            <div className="hp-map-heading">
+              <span><MapPin aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span>
+              <a href={siteConfig.googleMapsDirectionsUrl}>{homeContact('mapLink')}</a>
+            </div>
+            <ConsentMap src={mapUrl} />
+          </div>
+        </div>
+      </section>
     </div>
   </div>;
 }

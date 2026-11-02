@@ -88,7 +88,6 @@ export function ConsentProvider({children}: {children: ReactNode}) {
   }, [settingsOpen, closeSettings]);
 
   return <ConsentContext.Provider value={{consent, has: (category) => hasConsent(consent, category), save, openSettings}}>
-    {children}
     {ready && !consent && !settingsOpen && <aside className="consent-banner" aria-labelledby="consent-title">
       <div><h2 id="consent-title">{t('title')}</h2><p>{t('intro')}</p></div>
       <div className="consent-actions">
@@ -97,6 +96,7 @@ export function ConsentProvider({children}: {children: ReactNode}) {
         <button type="button" data-consent-customize onClick={openSettings}>{t('customize')}</button>
       </div>
     </aside>}
+    {children}
     {settingsOpen && <div className="consent-backdrop">
       <div className="consent-dialog" ref={dialogRef} role="dialog" aria-modal="true" aria-labelledby="consent-settings-title" aria-describedby="consent-settings-description">
         <div className="consent-dialog-head"><h2 id="consent-settings-title">{t('settingsTitle')}</h2><button type="button" onClick={closeSettings} aria-label={t('close')}>×</button></div>

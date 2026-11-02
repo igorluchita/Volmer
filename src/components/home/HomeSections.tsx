@@ -37,7 +37,7 @@ type Platform = TextCard & {
 type FaqItem = { question: string; answer: string };
 
 const situationImages = [
-  "/images/homepage/meeting-video-call.png",
+  "/images/homepage/meeting.webp",
   "/images/homepage/restaurant.webp",
   "/images/homepage/acasa.webp",
 ];
