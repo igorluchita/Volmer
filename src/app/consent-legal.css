@@ -65,7 +65,15 @@ body:has(.consent-banner) .quick-contact-floating { visibility: hidden; pointer-
 .legal-page section p { margin: 0; color: #415773; font-size: 16px; line-height: 1.7; }
 .legal-page a { color: #0c5a9e; text-decoration: underline; }
 @media (max-width: 760px) {
-  .consent-banner { display: block; bottom: calc(72px + env(safe-area-inset-bottom)); padding: 18px; }
+  .consent-banner {
+    position: static;
+    bottom: auto;
+    display: block;
+    width: min(920px, calc(100% - 24px));
+    margin: 0 auto 12px;
+    padding: 18px;
+    border-radius: 0 0 18px 18px;
+  }
   .consent-actions { margin-top: 14px; }
   .consent-banner .consent-actions button { flex: 1 1 44%; }
   .site-footer .site-footer-legal { flex-direction: column; align-items: flex-start; gap: 16px; }

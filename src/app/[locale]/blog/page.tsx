@@ -3,8 +3,9 @@ import { setRequestLocale } from "next-intl/server";
 import { blogPosts, type Locale } from "@/content/seo";
 import { siteConfig } from "@/config/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { ArrowDown, ArrowRight, BookOpen, Clock3 } from "lucide-react";
+import { ArrowRight, BookOpen, Clock3 } from "lucide-react";
 import {editorialPath} from '@/content/editorial-routing';
+import {PageFeatureHero} from '@/components/page-feature-hero';
 
 export function generateStaticParams() {
   return [{ locale: "ro" }, { locale: "ru" }];
@@ -71,21 +72,24 @@ export default async function Blog({
         path="blog"
       />
       <div className="blog-index-page">
-        <section className="blog-index-hero">
-          <div className="container blog-index-hero-inner">
-            <div>
-              <p className="blog-index-eyebrow"><BookOpen size={15} aria-hidden="true" />{copy.eyebrow}</p>
-              <h1>{copy.title}</h1>
-              <p>{copy.lead}</p>
-              <a className="blog-index-hero-link" href="#blog-articles">{copy.browse}<ArrowDown size={16} aria-hidden="true" /></a>
-            </div>
-            <div className="blog-index-highlight" aria-hidden="true">
-              <span>{String(posts.length).padStart(2, "0")}</span>
-              <p>{copy.list}</p>
-              <div><i /><i /><i /><i /><i /></div>
-            </div>
-          </div>
-        </section>
+        <PageFeatureHero
+          eyebrow={copy.eyebrow}
+          title={copy.title}
+          lead={copy.lead}
+          benefits={locale === 'ru'
+            ? [`${posts.length} статей и руководств`, 'Материалы о слухе и технологиях', 'Практические советы на каждый день']
+            : [`${posts.length} articole și ghiduri`, 'Materiale despre auz și tehnologii auditive', 'Sfaturi practice pentru fiecare zi']}
+          image="/images/homepage/hero.webp"
+          imageAlt={locale === 'ru' ? 'Семья разговаривает дома' : 'O familie stă de vorbă acasă'}
+          imageBadge={locale === 'ru' ? 'VOLMER · СЛУХ' : 'VOLMER · AUZ'}
+          cardEyebrow={locale === 'ru' ? 'ЖУРНАЛ О СЛУХЕ' : 'JURNALUL AUZULUI'}
+          cardTitle={locale === 'ru' ? 'Выбирайте, опираясь на понятную информацию' : 'Alegeți informat, cu explicații clare'}
+          primaryHref="#blog-articles"
+          primaryLabel={copy.browse}
+          primaryIcon="down"
+          secondaryHref={editorialPath(locale, 'test')}
+          secondaryLabel={copy.testLink}
+        />
 
         <section className="container blog-index-content" id="blog-articles">
           <div className="blog-index-heading">

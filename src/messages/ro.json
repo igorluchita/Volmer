@@ -10,8 +10,8 @@
     },
     "hero": {
       "eyebrow": "Tehnologie auditivă Unitron",
-      "titleLine1": "Implică-te în conversație.",
-      "titleLine2": "Fii mai aproape de cei dragi.",
+      "titleLine1": "Implicați-vă în conversație.",
+      "titleLine2": "Fiți mai aproape de cei dragi.",
       "subheadline": "Primul pas — evaluarea gratuită. Fără obligații.",
       "paragraphs": [
         "Știți ce este cel mai greu când auzul scade? Nu sunetele, ci conversațiile pierdute, oamenii rugați să repete și legătura cu cei din jur care se slăbește.",
@@ -567,7 +567,6 @@
   },
   "EditorialUI": {
     "book": "Programați evaluarea gratuită",
-    "cnamNotice": "Informațiile despre compensare se verifică numai din surse oficiale actualizate.",
     "medicalNotice": "Informație generală; nu înlocuiește consultul sau evaluarea medicală.",
     "source": "Sursă",
     "faqTitle": "Întrebări frecvente",
@@ -636,12 +635,13 @@
     "test": "Test auditiv",
     "diaspora": "Pentru familia de peste hotare",
     "dementia": "Auzul și sănătatea cognitivă",
-    "cnam": "CNAM și sprijinul public",
     "contactPage": "Contact",
     "unitronTitle": "Platforme Unitron",
     "platform": "Platforma Unitron {name}",
     "contactTitle": "Contact",
     "hearingAids": "Aparate auditive Unitron",
+    "chisinau": "Aparate auditive în Chișinău",
+    "moldova": "Aparate auditive în Moldova",
     "sonova": "Grupul internațional Sonova",
     "country": "Moldova",
     "phoneLabel": "Telefon",

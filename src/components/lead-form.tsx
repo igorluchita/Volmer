@@ -4,6 +4,7 @@ import {useRef, useState, type FormEvent} from 'react';
 import {useLocale, useTranslations} from 'next-intl';
 import {useRouter} from 'next/navigation';
 import {siteConfig} from '@/config/site';
+import {trackMessengerClick} from '@/lib/google-consent';
 import {legalPath} from '@/content/legal-pages';
 import type {LeadField} from '@/lib/leads/validation';
 
@@ -96,8 +97,8 @@ export function LeadForm() {
       <label className="lead-honeypot" aria-hidden="true" tabIndex={-1}>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       {serverError && <div className="lead-server-error" role="alert"><p>{serverError}</p><p>{t('fallback')}</p><nav aria-label={t('contactAlternatives')}>
         <a href={siteConfig.quickContact.phone}>{t('methods.call')}</a>
-        <a href={siteConfig.quickContact.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>
-        <a href={siteConfig.quickContact.viber}>Viber</a>
+        <a href={siteConfig.quickContact.whatsapp} onClick={() => trackMessengerClick('whatsapp')} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        <a href={siteConfig.quickContact.viber} onClick={() => trackMessengerClick('viber')}>Viber</a>
       </nav></div>}
       <button className="lead-submit" type="submit" disabled={loading}>{loading ? t('sending') : t('submit')}</button>
       <p className="lead-privacy">{t('privacyBefore')}<a href={legalPath(locale, 'privacy')}>{t('privacyLink')}</a>{t('privacyAfter')}</p>

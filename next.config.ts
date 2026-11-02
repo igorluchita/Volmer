@@ -11,11 +11,6 @@ const legacyRuSlugs = [
   ['kontakty', 'contact'],
   ['sluhovye-apparaty-kishinev', 'aparate-auditive-chisinau'],
   ['sluhovye-apparaty-moldova', 'aparate-auditive-moldova'],
-  ['nastroika-sluhovyh-apparatov', 'reglare-aparate-auditive'],
-  ['perezaryazhaemye-sluhovye-apparaty', 'aparate-auditive-reincarcabile'],
-  ['sluhovye-apparaty-bluetooth', 'aparate-auditive-bluetooth'],
-  ['sluhovye-apparaty-dlya-pozhilyh', 'aparate-auditive-pentru-varstnici'],
-  ['nezametnye-sluhovye-apparaty', 'aparate-auditive-discrete'],
   ['politika-konfidentsialnosti', 'politica-de-confidentialitate'],
   ['cookie', 'cookie-uri'],
   ['pravila-i-usloviya', 'termeni-si-conditii'],
@@ -38,6 +33,7 @@ const legacyRuBlogSlugs = [
 const nextConfig: NextConfig = {
   output: 'standalone',
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
   experimental: {globalNotFound: true},
   async redirects() {
     return [
@@ -46,6 +42,7 @@ const nextConfig: NextConfig = {
       {source: '/ro/test-auditiv/', destination: '/ro/test-auditiv-gratuit/', permanent: true},
       {source: '/ru/test-auditiv/', destination: '/ru/test-auditiv-gratuit/', permanent: true},
       {source: '/ro/test-auz-chisinau/', destination: '/ro/test-auditiv-gratuit/', permanent: true},
+      {source: '/ro/blog/unitron-tehnologii-moderne/', destination: '/ro/aparate-auditive/', permanent: true},
       {source: '/ru/test-auz-chisinau/', destination: '/ru/test-auditiv-gratuit/', permanent: true},
       {source: '/ru/proverka-sluha-kishinev/', destination: '/ru/test-auditiv-gratuit/', permanent: true},
       ...legacyRuSlugs.map(([oldSlug, slug]) => ({source: `/ru/${oldSlug}/`, destination: `/ru/${slug}/`, permanent: true})),

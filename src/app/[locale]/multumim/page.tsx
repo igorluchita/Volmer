@@ -1,6 +1,6 @@
 import type {Metadata} from 'next';
 import {notFound} from 'next/navigation';
-import {Link} from '@/i18n/navigation';
+import NextLink from 'next/link';
 import {setRequestLocale} from 'next-intl/server';
 import {routing} from '@/i18n/routing';
 import {leadThankYouMetadata} from '../../../lib/leads/thank-you';
@@ -30,7 +30,7 @@ export default async function ThankYouPage({params}: {params: Promise<{locale: s
       <p>{locale === 'ro'
         ? 'Am primit solicitarea dumneavoastră. Echipa Volmer vă va contacta folosind metoda selectată.'
         : 'Мы получили вашу заявку. Команда Volmer свяжется с вами выбранным способом.'}</p>
-      <Link className="editorial-primary" href="/">{locale === 'ro' ? 'Înapoi la pagina principală' : 'Вернуться на главную'}</Link>
+      <NextLink className="editorial-primary" href={`/${locale}/`}>{locale === 'ro' ? 'Înapoi la pagina principală' : 'Вернуться на главную'}</NextLink>
     </section>
   </div>;
 }

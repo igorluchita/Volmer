@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import NextLink from "next/link";
 import { siteConfig } from "@/config/site";
 import { BusinessHours } from "@/components/business-hours";
 import { ContactRequestForm } from "@/components/home/ContactRequestForm";
@@ -36,7 +37,7 @@ type Platform = TextCard & {
 type FaqItem = { question: string; answer: string };
 
 const situationImages = [
-  "/images/homepage/meeting-video-call.png",
+  "/images/homepage/meeting.webp",
   "/images/homepage/restaurant.webp",
   "/images/homepage/acasa.webp",
 ];
@@ -56,13 +57,14 @@ const platformImages = [
 export async function HomeTrustRibbon() {
   const t = await getTranslations("HomePage.trustRibbon");
   const nav = await getTranslations("Nav");
+  const locale = await getLocale();
   const items = t.raw("items") as string[];
 
   return (
     <div className="hp-trust-ribbon">
       <div className="hp-container hp-trust-ribbon-inner">
         <nav className="hp-home-breadcrumb" aria-label={nav("breadcrumbAria")}>
-          <Link href="/">{nav("home")}</Link>
+          <NextLink href={`/${locale}/`}>{nav("home")}</NextLink>
           <span aria-hidden="true">/</span>
           <strong>{t("title")}</strong>
         </nav>
@@ -401,6 +403,7 @@ export async function HomeSections() {
           <p className="hp-contact-eyebrow"><BadgeCheck size={17} aria-hidden="true" />{t("contact.eyebrow")}</p>
           <h2 id="contact-title">{t("contact.title")}</h2>
           <p>{t("contact.text")}</p>
+          <p><Link href="/aparate-auditive-chisinau/">{locale === 'ru' ? 'Слуховые аппараты в Кишинёве' : 'Aparate auditive în Chișinău'} <ArrowRight size={15} aria-hidden="true" /></Link></p>
           <div className="hp-contact-list">
             <a href={`tel:${siteConfig.phoneInternational}`}><Phone aria-hidden="true" /><span><small>{t("contact.phoneLabel")}</small><strong>{siteConfig.phoneDisplay}</strong></span></a>
             <a href={siteConfig.googleMapsDirectionsUrl} target="_blank" rel="noreferrer"><MapPin aria-hidden="true" /><span><small>{t("contact.addressLabel")}</small><strong>{siteConfig.address}, {siteConfig.city}</strong></span></a>

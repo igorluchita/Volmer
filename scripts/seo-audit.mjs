@@ -28,6 +28,7 @@ const titles = new Map();
 const descriptions = new Map();
 const canonicals = new Map();
 const records = new Map();
+const structuredPageUrls = [];
 const decode = (value) =>
   value
     ?.replaceAll("&amp;", "&")
@@ -160,6 +161,10 @@ for (const file of htmlFiles) {
     try {
       const parsed = JSON.parse(script[1]);
       const collect = (value) => {
+        if (typeof value === "string") {
+          if (/^https:\/\/volmer\.md\/(?:ro|ru)\//.test(value)) structuredPageUrls.push(value);
+          return;
+        }
         if (!value || typeof value !== "object") return;
         if (typeof value["@type"] === "string")
           structuredTypes.add(value["@type"]);
@@ -187,6 +192,11 @@ for (const file of htmlFiles) {
   add(titles, title, route);
   add(descriptions, description, route);
   add(canonicals, canonical, route);
+}
+for (const url of structuredPageUrls) {
+  const parsed = new URL(url);
+  if (!parsed.pathname.endsWith("/") || parsed.search || parsed.hash || !records.has(url))
+    errors.push(`JSON-LD: URL de pagină necanonică sau inexistentă ${url}`);
 }
 for (const [value, routes] of titles)
   if (routes.length > 1)
@@ -233,9 +243,48 @@ for (const [route, count] of incomingLinks)
   if (count === 0) errors.push(`${route}: pagină orfană, fără link intern de intrare`);
 
 const sitemap = await readFile(join(out, "sitemap.xml.body"), "utf8");
+if (!sitemap.startsWith('<?xml version="1.0" encoding="UTF-8"?>'))
+  errors.push("sitemap: declarația XML trebuie să specifice UTF-8");
+if (!/<urlset\b[^>]*xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9"/.test(sitemap))
+  errors.push("sitemap: namespace XML invalid");
+if (sitemap.includes("\uFFFD")) errors.push("sitemap: caractere UTF-8 invalide");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
   decode(match[1]),
 );
+if (/<lastmod\b/i.test(sitemap))
+  errors.push("sitemap: lastmod trebuie omis până când date semnificative pot fi verificate");
+for (const url of sitemapUrls) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.origin !== siteUrl || parsed.protocol !== "https:" || !parsed.pathname.endsWith("/") || parsed.search || parsed.hash)
+      errors.push(`sitemap: URL necanonic ${url}`);
+  } catch {
+    errors.push(`sitemap: URL invalid ${url}`);
+  }
+}
+const sitemapUrlSet = new Set(sitemapUrls);
+try {
+  await stat(resolve("public/sitemap.xml"));
+  errors.push("sitemap: public/sitemap.xml ar suprascrie generatorul Next.js");
+} catch {}
+try {
+  const legacySitemap = await readFile(resolve("out/sitemap.xml"), "utf8");
+  const legacyUrls = [...legacySitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => decode(match[1]));
+  if (legacyUrls.length !== sitemapUrls.length || legacyUrls.some((url) => !sitemapUrlSet.has(url)))
+    warnings.push(`out/sitemap.xml este artefact static vechi (${legacyUrls.length} URL-uri); deployment standalone îl exclude`);
+} catch {}
+for (const block of sitemap.matchAll(/<url>(.*?)<\/url>/gs)) {
+  const loc = decode(block[1].match(/<loc>(.*?)<\/loc>/)?.[1]);
+  if (!loc || !records.has(loc)) {
+    errors.push(`sitemap: URL fără pagină publică activă ${loc || "(loc lipsă)"}`);
+    continue;
+  }
+  for (const alternate of block[1].matchAll(/<xhtml:link\b[^>]*hreflang="([^"]+)"[^>]*href="([^"]+)"/g)) {
+    const target = decode(alternate[2]);
+    if (!sitemapUrlSet.has(target) || !records.has(target))
+      errors.push(`sitemap: hreflang ${alternate[1]} indică URL inactiv ${target}`);
+  }
+}
 for (const url of sitemapUrls)
   if (!url.startsWith(`${siteUrl}/`)) errors.push(`sitemap: URL extern ${url}`);
 for (const route of ["/ro/multumim/", "/ru/multumim/"])
@@ -243,11 +292,35 @@ for (const route of ["/ro/multumim/", "/ru/multumim/"])
     errors.push(`${route}: pagina thank-you noindex nu trebuie să fie în sitemap`);
 if (new Set(sitemapUrls).size !== sitemapUrls.length)
   errors.push("sitemap: URL-uri duplicate");
+const routesManifest = JSON.parse(await readFile(resolve(".next/routes-manifest.json"), "utf8"));
+const redirectSources = new Set((routesManifest.redirects || []).map(({source}) => source));
+const redirectBySource = new Map((routesManifest.redirects || []).map((redirect) => [redirect.source, redirect]));
+for (const redirect of routesManifest.redirects || []) {
+  if (!redirect.source.startsWith('/') || !redirect.destination.startsWith('/') || /[:*()]/.test(redirect.source)) continue;
+  const destination = new URL(redirect.destination, siteUrl);
+  if (destination.origin !== siteUrl) continue;
+  if (redirect.statusCode !== 308) errors.push(`redirect: ${redirect.source} nu este permanentă (status ${redirect.statusCode})`);
+  if (!records.has(`${siteUrl}${destination.pathname}`))
+    errors.push(`redirect: destinație fără pagină publică ${redirect.source} → ${destination.pathname}`);
+  const nextRedirect = redirectBySource.get(destination.pathname);
+  if (nextRedirect) {
+    const afterNext = new URL(nextRedirect.destination, siteUrl);
+    if (afterNext.pathname === redirect.source || redirectBySource.has(afterNext.pathname))
+      errors.push(`redirect: lanț sau buclă pornind din ${redirect.source}`);
+    else errors.push(`redirect: lanț de redirecturi ${redirect.source} → ${destination.pathname} → ${afterNext.pathname}`);
+  }
+}
+for (const url of sitemapUrls) {
+  const path = new URL(url).pathname;
+  if (redirectSources.has(path)) errors.push(`sitemap: sursă de redirect inclusă ${path}`);
+}
 for (const [url, { route }] of records)
   if (!sitemapUrls.includes(url)) errors.push(`${route}: lipsește din sitemap`);
 const robots = await readFile(join(out, "robots.txt.body"), "utf8");
 if (!robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`))
   errors.push("robots.txt: sitemap incorect");
+if (!/^Allow:\s*\/$/im.test(robots) || /^Disallow:\s*\S/im.test(robots))
+  errors.push("robots.txt: sitemap include rute blocate pentru crawler");
 if (/example\.md|localhost/i.test(sitemap + robots))
   errors.push("sitemap/robots: domeniu nepermis");
 const notFound = await readFile(join(out, "_not-found.html"), "utf8");

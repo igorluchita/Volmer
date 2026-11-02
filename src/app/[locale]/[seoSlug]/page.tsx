@@ -6,6 +6,8 @@ import { seoPages, type Locale } from "@/content/seo";
 import {editorialPath, editorialTypeFor, editorialTypes} from '@/content/editorial-pages';
 import {EditorialPage} from '@/components/editorial-page';
 import {editorialMetadata} from '@/lib/editorial-metadata';
+import {ChisinauLanding} from '@/components/chisinau-landing';
+import {MoldovaLanding} from '@/components/moldova-landing';
 
 export function generateStaticParams() {
   return (["ro", "ru"] as Locale[]).flatMap((locale) => [
@@ -28,6 +30,40 @@ export async function generateMetadata({
   const page = pageFor(locale, p.seoSlug);
   if (!page) return {};
   const path = `/${locale}/${p.seoSlug}/`;
+  if (p.seoSlug === 'aparate-auditive-chisinau') {
+    const ru = locale === 'ru';
+    const title = ru ? 'Слуховые аппараты в Кишинёве | Volmer' : 'Aparate auditive în Chișinău | Volmer';
+    const description = ru
+      ? 'Бесплатная оценка слуха, слуховые аппараты Unitron, Flex Trial и индивидуальная настройка в центре Volmer, Кишинёв.'
+      : 'Evaluare gratuită a auzului, aparate auditive Unitron, Flex Trial și reglare individuală la centrul Volmer din Chișinău.';
+    const otherPath = `/${locale === 'ro' ? 'ru' : 'ro'}/${p.seoSlug}/`;
+    const image = '/images/homepage/volmer-office-facade-current.png';
+    return {
+      title,
+      description,
+      alternates: { canonical: path, languages: { 'ro-MD': locale === 'ro' ? path : otherPath, 'ru-MD': locale === 'ru' ? path : otherPath, 'x-default': locale === 'ro' ? path : otherPath } },
+      robots: { index: true, follow: true },
+      openGraph: { title, description, url: path, type: 'website', locale: locale === 'ro' ? 'ro_MD' : 'ru_MD', alternateLocale: [locale === 'ro' ? 'ru_MD' : 'ro_MD'], images: [{ url: image, alt: ru ? 'Вход в центр Volmer в Кишинёве' : 'Intrarea în centrul Volmer din Chișinău' }] },
+      twitter: { card: 'summary_large_image', title, description, images: [image] },
+    };
+  }
+  if (p.seoSlug === 'aparate-auditive-moldova') {
+    const ru = locale === 'ru';
+    const title = ru ? 'Слуховые аппараты в Республике Молдова | Volmer' : 'Aparate auditive în Republica Moldova | Volmer';
+    const description = ru
+      ? 'Проверка слуха, подбор решений Unitron и индивидуальная настройка в центре Volmer в Кишинёве. Каталог и поддержка после выбора.'
+      : 'Evaluarea auzului, catalog Unitron și reglarea individuală a aparatelor auditive la centrul Volmer din Chișinău. Consultație gratuită.';
+    const otherPath = `/${locale === 'ro' ? 'ru' : 'ro'}/${p.seoSlug}/`;
+    const image = '/images/homepage/hero.webp';
+    return {
+      title,
+      description,
+      alternates: { canonical: path, languages: { 'ro-MD': locale === 'ro' ? path : otherPath, 'ru-MD': locale === 'ru' ? path : otherPath, 'x-default': locale === 'ro' ? path : otherPath } },
+      robots: { index: true, follow: true },
+      openGraph: { title, description, url: path, type: 'website', locale: locale === 'ro' ? 'ro_MD' : 'ru_MD', alternateLocale: [locale === 'ro' ? 'ru_MD' : 'ro_MD'], images: [{ url: image, alt: ru ? 'Дедушка и внучка беседуют' : 'Bunic și nepoată într-o conversație apropiată' }] },
+      twitter: { card: 'summary_large_image', title, description, images: [image] },
+    };
+  }
   const index = seoPages[locale].findIndex((item) => item[0] === p.seoSlug);
   const otherLocale = locale === "ro" ? "ru" : "ro";
   const otherPath = `/${otherLocale}/${seoPages[otherLocale][index][0]}/`;
@@ -70,6 +106,8 @@ export default async function SeoPage({
   setRequestLocale(locale);
   const editorialType = editorialTypeFor(locale, p.seoSlug);
   if (editorialType) return <EditorialPage locale={locale} type={editorialType} />;
+  if (p.seoSlug === 'aparate-auditive-chisinau') return <ChisinauLanding locale={locale} />;
+  if (p.seoSlug === 'aparate-auditive-moldova') return <MoldovaLanding locale={locale} />;
   const page = pageFor(locale, p.seoSlug);
   if (!page) notFound();
   const [slug, title, description, intro, section, body] = page;
