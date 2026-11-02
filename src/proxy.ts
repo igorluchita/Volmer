@@ -1,12 +1,17 @@
 import {NextResponse, type NextRequest} from 'next/server';
 
 const retiredPricePaths = /^\/(?:ro|ru)\/preturi\/?$/;
+const retiredCnamPaths = /^\/(?:ro|ru)\/cnam\/?$/;
 const filePath = /(?:^|\/)[^/]+\.[^/]+\/?$/;
 
 export function proxy(request: NextRequest) {
   const {pathname} = request.nextUrl;
 
-  if (retiredPricePaths.test(pathname) || pathname.startsWith('/_next/')) {
+  if (
+    retiredPricePaths.test(pathname) ||
+    retiredCnamPaths.test(pathname) ||
+    pathname.startsWith('/_next/')
+  ) {
     return NextResponse.next();
   }
 

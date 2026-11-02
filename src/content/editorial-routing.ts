@@ -1,4 +1,4 @@
-export const editorialTypes = ['test', 'diaspora', 'flex', 'dementia', 'cnam', 'about', 'team', 'faq', 'contact'] as const;
+export const editorialTypes = ['test', 'diaspora', 'flex', 'dementia', 'about', 'team', 'faq', 'contact'] as const;
 export type EditorialType = typeof editorialTypes[number];
 export type EditorialLocale = 'ro' | 'ru';
 
@@ -7,7 +7,6 @@ const slugs: Record<EditorialType, Record<EditorialLocale, string>> = {
   diaspora: {ro: 'pentru-familia-de-peste-hotare', ru: 'pentru-familia-de-peste-hotare'},
   flex: {ro: 'flex-trial', ru: 'flex-trial'},
   dementia: {ro: 'auzul-si-dementa', ru: 'auzul-si-dementa'},
-  cnam: {ro: 'cnam', ru: 'cnam'},
   about: {ro: 'despre-noi', ru: 'despre-noi'},
   team: {ro: 'echipa', ru: 'echipa'},
   faq: {ro: 'intrebari-frecvente', ru: 'intrebari-frecvente'},

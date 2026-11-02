@@ -41,7 +41,6 @@ export async function EditorialPage({locale, type}: {locale: EditorialLocale; ty
       </div>
     </header>
     <div className="container editorial-body">
-      {type === 'cnam' && <p className="editorial-disclosure">{t('cnamNotice')}</p>}
       {type === 'dementia' && <p className="editorial-disclosure">{t('medicalNotice')}</p>}
       {page.sections.length > 0 && <div className="editorial-section-grid">
         {page.sections.map((section, index) => <section className="editorial-section-card" key={section.title}>

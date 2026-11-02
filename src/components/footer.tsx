@@ -1,12 +1,13 @@
 import { getTranslations } from "next-intl/server";
 import { Phone } from "lucide-react";
+import NextLink from "next/link";
 import { siteConfig } from "@/config/site";
-import { Link } from "@/i18n/navigation";
 import { BrandLogo } from "./brand-logo";
 import { CookieSettingsButton } from "@/components/consent/CookieSettingsButton";
 import {legalPath} from '@/content/legal-pages';
 import {getLocale} from 'next-intl/server';
 import {editorialPath, type EditorialType} from '@/content/editorial-routing';
+import {localizedNavigationHref} from '@/lib/localized-navigation';
 
 const pageLinks = [
   ["/test-auditiv", "test"],
@@ -21,12 +22,13 @@ const pageLinks = [
   ["/blog", "blog"],
   ["/pentru-familia-de-peste-hotare", "diaspora"],
   ["/auzul-si-dementa", "dementia"],
-  ["/cnam", "cnam"],
   ["/contact", "contactPage"],
+  ["/aparate-auditive-chisinau", "chisinau"],
+  ["/aparate-auditive-moldova", "moldova"],
 ] as const;
 const pageLinkColumns = [pageLinks.slice(0, 7), pageLinks.slice(7)] as const;
 const editorialFooter: Partial<Record<(typeof pageLinks)[number][1], EditorialType>> = {
-  test: 'test', flexTrial: 'flex', experience: 'about', team: 'team', faq: 'faq', diaspora: 'diaspora', dementia: 'dementia', cnam: 'cnam', contactPage: 'contact'
+  test: 'test', flexTrial: 'flex', experience: 'about', team: 'team', faq: 'faq', diaspora: 'diaspora', dementia: 'dementia', contactPage: 'contact'
 };
 
 export async function Footer() {
@@ -38,7 +40,7 @@ export async function Footer() {
     <footer className="site-footer">
       <div className="container site-footer-grid">
         <div className="site-footer-brand">
-          <BrandLogo footer />
+          <BrandLogo footer locale={locale} />
           <p>{t("note")}</p>
           <strong>{t("germanStandard")}</strong>
         </div>
@@ -49,7 +51,7 @@ export async function Footer() {
             <nav aria-label={title}>
               {column.map(([href, key]) => {
                 const type = editorialFooter[key];
-                return type ? <a key={key} href={editorialPath(locale, type)}>{t(key)}</a> : <Link key={key} href={href}>{t(key)}</Link>;
+                return type ? <a key={key} href={editorialPath(locale, type)}>{t(key)}</a> : <NextLink key={key} href={localizedNavigationHref(locale, href)}>{t(key)}</NextLink>;
               })}
             </nav>
           </section>;

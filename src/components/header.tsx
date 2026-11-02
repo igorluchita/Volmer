@@ -4,12 +4,12 @@ import { useLocale, useTranslations } from "next-intl";
 import { ChevronDown, Clock3, MapPin, Menu, Phone, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import NextLink from "next/link";
-import { Link } from "@/i18n/navigation";
 import { BrandLogo } from "./brand-logo";
 import { localizedBlogPath } from "@/content/blog-locales";
 import { usePathname } from "@/i18n/navigation";
 import { siteConfig } from "@/config/site";
 import {editorialPath, type EditorialType} from '@/content/editorial-routing';
+import {localizedNavigationHref} from '@/lib/localized-navigation';
 
 const items = [
   ["/aparate-auditive", "aids"],
@@ -84,13 +84,13 @@ export function Header() {
       </div>
       <div className="site-navbar">
         <div className="container site-navbar-inner">
-          <BrandLogo />
+          <BrandLogo locale={locale} />
           <nav className={`main-nav ${open ? "is-open" : ""}`} aria-label={t("principalAria")}>
             {items.map(([href, key]) => {
               const type = editorialNav[key];
               return type
                 ? <NextLink key={key} href={editorialPath(locale, type)} onClick={() => setOpen(false)}>{t(key)}</NextLink>
-                : <Link key={key} href={href} onClick={() => setOpen(false)}>{t(key)}</Link>;
+                : <NextLink key={key} href={localizedNavigationHref(locale, href)} onClick={() => setOpen(false)}>{t(key)}</NextLink>;
             })}
           </nav>
 
