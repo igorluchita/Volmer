@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "slot_unavailable" }, { status: 409, headers: noStore });
     }
     if (error instanceof CalendarConfigurationError) {
-      console.error("[appointments] Google Calendar credentials are not configured.");
+      console.error(error.missingVariables.join(", "));
       return NextResponse.json({ error: "calendar_unavailable" }, { status: 503, headers: noStore });
     }
     console.error("[appointments] Google Calendar booking failed.");
