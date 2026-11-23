@@ -10,7 +10,9 @@ describe("Volmer Next.js web application", () => {
     expect(`mailto:${siteConfig.email}`).toContain("@");
     expect(appointmentConfig.timeZone).toBe("Europe/Chisinau");
     expect(appointmentConfig.durationMinutes).toBe(60);
-    expect(siteConfig.businessHours[0].hours).toBe("09:00–18:00");
+    expect(appointmentConfig.weekdayBreak).toEqual({ start: "12:00", end: "13:00" });
+    expect(appointmentConfig.blockedTimes).toContain("12:00");
+    expect(siteConfig.businessHours[0].hours).toBe("09:00–12:00 · 13:00–18:00");
     expect(siteConfig.businessHours[1].hours).toBe("09:00–13:00");
   });
 

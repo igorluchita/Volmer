@@ -63,7 +63,7 @@ export async function Footer() {
             <a href={`tel:${siteConfig.phoneInternational}`}>{t("phoneLabel")}: <strong>{siteConfig.phoneDisplay.replaceAll(" ", "")}</strong></a>
             <a href={`mailto:${siteConfig.email}`}>Email: {siteConfig.email}</a>
           </address>
-          <p className="site-footer-hours">{hours("weekdays")}: {siteConfig.businessHours[0].hours}, {hours("saturday")}: {siteConfig.businessHours[1].hours}</p>
+          <p className="site-footer-hours">{hours("weekdays")}: {siteConfig.businessHours[0].hours} ({hours("break")} 12:00–13:00), {hours("saturday")}: {siteConfig.businessHours[1].hours}</p>
           <a className="hp-button hp-button-primary site-footer-call" href={`tel:${siteConfig.phoneInternational}`}>{t("quickCall")}</a>
         </section>
       </div>

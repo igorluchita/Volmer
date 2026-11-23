@@ -11,7 +11,7 @@ import {siteConfig} from "@/config/site";
 import {editorialPath, type EditorialLocale} from "@/content/editorial-routing";
 import {localizedNavigationHref} from "@/lib/localized-navigation";
 
-type NavKey = "aids" | "allAids" | "flexTrial" | "test" | "diaspora" | "about" |
+type NavKey = "catalog" | "aids" | "allAids" | "flexTrial" | "test" | "diaspora" | "about" |
   "whyVolmer" | "company" | "team" | "information" | "faq" | "blog";
 type NavItem =
   | {key: NavKey; href: string; children?: never}
@@ -20,6 +20,7 @@ type NavItem =
 function navigationItems(locale: EditorialLocale): NavItem[] {
   return [
     {key: "aids", children: [
+      {key: "catalog", href: `/${locale}/catalog/`},
       {key: "allAids", href: localizedNavigationHref(locale, "/aparate-auditive")},
       {key: "flexTrial", href: editorialPath(locale, "flex")},
     ]},
@@ -125,7 +126,10 @@ export function Header() {
           </div>
           <div className="site-topbar-right">
             <span><MapPin size={14} aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span>
-            <NextLink href={editorialPath(locale, "contact")}>{t("contact")}</NextLink>
+            <div className="site-topbar-links">
+              <NextLink href={editorialPath(locale, "contact")}>{t("contact")}</NextLink>
+              <NextLink href={`/${locale}/catalog/`}>{t("catalog")}</NextLink>
+            </div>
           </div>
         </div>
       </div>

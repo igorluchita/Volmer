@@ -39,12 +39,17 @@ const nextConfig: NextConfig = {
     return [
       {source: '/ro/programare/', destination: '/ro/#contact', permanent: true},
       {source: '/ru/programare/', destination: '/ru/#contact', permanent: true},
+      {source: '/ro/catalog/ingrijire-si-accesorii/cutie-accesoriu-widex/', destination: '/ro/catalog/ingrijire-si-accesorii/nanocare-set-curatare/', permanent: true},
+      {source: '/ru/catalog/ingrijire-si-accesorii/cutie-accesoriu-widex/', destination: '/ru/catalog/ingrijire-si-accesorii/nanocare-set-curatare/', permanent: true},
       {source: '/ro/test-auditiv/', destination: '/ro/test-auditiv-gratuit/', permanent: true},
       {source: '/ru/test-auditiv/', destination: '/ru/test-auditiv-gratuit/', permanent: true},
       {source: '/ro/test-auz-chisinau/', destination: '/ro/test-auditiv-gratuit/', permanent: true},
       {source: '/ro/blog/unitron-tehnologii-moderne/', destination: '/ro/aparate-auditive/', permanent: true},
       {source: '/ru/test-auz-chisinau/', destination: '/ru/test-auditiv-gratuit/', permanent: true},
       {source: '/ru/proverka-sluha-kishinev/', destination: '/ru/test-auditiv-gratuit/', permanent: true},
+      {source: '/ru/perezaryazhaemye-sluhovye-apparaty/', destination: '/ru/blog/aparate-reincarcabile-avantaje/', permanent: true},
+      {source: '/ru/nezametnye-sluhovye-apparaty/', destination: '/ru/aparate-auditive/', permanent: true},
+      {source: '/ru/nastroika-sluhovyh-apparatov/', destination: '/ru/blog/importanta-reglajului/', permanent: true},
       ...legacyRuSlugs.map(([oldSlug, slug]) => ({source: `/ru/${oldSlug}/`, destination: `/ru/${slug}/`, permanent: true})),
       ...legacyRuBlogSlugs.map(([oldSlug, slug]) => ({source: `/ru/blog/${oldSlug}/`, destination: `/ru/blog/${slug}/`, permanent: true})),
     ];

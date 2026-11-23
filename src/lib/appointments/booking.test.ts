@@ -50,6 +50,14 @@ describe("appointment requests", () => {
     expect(calendar.insertions).toBe(0);
   });
 
+  it("never offers or books the 12:00 lunch slot", async () => {
+    const calendar = fakeCalendar();
+    const lunchInput = validateAppointmentInput({ ...input, time: "12:00" })!;
+    expect(await getDateAvailability(calendar, input.date, future)).not.toContain("12:00");
+    await expect(bookAppointment(calendar, lunchInput, future)).rejects.toBeInstanceOf(SlotUnavailableError);
+    expect(calendar.insertions).toBe(0);
+  });
+
   it("creates a uniquely identified Volmer event with local timezone and booking details", async () => {
     const calendar = fakeCalendar();
     const validatedInput = validateAppointmentInput(input)!;

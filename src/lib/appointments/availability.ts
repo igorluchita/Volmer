@@ -143,6 +143,8 @@ export function getAvailableSlots(date: string, events: BusyEvent[], now = new D
   const open = localMinute(opening.open);
   const close = localMinute(opening.close);
   const duration = appointmentConfig.durationMinutes;
+  const breakStart = localMinute(appointmentConfig.weekdayBreak.start);
+  const breakEnd = localMinute(appointmentConfig.weekdayBreak.end);
   const busy = events.map(eventInterval).filter((interval): interval is { start: Date; end: Date } => interval !== null);
   const slots: AppointmentSlot[] = [];
 
@@ -150,6 +152,8 @@ export function getAvailableSlots(date: string, events: BusyEvent[], now = new D
     const endMinute = startMinute + duration;
     const time = `${String(Math.floor(startMinute / 60)).padStart(2, "0")}:${String(startMinute % 60).padStart(2, "0")}`;
     const endTime = `${String(Math.floor(endMinute / 60)).padStart(2, "0")}:${String(endMinute % 60).padStart(2, "0")}`;
+    const overlapsWeekdayBreak = !isSaturday && startMinute < breakEnd && endMinute > breakStart;
+    if (appointmentConfig.blockedTimes.some((blockedTime) => blockedTime === time) || overlapsWeekdayBreak) continue;
     const start = localDateTimeToInstant(date, time);
     const end = localDateTimeToInstant(date, endTime);
     if (start <= now) continue;

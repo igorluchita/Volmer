@@ -145,6 +145,12 @@ for (const file of htmlFiles) {
     !meta(html, "name", "twitter:description")
   )
     errors.push(`${route}: Twitter Card incomplet`);
+  if (/^\/(ro|ru)\/catalog\/(?:[^/]+\/[^/]+\/|[^/]+\/)$/.test(route)) {
+    if (meta(html, "name", "twitter:card") !== "summary_large_image")
+      errors.push(`${route}: Twitter Card trebuie să folosească imagine mare`);
+    if (!meta(html, "name", "twitter:image"))
+      errors.push(`${route}: imagine Twitter lipsă`);
+  }
   if (/\bnoindex\b/i.test(robots))
     errors.push(`${route}: noindex accidental`);
   if (/localhost|example\.md/i.test(html))
@@ -152,14 +158,16 @@ for (const file of htmlFiles) {
   if (!(html.match(/<a\b[^>]*href="\//g) || []).length)
     errors.push(`${route}: fără linkuri interne`);
   for (const img of html.matchAll(/<img\b[^>]*>/gi))
-    if (!/\balt="[^"]+"/.test(img[0]))
-      errors.push(`${route}: imagine fără alt`);
+    if (!/\balt="[^"]*"/.test(img[0]))
+      errors.push(`${route}: atribut alt lipsă (alt gol este permis pentru imaginile decorative)`);
   const structuredTypes = new Set();
+  let productSchema;
   for (const script of html.matchAll(
     /<script[^>]+type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs,
   )) {
     try {
       const parsed = JSON.parse(script[1]);
+      if (parsed?.["@type"] === "Product") productSchema = parsed;
       const collect = (value) => {
         if (typeof value === "string") {
           if (/^https:\/\/volmer\.md\/(?:ro|ru)\//.test(value)) structuredPageUrls.push(value);
@@ -175,6 +183,13 @@ for (const file of htmlFiles) {
     } catch {
       errors.push(`${route}: JSON-LD invalid`);
     }
+  }
+  if (/^\/(ro|ru)\/catalog\/[^/]+\/[^/]+\/$/.test(route)) {
+    if (!productSchema) errors.push(`${route}: schema Product lipsește`);
+    else if (!productSchema.name || !productSchema.description || !productSchema.image)
+      errors.push(`${route}: schema Product incompletă`);
+    else if (productSchema.offers && (!productSchema.offers.price || !productSchema.offers.priceCurrency))
+      errors.push(`${route}: Offer fără preț sau monedă`);
   }
   if (/^\/(ro|ru)\/blog\/[^/]+\/$/.test(route))
     for (const type of ["BlogPosting", "BreadcrumbList"])

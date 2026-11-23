@@ -498,6 +498,7 @@
     }
   },
   "Nav": {
+    "catalog": "Catalog",
     "home": "Acasă",
     "breadcrumbAria": "Fir de navigare",
     "aids": "Aparate auditive",
@@ -517,7 +518,7 @@
     "contact": "Contacte",
     "booking": "Programați-vă",
     "language": "Schimbați limba",
-    "hoursShort": "L–V 09:00–18:00 · S 09:00–13:00",
+    "hoursShort": "L–V 09:00–12:00, 13:00–18:00 · Pauză de masă 12:00–13:00 · S 09:00–13:00",
     "consultation": "Evaluarea auzului și consultație",
     "principalAria": "Navigație principală",
     "callAria": "Sunați la Volmer",
@@ -715,10 +716,10 @@
     "saturday": "Sâmbătă",
     "sunday": "Duminică",
     "closed": "Închis",
-    "break": "Pauză"
+    "break": "Pauză de masă"
   },
   "Common": {
-    "hours": "Luni–Vineri: 09:00–18:00 · Sâmbătă: 09:00–13:00",
+    "hours": "Luni–Vineri: 09:00–12:00 și 13:00–18:00 (pauză de masă 12:00–13:00) · Sâmbătă: 09:00–13:00",
     "address": "Chișinău, Str. Mitropolit Varlaam 69",
     "learn": "Aflați mai multe",
     "skip": "Săriți la conținut"
