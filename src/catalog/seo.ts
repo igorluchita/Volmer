@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { catalog, catalogPath } from "./repository";
 import { catalogMessages } from "./messages";
-import type { CatalogLocale } from "./types";
+import type { CatalogLocale, Category, Product } from "./types";
 export const catalogOrigin = siteConfig.siteUrl.replace(/\/$/, "");
 export function catalogMetadata(
   locale: CatalogLocale,
@@ -18,7 +18,7 @@ export function catalogMetadata(
   const title =
     record?.seo?.title[locale] ??
     (record
-      ? `${record.name[locale]} | Volmer`
+      ? `${record.name[locale]} – ${locale === "ro" ? "Moldova" : "Молдова"} | Volmer`
       : catalogMessages[locale].seoTitle);
   const description =
     record?.seo?.description[locale] ??
@@ -27,8 +27,14 @@ export function catalogMetadata(
     catalogMessages[locale].seoDescription;
   const path = catalogPath(locale, categorySlug, productSlug);
   return {
+    metadataBase: new URL(catalogOrigin),
     title,
     description,
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
     alternates: {
       canonical: path,
       languages: {
@@ -42,12 +48,25 @@ export function catalogMetadata(
       description,
       url: path,
       type: "website",
+      siteName: siteConfig.brandName,
       locale: locale === "ro" ? "ro_MD" : "ru_MD",
       alternateLocale: [locale === "ro" ? "ru_MD" : "ro_MD"],
       images: product?.images.length
-        ? product.images.map((i) => ({ url: i.src, alt: i.alt[locale] }))
+        ? product.images.map((i) => ({
+            url: i.src,
+            alt: i.alt[locale],
+            width: i.width,
+            height: i.height,
+          }))
         : category?.image
-          ? [{ url: category.image.src, alt: category.image.alt[locale] }]
+          ? [
+              {
+                url: category.image.src,
+                alt: category.image.alt[locale],
+                width: category.image.width,
+                height: category.image.height,
+              },
+            ]
           : [{ url: siteConfig.logoPath, alt: "Volmer" }],
     },
     twitter: {
@@ -59,6 +78,54 @@ export function catalogMetadata(
         : category?.image
           ? [category.image.src]
           : [siteConfig.logoPath],
+    },
+  };
+}
+
+// Only verified, publicly displayed prices qualify for our Product/Offer markup.
+// Quote-only pages remain indexable WebPages without an incomplete rich result.
+export function catalogProductSchema(
+  locale: CatalogLocale,
+  category: Category,
+  product: Product,
+) {
+  if (!product.commercialVerified || !product.price) return null;
+  const url = `${catalogOrigin}${catalogPath(locale, category.slug, product.slug)}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${url}#product`,
+    name: product.name[locale],
+    description: product.shortDescription[locale],
+    url,
+    category: category.name[locale],
+    ...(product.brand
+      ? { brand: { "@type": "Brand", name: product.brand } }
+      : {}),
+    ...(product.model ? { model: product.model } : {}),
+    ...(product.images.length
+      ? { image: product.images.map((i) => `${catalogOrigin}${i.src}`) }
+      : {}),
+    offers: {
+      "@type": "Offer",
+      url,
+      price: product.price.amount,
+      priceCurrency: product.price.currency,
+      availability: "https://schema.org/InStock",
+      availableDeliveryMethod: "https://schema.org/OnSitePickup",
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        applicableCountry: "MD",
+        returnPolicyCategory:
+          "https://schema.org/MerchantReturnFiniteReturnWindow",
+        merchantReturnDays: 15,
+      },
+      seller: {
+        "@type": "Organization",
+        name: siteConfig.brandName,
+        url: catalogOrigin,
+        telephone: siteConfig.phoneInternational,
+      },
     },
   };
 }

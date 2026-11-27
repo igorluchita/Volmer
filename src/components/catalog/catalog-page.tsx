@@ -4,8 +4,8 @@ import { catalog, catalogPath } from "@/catalog/repository";
 import { siteConfig } from "@/config/site";
 import { filterProducts, formatPrice } from "@/catalog/query";
 import { catalogMessages } from "@/catalog/messages";
-import { catalogOrigin, jsonLd } from "@/catalog/seo";
-import type { CatalogLocale, Category, Product } from "@/catalog/types";
+import { catalogOrigin, catalogProductSchema, jsonLd } from "@/catalog/seo";
+import type { CatalogLocale, CatalogQuestion, Category, Product } from "@/catalog/types";
 import { ProductGrid } from "./product-grid";
 import { ProductCard } from "./product-card";
 import { ProductGallery } from "./product-gallery";
@@ -46,6 +46,7 @@ export function CatalogPage({
   const breadcrumbs = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${catalogOrigin}${catalogPath(locale, category?.slug, product?.slug)}#breadcrumbs`,
     itemListElement: crumbs.map((c, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -57,6 +58,9 @@ export function CatalogPage({
     ? {
         "@context": "https://schema.org",
         "@type": "ItemList",
+        "@id": `${catalogOrigin}${catalogPath(locale, category?.slug)}#products`,
+        name: category?.name[locale] ?? t.title,
+        numberOfItems: products.length,
         itemListElement: filterProducts(products, locale, {}).map((p, i) => ({
           "@type": "ListItem",
           position: i + 1,
@@ -67,33 +71,57 @@ export function CatalogPage({
     : null;
   const productSchema =
     product && category
-      ? {
-          "@context": "https://schema.org",
-          "@type": "Product",
-          name: product.name[locale],
-          description: product.shortDescription[locale],
-          url: `${catalogOrigin}${catalogPath(locale, category.slug, product.slug)}`,
-          ...(product.brand
-            ? { brand: { "@type": "Brand", name: product.brand } }
-            : {}),
-          ...(product.model ? { model: product.model } : {}),
-          ...(product.images.length
-            ? { image: product.images.map((i) => `${catalogOrigin}${i.src}`) }
-            : {}),
-          ...(product.commercialVerified && product.price
-            ? {
-                offers: {
-                  "@type": "Offer",
-                  price: product.price.amount,
-                  priceCurrency: product.price.currency,
-                  url: `${catalogOrigin}${catalogPath(locale, category.slug, product.slug)}`,
-                },
-              }
-            : {}),
-        }
+      ? catalogProductSchema(locale, category, product)
       : null;
+  const pageUrl = `${catalogOrigin}${catalogPath(locale, category?.slug, product?.slug)}`;
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": product ? "WebPage" : "CollectionPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: product?.name[locale] ?? category?.name[locale] ?? t.title,
+    description:
+      product?.shortDescription[locale] ??
+      category?.description[locale] ??
+      t.intro,
+    inLanguage: locale === "ro" ? "ro-MD" : "ru-MD",
+    breadcrumb: { "@id": `${pageUrl}#breadcrumbs` },
+    ...(productSchema
+      ? { mainEntity: { "@id": productSchema["@id"] } }
+      : !product && itemList
+        ? { mainEntity: { "@id": `${pageUrl}#products` } }
+        : {}),
+  };
+  const specificQuestions = product?.faq ??
+    category?.faq ?? [
+      {
+        question: {
+          ro: "Ce produse găsesc în catalogul Volmer?",
+          ru: "Какие товары есть в каталоге Volmer?",
+        },
+        answer: {
+          ro: "Catalogul cuprinde dopuri de urechi Alpine, baterii Power One pentru aparate auditive, filtre anticerumen NanoCare, produse de uscare SCALA și olive auditive personalizate. Alegeți categoria după utilizare, apoi verificați caracteristicile produsului.",
+          ru: "В каталоге представлены беруши Alpine, батарейки Power One для слуховых аппаратов, серные фильтры NanoCare, средства для сушки SCALA и индивидуальные ушные вкладыши. Выберите категорию по назначению, затем проверьте характеристики товара.",
+        },
+      },
+    ];
+  const purchaseQuestion: CatalogQuestion = {
+    question: {
+      ro: product
+        ? "Cum pot cumpăra acest produs în Moldova?"
+        : "Cum verific prețul și disponibilitatea în Moldova?",
+      ru: product
+        ? "Как купить этот товар в Молдове?"
+        : "Как узнать цену и наличие в Молдове?",
+    },
+    answer: {
+      ro: `${product?.price ? `Prețul afișat este ${formatPrice(product.price, "ro")}. ` : product ? "Contactați pentru prețul individual. " : "Prețurile produselor sunt afișate în MDL; pentru olivele la comandă solicitați prețul individual. "}Pentru cumpărare, sunați Volmer la ${siteConfig.phoneDisplay} și confirmați disponibilitatea și compatibilitatea înainte de vizită. Ne găsiți pe ${siteConfig.address}, Chișinău.`,
+      ru: `${product?.price ? `Указанная цена — ${formatPrice(product.price, "ru")}. ` : product ? "Уточните индивидуальную цену. " : "Цены товаров указаны в MDL; цену вкладышей на заказ уточняйте индивидуально. "}Для покупки позвоните в Volmer по номеру ${siteConfig.phoneDisplay} и подтвердите наличие и совместимость перед визитом. Адрес: ул. Митрополит Варлаам, 69, Кишинёв.`,
+    },
+  };
   return (
     <div className={`vc-catalog${product ? " vc-catalog--product" : category ? " vc-catalog--category" : ""}`}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(pageSchema) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbs) }}
@@ -178,17 +206,18 @@ export function CatalogPage({
                     <span className="vc-product-price-label">{t.priceLabel}</span>
                     <p className="vc-price">{formatPrice(product.price, locale) ?? product.priceOnRequest?.[locale] ?? t.unavailable}</p>
                   </div>
+                  <p className="vc-product-purchase-terms">{t.purchaseTerms}</p>
                   <Link className="vc-product-cta" href={`tel:${siteConfig.phoneInternational}`}>
                     <span>{t.askProduct}</span><span className="vc-product-cta-icon" aria-hidden="true">↗</span>
                   </Link>
-                  <Link className="vc-product-back" href={catalogPath(locale, category.slug)}>{t.backToCategory} <span aria-hidden="true">→</span></Link>
+                  <Link className="vc-product-back" href={catalogPath(locale, category.slug)}>{t.backToCategory}: {category.name[locale]} <span aria-hidden="true">→</span></Link>
                 </div>
               </div>
             </section>
             <div className="vc-product-content">
               <section className="vc-product-story" aria-labelledby="vc-product-details-title">
                 <p className="vc-product-section-kicker">01 / {t.details}</p>
-                <h2 id="vc-product-details-title">{t.aboutProduct}</h2>
+                <h2 id="vc-product-details-title">{locale === "ro" ? "Utilizare" : "Применение"}: {product.name[locale].split(/ [–—] /)[0]}</h2>
                 <p className="vc-description">{product.description[locale]}</p>
               </section>
               {product.features.length > 0 && (
@@ -251,13 +280,14 @@ export function CatalogPage({
                   <h2>{t.categories}</h2>
                 </div>
                 <div className="vc-grid">
-                  {catalog.categories.map((c) => (
+                  {catalog.categories.map((c, index) => (
                     <article className="vc-category" key={c.id}>
                       <Link href={catalogPath(locale, c.slug)}>
                         {c.image && (
                           <CatalogPhoto
                             image={c.image}
                             alt={c.image.alt[locale]}
+                            priority={index === 0}
                             sizes="(max-width:600px) 90vw, 30vw"
                           />
                         )}
@@ -294,6 +324,10 @@ export function CatalogPage({
             )}
           </>
         )}
+        <section className="vc-specs" aria-labelledby="vc-faq-title">
+          <h2 id="vc-faq-title">{locale === "ro" ? "Întrebări frecvente" : "Частые вопросы"}</h2>
+          <dl>{[...specificQuestions, purchaseQuestion].map((item) => <div key={item.question[locale]}><dt>{item.question[locale]}</dt><dd>{item.answer[locale]}</dd></div>)}</dl>
+        </section>
       </div>
     </div>
   );

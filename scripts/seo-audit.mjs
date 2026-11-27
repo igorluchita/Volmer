@@ -185,11 +185,29 @@ for (const file of htmlFiles) {
     }
   }
   if (/^\/(ro|ru)\/catalog\/[^/]+\/[^/]+\/$/.test(route)) {
-    if (!productSchema) errors.push(`${route}: schema Product lipsește`);
-    else if (!productSchema.name || !productSchema.description || !productSchema.image)
+    // A product page without a verified sale price (for example, a custom
+    // product sold on request) intentionally has no Product rich-result markup.
+    const priceIsOnRequest = /Contactați pentru preț|Уточняйте цену|Prețul va fi adăugat ulterior|Цена будет добавлена позже/.test(html);
+    if (!productSchema && !priceIsOnRequest)
+      errors.push(`${route}: schema Product lipsește pentru un produs cu preț publicat`);
+    else if (productSchema && (!productSchema.name || !productSchema.description || !productSchema.image))
       errors.push(`${route}: schema Product incompletă`);
-    else if (productSchema.offers && (!productSchema.offers.price || !productSchema.offers.priceCurrency))
-      errors.push(`${route}: Offer fără preț sau monedă`);
+    else if (productSchema?.offers) {
+      const offer = productSchema.offers;
+      if (offer.price == null || !offer.priceCurrency)
+        errors.push(`${route}: Offer fără preț sau monedă`);
+      if (offer.availability !== "https://schema.org/InStock")
+        errors.push(`${route}: availability Offer incorectă`);
+      if (offer.availableDeliveryMethod !== "https://schema.org/OnSitePickup")
+        errors.push(`${route}: metoda de preluare Offer lipsește sau este incorectă`);
+      if (
+        offer.hasMerchantReturnPolicy?.applicableCountry !== "MD" ||
+        offer.hasMerchantReturnPolicy?.returnPolicyCategory !==
+          "https://schema.org/MerchantReturnFiniteReturnWindow" ||
+        offer.hasMerchantReturnPolicy?.merchantReturnDays !== 15
+      )
+        errors.push(`${route}: politica de retur Offer incorectă`);
+    }
   }
   if (/^\/(ro|ru)\/blog\/[^/]+\/$/.test(route))
     for (const type of ["BlogPosting", "BreadcrumbList"])

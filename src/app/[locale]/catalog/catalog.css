@@ -553,6 +553,7 @@
 .vc-product-summary h1 { max-width: 600px; margin: 0; font-weight: 400; font-size: clamp(2.65rem, 4.1vw, 5rem); letter-spacing: -.058em; line-height: 1.02; }
 .vc-product-lead { max-width: 520px; margin: 28px 0 0; color: #5a667d; font-size: clamp(1rem, 1.3vw, 1.14rem); line-height: 1.75 !important; }
 .vc-product-purchase { margin-top: 45px; padding-top: 25px; border-top: 1px solid #dce2ec; }
+.vc-product-purchase-terms { margin: -9px 0 20px; color: #526996; font-size: .78rem; line-height: 1.6; }
 .vc-product-price-label { display: block; color: #8a96aa; font-size: .72rem; text-transform: uppercase; letter-spacing: .14em; }
 .vc-catalog--product .vc-price { margin: 8px 0 23px; font-size: 1rem; font-weight: 500; color: #34446c; }
 .vc-product-cta {

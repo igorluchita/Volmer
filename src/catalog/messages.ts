@@ -1,11 +1,11 @@
 export const catalogMessages = {
   ro: {
-    title: "Catalog produse Volmer",
+    title: "Produse și accesorii pentru auz în Moldova",
     intro:
-      "Descoperiți dopuri Alpine, baterii Power One, produse pentru îngrijire și olive auditive personalizate. Pentru informații despre compatibilitate și disponibilitate în Chișinău, contactați echipa Volmer.",
-    seoTitle: "Produse și accesorii auditive în Chișinău | Volmer",
+      "Alegeți dopuri de urechi Alpine, baterii pentru aparate auditive Power One, filtre anticerumen, produse de uscare SCALA și olive auditive la comandă. Comparați prețurile în MDL și contactați Volmer în Chișinău pentru cumpărare, compatibilitate și disponibilitate.",
+    seoTitle: "Catalog accesorii auditive în Moldova, Chișinău | Volmer",
     seoDescription:
-      "Catalog Volmer: dopuri Alpine, baterii Power One, produse de îngrijire și olive auditive personalizate. Întrebați echipa din Chișinău despre compatibilitate și disponibilitate.",
+      "Catalog Volmer în Moldova: dopuri de urechi, baterii auditive, filtre anticerumen și olive la comandă. Vezi prețurile în MDL și cumpărarea în Chișinău.",
     eyebrow: "VOLMER · SELECȚIE ȘI ÎNGRIJIRE",
     home: "Acasă",
     catalog: "Catalog",
@@ -38,6 +38,7 @@ export const catalogMessages = {
     related: "Produse similare",
     gallery: "Galerie produs",
     priceLabel: "Preț",
+    purchaseTerms: "Disponibil · Preluare din magazin · Retur în 15 zile",
     askProduct: "Întreabă despre produs",
     backToCategory: "Vezi categoria",
     backToCatalog: "Înapoi la catalogul principal",
@@ -55,21 +56,25 @@ export const catalogMessages = {
     clearCompare: "Șterge selecția",
     attribute: "Caracteristică",
     description: "Pe scurt",
-    compareNotice: "Comparația folosește informațiile din catalog. Compatibilitatea și detaliile de utilizare trebuie confirmate înainte de alegere.",
+    compareNotice:
+      "Comparația folosește informațiile din catalog. Compatibilitatea și detaliile de utilizare trebuie confirmate înainte de alegere.",
     categoryExplore: "Explorează produsele",
-    categoryGuide: "Alege după utilizare, apoi compară detaliile care contează pentru tine.",
-    categoryGuideBattery: "Verifică mărimea cerută de aparatul tău, apoi compară bateriile disponibile.",
-    categoryGuideEarmold: "Explorează exemplele; forma și compatibilitatea se stabilesc individual.",
+    categoryGuide:
+      "Alege după utilizare, apoi compară detaliile care contează pentru tine.",
+    categoryGuideBattery:
+      "Verifică mărimea cerută de aparatul tău, apoi compară bateriile disponibile.",
+    categoryGuideEarmold:
+      "Explorează exemplele; forma și compatibilitatea se stabilesc individual.",
     chooseSize: "Alege mărimea bateriei",
     chooseVariant: "Ce cauți?",
   },
   ru: {
-    title: "Каталог продукции Volmer",
+    title: "Товары и аксессуары для слуха в Молдове",
     intro:
-      "Беруши Alpine, батарейки Power One, средства по уходу и индивидуальные ушные вкладыши. Уточните у команды Volmer в Кишинёве совместимость и наличие товаров.",
-    seoTitle: "Товары и аксессуары для слуха в Кишинёве | Volmer",
+      "Выберите беруши Alpine, батарейки для слуховых аппаратов Power One, серные фильтры, средства для сушки SCALA и индивидуальные ушные вкладыши на заказ. Сравните цены в MDL; покупку, совместимость и наличие уточняйте в Volmer, Кишинёв.",
+    seoTitle: "Каталог аксессуаров для слуха в Молдове | Volmer",
     seoDescription:
-      "Каталог Volmer: беруши Alpine, батарейки Power One, средства по уходу и индивидуальные ушные вкладыши. Уточните совместимость и наличие у команды в Кишинёве.",
+      "Каталог Volmer в Молдове: беруши, батарейки для слуховых аппаратов, серные фильтры и ушные вкладыши на заказ. Цены в MDL и покупка в Кишинёве.",
     eyebrow: "VOLMER · ВЫБОР И ЗАБОТА",
     home: "Главная",
     catalog: "Каталог",
@@ -102,6 +107,7 @@ export const catalogMessages = {
     related: "Похожие продукты",
     gallery: "Галерея продукта",
     priceLabel: "Цена",
+    purchaseTerms: "В наличии · Самовывоз из магазина · Возврат в течение 15 дней",
     askProduct: "Узнать о товаре",
     backToCategory: "Смотреть категорию",
     backToCatalog: "Вернуться в основной каталог",
@@ -119,11 +125,15 @@ export const catalogMessages = {
     clearCompare: "Очистить выбор",
     attribute: "Характеристика",
     description: "Кратко",
-    compareNotice: "Сравнение основано на данных каталога. Совместимость и особенности применения следует уточнить перед выбором.",
+    compareNotice:
+      "Сравнение основано на данных каталога. Совместимость и особенности применения следует уточнить перед выбором.",
     categoryExplore: "Смотреть товары",
-    categoryGuide: "Выберите назначение и сравните важные для вас характеристики.",
-    categoryGuideBattery: "Проверьте размер батарейки для вашего аппарата, затем сравните варианты.",
-    categoryGuideEarmold: "Изучите примеры; форма и совместимость подбираются индивидуально.",
+    categoryGuide:
+      "Выберите назначение и сравните важные для вас характеристики.",
+    categoryGuideBattery:
+      "Проверьте размер батарейки для вашего аппарата, затем сравните варианты.",
+    categoryGuideEarmold:
+      "Изучите примеры; форма и совместимость подбираются индивидуально.",
     chooseSize: "Выберите размер батарейки",
     chooseVariant: "Что вы ищете?",
   },

@@ -5,7 +5,7 @@ import {
   validateCatalog,
 } from "./repository";
 import { filterProducts, formatPrice } from "./query";
-import { catalogMetadata, catalogSitemapEntries, jsonLd } from "./seo";
+import { catalogMetadata, catalogProductSchema, catalogSitemapEntries, jsonLd } from "./seo";
 import type { CatalogData, LocalizedText, Product } from "./types";
 const text = (s: string): LocalizedText => ({ ro: s, ru: `RU ${s}` });
 function fixture(): CatalogData {
@@ -90,6 +90,44 @@ describe("catalog publication boundary", () => {
   });
 });
 describe("catalog queries and SEO", () => {
+  it("gives every published catalog URL distinct localized metadata and truthful offers", () => {
+    const titles = new Set<string>();
+    const descriptions = new Set<string>();
+    for (const locale of ["ro", "ru"] as const) {
+      const routes = [
+        catalogMetadata(locale),
+        ...catalog.categories.map((category) => catalogMetadata(locale, category.slug)),
+        ...catalog.products.map((product) => {
+          const category = catalog.categories.find((item) => item.id === product.categoryId)!;
+          const schema = catalogProductSchema(locale, category, product);
+          if (product.price && product.commercialVerified) {
+            expect(schema?.offers.price).toBe(product.price.amount);
+            expect(schema?.offers.priceCurrency).toBe(product.price.currency);
+            expect(schema?.offers.availability).toBe("https://schema.org/InStock");
+            expect(schema?.offers.availableDeliveryMethod).toBe(
+              "https://schema.org/OnSitePickup",
+            );
+            expect(schema?.offers.hasMerchantReturnPolicy).toMatchObject({
+              applicableCountry: "MD",
+              merchantReturnDays: 15,
+            });
+            expect(schema).not.toHaveProperty("aggregateRating");
+          } else expect(schema).toBeNull();
+          return catalogMetadata(locale, category.slug, product.slug);
+        }),
+      ];
+      for (const metadata of routes) {
+        const title = String(metadata.title), description = metadata.description!;
+        expect(titles.has(title)).toBe(false);
+        expect(descriptions.has(description)).toBe(false);
+        titles.add(title);
+        descriptions.add(description);
+        expect(metadata.alternates?.languages).toHaveProperty("ro-MD");
+        expect(metadata.alternates?.languages).toHaveProperty("ru-MD");
+      }
+    }
+    expect(titles.size).toBe(catalogSitemapEntries().length);
+  });
   it("filters translated names, category, subcategory, brand and actual prices", () => {
     const items = createCatalogRepository(fixture()).products;
     expect(

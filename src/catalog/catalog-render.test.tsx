@@ -60,7 +60,7 @@ describe("catalog templates using test-only data", () => {
     );
     expect(catalogSitemapEntries()).toHaveLength(6);
   });
-  it("renders verified Product/Offer without fabricated availability", () => {
+  it("renders verified Product/Offer with confirmed purchase terms", () => {
     const html = renderToStaticMarkup(
       <CatalogPage
         locale="ro"
@@ -70,12 +70,20 @@ describe("catalog templates using test-only data", () => {
     );
     const product = schemas(html).find((s) => s["@type"] === "Product");
     expect(product.offers.price).toBe(123);
-    expect(product.offers).not.toHaveProperty("availability");
+    expect(product.offers.availability).toBe("https://schema.org/InStock");
+    expect(product.offers.availableDeliveryMethod).toBe(
+      "https://schema.org/OnSitePickup",
+    );
+    expect(product.offers.hasMerchantReturnPolicy).toMatchObject({
+      applicableCountry: "MD",
+      merchantReturnDays: 15,
+    });
+    expect(html).toContain("Disponibil · Preluare din magazin · Retur în 15 zile");
     expect(html).toContain("Imagine indisponibilă");
     expect(html).toContain("Specificații tehnice");
     expect(html).toContain("Test value");
   });
-  it("renders descriptive Product data without an unverified Offer", () => {
+  it("omits Product rich-result markup when price is not verified", () => {
     const product = {
       ...catalog.products[0],
       commercialVerified: false,
@@ -89,8 +97,7 @@ describe("catalog templates using test-only data", () => {
       />,
     );
     const productSchema = schemas(html).find((s) => s["@type"] === "Product");
-    expect(productSchema.name).toBe("Fixture product");
-    expect(productSchema).not.toHaveProperty("offers");
+    expect(productSchema).toBeUndefined();
     expect(html).toContain("Prețul va fi adăugat ulterior");
   });
   it("escapes JSON-LD without changing content after parsing", () => {

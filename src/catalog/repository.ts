@@ -68,6 +68,12 @@ export function validateCatalog(data: CatalogData): CatalogData {
       fail("published must be explicit");
     localized(record.name, "name");
     localized(record.description, "description");
+    if ("faq" in record && record.faq) {
+      record.faq.forEach((item) => {
+        localized(item.question, "FAQ question");
+        localized(item.answer, "FAQ answer");
+      });
+    }
   }
   for (const category of data.categories) {
     if (category.image) image(category.image);

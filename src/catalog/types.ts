@@ -1,5 +1,9 @@
 export type CatalogLocale = "ro" | "ru";
 export type LocalizedText = Record<CatalogLocale, string>;
+export interface CatalogQuestion {
+  question: LocalizedText;
+  answer: LocalizedText;
+}
 export interface ProductImage {
   src: string;
   alt: LocalizedText;
@@ -15,6 +19,7 @@ export interface Category {
   published: boolean;
   order?: number;
   seo?: { title: LocalizedText; description: LocalizedText };
+  faq?: CatalogQuestion[];
 }
 export interface Subcategory {
   id: string;
@@ -44,6 +49,7 @@ export interface Product {
   published: boolean;
   commercialVerified?: boolean;
   seo?: { title: LocalizedText; description: LocalizedText };
+  faq?: CatalogQuestion[];
 }
 export interface CatalogData {
   categories: Category[];
