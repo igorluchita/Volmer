@@ -1,7 +1,7 @@
 {
   "Meta": {
-    "title": "Aparate auditive și evaluarea auzului | Volmer Chișinău",
-    "description": "Aparate auditive Unitron, evaluarea auzului, reglare și suport în Chișinău. Volmer, Str. Mitropolit Varlaam 69. Sunați la 079 331 839."
+    "title": "Centru auditiv în Chișinău: evaluarea auzului | Volmer",
+    "description": "Centrul auditiv Volmer din Chișinău: verificarea auzului, consultații, alegerea aparatelor auditive și sprijin după adaptare. Str. Mitropolit Varlaam 69."
   },
   "HomePage": {
     "trustRibbon": {
@@ -9,7 +9,7 @@
       "items": ["Consultație gratuită", "Partener oficial Sonova Group"]
     },
     "hero": {
-      "eyebrow": "Tehnologie auditivă Unitron",
+      "eyebrow": "Centrul auditiv Volmer · Chișinău",
       "titleLine1": "Implicați-vă în conversație.",
       "titleLine2": "Fiți mai aproape de cei dragi.",
       "subheadline": "Primul pas — evaluarea gratuită. Fără obligații.",
@@ -247,8 +247,8 @@
     }
   },
   "HearingAidsPage": {
-    "metaTitle": "Aparate auditive Unitron în Chișinău | Volmer",
-    "metaDescription": "Aparate auditive Unitron în Chișinău: RIC, BTE, reîncărcabile, Bluetooth și soluții personalizate. Evaluare, alegere și reglare la Volmer.",
+    "metaTitle": "Tipuri de aparate auditive Unitron | Volmer",
+    "metaDescription": "Comparați aparate auditive Unitron RIC, BTE și intraauriculare, cu baterii sau reîncărcabile. Aflați cum alegeți forma și funcțiile potrivite la Volmer.",
     "content": {
       "hero": {
         "eyebrow": "TEHNOLOGII AUDITIVE UNITRON",

@@ -2,7 +2,7 @@ export const catalogMessages = {
   ro: {
     title: "Produse și accesorii pentru auz în Moldova",
     intro:
-      "Alegeți dopuri de urechi Alpine, baterii pentru aparate auditive Power One, filtre anticerumen, produse de uscare SCALA și olive auditive la comandă. Comparați prețurile în MDL și contactați Volmer în Chișinău pentru cumpărare, compatibilitate și disponibilitate.",
+      "Alegeți dopuri de urechi Alpine, baterii pentru aparate auditive Volmer, filtre anticerumen, produse de uscare SCALA și olive auditive la comandă. Comparați prețurile în MDL și contactați Volmer în Chișinău pentru cumpărare, compatibilitate și disponibilitate.",
     seoTitle: "Catalog accesorii auditive în Moldova, Chișinău | Volmer",
     seoDescription:
       "Catalog Volmer în Moldova: dopuri de urechi, baterii auditive, filtre anticerumen și olive la comandă. Vezi prețurile în MDL și cumpărarea în Chișinău.",
@@ -71,7 +71,7 @@ export const catalogMessages = {
   ru: {
     title: "Товары и аксессуары для слуха в Молдове",
     intro:
-      "Выберите беруши Alpine, батарейки для слуховых аппаратов Power One, серные фильтры, средства для сушки SCALA и индивидуальные ушные вкладыши на заказ. Сравните цены в MDL; покупку, совместимость и наличие уточняйте в Volmer, Кишинёв.",
+      "Выберите беруши Alpine, батарейки для слуховых аппаратов Volmer, серные фильтры, средства для сушки SCALA и индивидуальные ушные вкладыши на заказ. Сравните цены в MDL; покупку, совместимость и наличие уточняйте в Volmer, Кишинёв.",
     seoTitle: "Каталог аксессуаров для слуха в Молдове | Volmer",
     seoDescription:
       "Каталог Volmer в Молдове: беруши, батарейки для слуховых аппаратов, серные фильтры и ушные вкладыши на заказ. Цены в MDL и покупка в Кишинёве.",

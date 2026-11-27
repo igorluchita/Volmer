@@ -70,7 +70,6 @@ export async function generateMetadata({
   return {
     title: `${page[1]} | Volmer`,
     description: page[2],
-    keywords: [page[1], "Volmer", locale === "ro" ? "Chișinău" : "Кишинёв"],
     alternates: {
       canonical: path,
       languages: {

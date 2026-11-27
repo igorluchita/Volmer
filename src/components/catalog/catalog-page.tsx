@@ -100,8 +100,8 @@ export function CatalogPage({
           ru: "Какие товары есть в каталоге Volmer?",
         },
         answer: {
-          ro: "Catalogul cuprinde dopuri de urechi Alpine, baterii Power One pentru aparate auditive, filtre anticerumen NanoCare, produse de uscare SCALA și olive auditive personalizate. Alegeți categoria după utilizare, apoi verificați caracteristicile produsului.",
-          ru: "В каталоге представлены беруши Alpine, батарейки Power One для слуховых аппаратов, серные фильтры NanoCare, средства для сушки SCALA и индивидуальные ушные вкладыши. Выберите категорию по назначению, затем проверьте характеристики товара.",
+          ro: "Catalogul cuprinde dopuri de urechi Alpine, baterii Volmer pentru aparate auditive, filtre anticerumen NanoCare, produse de uscare SCALA și olive auditive personalizate. Alegeți categoria după utilizare, apoi verificați caracteristicile produsului.",
+          ru: "В каталоге представлены беруши Alpine, батарейки Volmer для слуховых аппаратов, серные фильтры NanoCare, средства для сушки SCALA и индивидуальные ушные вкладыши. Выберите категорию по назначению, затем проверьте характеристики товара.",
         },
       },
     ];

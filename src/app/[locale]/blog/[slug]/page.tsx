@@ -29,7 +29,6 @@ export async function generateMetadata({
   return {
     title: `${post.title} | Volmer`,
     description: post.description,
-    keywords: post.keywords,
     alternates: {
       canonical: path,
       languages: {
@@ -43,8 +42,6 @@ export async function generateMetadata({
       description: post.description,
       type: "article",
       url: path,
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
       locale: locale === "ro" ? "ro_MD" : "ru_MD",
       alternateLocale: locale === "ro" ? ["ru_MD"] : ["ro_MD"],
       images: [{ url: siteConfig.logoPath, alt: "Volmer" }],
@@ -77,9 +74,6 @@ export default async function Article({
       "@type": "BlogPosting",
       headline: post.title,
       description: post.description,
-      datePublished: post.publishedAt,
-      dateModified: post.updatedAt,
-      author: { "@type": "Organization", name: post.author },
       publisher: { "@type": "Organization", name: "Volmer" },
       image: `${siteConfig.siteUrl}${siteConfig.logoPath}`,
       mainEntityOfPage: url,
@@ -108,15 +102,14 @@ export default async function Article({
     <article className="container page blog-page blog-article-page">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
       <nav className="breadcrumb blog-article-breadcrumb" aria-label={locale === "ro" ? "Fir de navigare" : "Навигационная цепочка"}>
         <a href={`/${locale}/`}>{locale === "ro" ? "Acasă" : "Главная"}</a> /{" "}
         <a href={`/${locale}/blog/`}>Blog</a> / {post.title}
       </nav>
       <p className="blog-meta">
-        {post.category} · {post.readingTime} ·{" "}
-        <time dateTime={post.publishedAt}>{post.publishedAt}</time>
+        {post.category} · {post.readingTime}
       </p>
       <h1>{post.title}</h1>
       <p className="lead">{post.description}</p>
@@ -128,6 +121,7 @@ export default async function Article({
           ))}
         </section>
       ))}
+      <p className="article-source"><a href={post.source.url} target="_blank" rel="noopener noreferrer">{locale === "ro" ? "Sursă medicală" : "Медицинский источник"}: {post.source.label}</a></p>
       <p className="article-disclaimer">
         {locale === "ro"
           ? "Informațiile sunt generale și nu înlocuiesc o evaluare individuală a auzului."
@@ -140,11 +134,8 @@ export default async function Article({
         >
           {locale === "ro" ? "Programați evaluarea" : "Записаться на проверку"}
         </a>
-        <a className="button ghost" href={editorialPath(locale, 'test')}>
-          {locale === "ro" ? "Cum decurge evaluarea" : "Как проходит проверка"}
-        </a>
-        <a className="button ghost" href={`/${locale}/aparate-auditive/`}>
-          {locale === "ro" ? "Aparate auditive" : "Слуховые аппараты"}
+        <a className="button ghost" href={post.next === 'test' ? editorialPath(locale, 'test') : post.next === 'aids' ? `/${locale}/aparate-auditive/` : editorialPath(locale, 'contact')}>
+          {post.next === 'test' ? (locale === 'ro' ? 'Cum decurge testul auditiv' : 'Как проходит проверка слуха') : post.next === 'aids' ? (locale === 'ro' ? 'Comparați aparatele auditive' : 'Сравнить слуховые аппараты') : (locale === 'ro' ? 'Reglare și contact' : 'Настройка и контакты')}
         </a>
       </div>
       <section className="related">

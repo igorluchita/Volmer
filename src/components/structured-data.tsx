@@ -5,6 +5,7 @@ export function StructuredData() {
   const weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
   const data = [
     {'@context': 'https://schema.org', '@type': 'Organization', name: 'Volmer', url: siteConfig.siteUrl, email: siteConfig.email, telephone: siteConfig.phoneInternational},
+    {'@context': 'https://schema.org', '@type': 'WebSite', name: 'Volmer', url: siteConfig.siteUrl, inLanguage: ['ro-MD', 'ru-MD']},
     {
       '@context': 'https://schema.org',
       '@type': 'LocalBusiness',
