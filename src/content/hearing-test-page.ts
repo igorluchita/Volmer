@@ -49,9 +49,9 @@ export const hearingTestPageContent: Record<
       steps: [
         { title: "Discuția", description: "Vorbim despre situațiile în care vă este mai greu să auziți, despre viața de zi cu zi și despre ce vă preocupă.", purpose: "Pentru a înțelege dificultățile pe care doriți să le clarificați." },
         { title: "Explicația etapelor", description: "Vă arătăm cum se desfășoară testarea, ce veți auzi și cum vor fi prezentate rezultatele.", purpose: "Veți ști dinainte la ce să vă așteptați." },
-        { title: "Testarea sunetelor", description: "Într-o încăpere confortabilă, veți asculta sunete de diferite tonalități și intensități și veți indica atunci când le auziți.", purpose: "Aflăm ce sunete percepeți mai ușor și care sunt mai dificile." },
+        { title: "Testarea sunetelor", description: "În etapa de audiometrie, veți asculta sunete de diferite tonalități și intensități și veți indica atunci când le auziți.", purpose: "Aflăm ce sunete percepeți mai ușor și care sunt mai dificile." },
         { title: "Testarea înțelegerii vorbirii", description: "Veți auzi cuvinte în condiții diferite și veți repeta ce ați înțeles sau veți indica răspunsul.", purpose: "Perceperea sunetelor și înțelegerea vorbirii sunt lucruri diferite; le discutăm pe ambele." },
-        { title: "Explicarea rezultatelor", description: "Parcurgem graficul împreună, discutăm sunetele și frecvențele mai dificile și legătura cu situațiile descrise de dumneavoastră.", purpose: "Veți primi explicații și veți putea discuta opțiunile disponibile." },
+        { title: "Explicarea rezultatelor", description: "Parcurgem audiograma împreună, discutăm sunetele și frecvențele mai dificile și legătura cu situațiile descrise de dumneavoastră.", purpose: "Veți primi explicații și veți putea discuta opțiunile disponibile." },
       ],
       conclusion: "În aproximativ 60 de minute veți înțelege mai bine ce arată evaluarea despre auzul dumneavoastră.",
     },
@@ -102,7 +102,7 @@ export const hearingTestPageContent: Record<
       statement: "Apoi decizia vă aparține. De aceea, la Volmer începem cu o discuție despre viața dumneavoastră, nu cu aparatele.",
       cta: "Programați o verificare gratuită",
     },
-    imageAlts: { hero: "Audiologul efectuează o evaluare a auzului într-un cabinet", audience: "Specialistă verificând auzul unui pacient într-un cabinet Volmer" },
+    imageAlts: { hero: "Un bărbat cu căști participă la o verificare a auzului", audience: "Specialistă examinează urechea unui pacient într-un cabinet" },
   },
   ru: {
     hero: {
@@ -134,9 +134,9 @@ export const hearingTestPageContent: Record<
       steps: [
         { title: "Разговор", description: "Обсудим ситуации, в которых вам труднее слышать, повседневную жизнь и то, что вас беспокоит.", purpose: "Чтобы понять, какие трудности важно прояснить." },
         { title: "Объяснение этапов", description: "Расскажем, как проходит проверка, какие звуки вы услышите и как будут представлены результаты.", purpose: "Вы заранее знаете, чего ожидать." },
-        { title: "Проверка звуков", description: "В комфортной комнате вы слушаете звуки разной высоты и громкости и отмечаете, когда их слышите.", purpose: "Так мы узнаём, какие звуки вы воспринимаете легче, а какие труднее." },
+        { title: "Проверка звуков", description: "Во время аудиометрии вы слушаете звуки разной высоты и громкости и отмечаете, когда их слышите.", purpose: "Так мы узнаём, какие звуки вы воспринимаете легче, а какие труднее." },
         { title: "Проверка понимания речи", description: "Вам могут предложить слова в разных условиях; нужно повторить услышанное или показать, что вы поняли.", purpose: "Восприятие звуков и понимание речи — разные вещи; обсудим оба аспекта." },
-        { title: "Объяснение результатов", description: "Вместе посмотрим график, обсудим более сложные звуки и частоты и связь с описанными вами ситуациями.", purpose: "Вы получите понятные объяснения и сможете обсудить варианты." },
+        { title: "Объяснение результатов", description: "Вместе посмотрим аудиограмму, обсудим более сложные звуки и частоты и связь с описанными вами ситуациями.", purpose: "Вы получите понятные объяснения и сможете обсудить варианты." },
       ],
       conclusion: "Примерно за 60 минут вы лучше поймёте, что проверка показывает о вашем слухе.",
     },
@@ -187,6 +187,6 @@ export const hearingTestPageContent: Record<
       statement: "А решение останется за вами. Поэтому в Volmer проверка начинается с разговора о вашей жизни, а не с аппаратов.",
       cta: "Записаться на бесплатную проверку слуха",
     },
-    imageAlts: { hero: "Специалист проводит проверку слуха в кабинете", audience: "Специалист проверяет слух пациента в кабинете Volmer" },
+    imageAlts: { hero: "Мужчина в наушниках проходит проверку слуха", audience: "Специалист осматривает ухо пациента в кабинете" },
   },
 };

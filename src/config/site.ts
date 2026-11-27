@@ -16,7 +16,7 @@ export const siteConfig = {
   city: 'Chișinău',
   country: 'Republica Moldova',
   businessHours: [
-    {id: 'weekdays', daysKey: 'weekdays', hours: `${appointmentConfig.weekdayHours.open}–${appointmentConfig.weekdayHours.close}`},
+    {id: 'weekdays', daysKey: 'weekdays', hours: `${appointmentConfig.weekdayHours.open}–${appointmentConfig.weekdayBreak.start} · ${appointmentConfig.weekdayBreak.end}–${appointmentConfig.weekdayHours.close}`},
     {id: 'saturday', daysKey: 'saturday', hours: `${appointmentConfig.saturdayHours.open}–${appointmentConfig.saturdayHours.close}`},
     {id: 'sunday', daysKey: 'sunday', hoursKey: 'closed'}
   ],

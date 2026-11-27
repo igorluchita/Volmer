@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ArrowRight, CalendarDays, Check, Clock3, MapPin, Phone, ShieldCheck } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { siteConfig } from '@/config/site';
+import { appointmentConfig } from '@/config/appointments';
 import { blogPosts } from '@/content/seo';
 import { hearingAidFamilies, type CatalogLocale } from '@/content/hearing-aids-catalog';
 import { hearingAidCategories, hearingAidFaq, selectionSteps } from '@/content/hearing-aids';
@@ -257,7 +258,7 @@ export async function MoldovaLanding({ locale }: { locale: CatalogLocale }) {
     <section className="md-contact-band" id="contact">
       <div className="md-wrap md-contact-grid">
         <div className="md-contact-copy"><p className="md-kicker">{t.contactKicker}</p><h2>{t.contactTitle}</h2><p>{t.contactText}</p><a className="md-button md-button-primary" href={`/${locale}/#booking-form`}><CalendarDays size={18} aria-hidden="true" />{t.book}</a><a className="md-phone-link" href={`tel:${siteConfig.phoneInternational}`}><Phone size={18} aria-hidden="true" />{t.call} {siteConfig.phoneDisplay}</a></div>
-        <div className="md-address-card"><div className="md-address-icon"><MapPin size={22} aria-hidden="true" /></div><p>{t.address}</p><strong>{siteConfig.address}, {siteConfig.city}, {locale === 'ro' ? 'Republica Moldova' : 'Молдова'}</strong><a href={siteConfig.googleMapsDirectionsUrl} target="_blank" rel="noreferrer">{t.directions}<ArrowRight size={15} aria-hidden="true" /></a><hr /><p><Clock3 size={16} aria-hidden="true" />{t.hours}</p><strong>{t.weekdays}: {siteConfig.businessHours[0].hours}<br />{t.saturday}: {siteConfig.businessHours[1].hours}<br />{t.closed}</strong></div>
+        <div className="md-address-card"><div className="md-address-icon"><MapPin size={22} aria-hidden="true" /></div><p>{t.address}</p><strong>{siteConfig.address}, {siteConfig.city}, {locale === 'ro' ? 'Republica Moldova' : 'Молдова'}</strong><a href={siteConfig.googleMapsDirectionsUrl} target="_blank" rel="noreferrer">{t.directions}<ArrowRight size={15} aria-hidden="true" /></a><hr /><p><Clock3 size={16} aria-hidden="true" />{t.hours}</p><strong>{t.weekdays}: {siteConfig.businessHours[0].hours}<br />{locale === 'ro' ? 'Pauză de masă' : 'Обеденный перерыв'}: {appointmentConfig.weekdayBreak.start}–{appointmentConfig.weekdayBreak.end}<br />{t.saturday}: {siteConfig.businessHours[1].hours}<br />{t.closed}</strong></div>
       </div>
     </section>
   </main>;

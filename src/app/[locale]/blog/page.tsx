@@ -104,7 +104,7 @@ export default async function Blog({
                 <p className="blog-index-description">{post.description}</p>
                 <div className="blog-index-card-foot">
                   <span><Clock3 size={14} aria-hidden="true" />{post.readingTime}</span>
-                  <time dateTime={post.publishedAt}>{new Date(`${post.publishedAt}T00:00:00Z`).toLocaleDateString(locale === "ro" ? "ro-MD" : "ru-MD", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" })}</time>
+
                   <a href={`/${locale}/blog/${post.slug}/`} aria-label={`${copy.read}: ${post.title}`}><ArrowRight size={17} aria-hidden="true" /></a>
                 </div>
               </article>

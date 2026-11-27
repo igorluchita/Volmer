@@ -1,6 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {describe, expect, it} from 'vitest';
 import sitemap from './app/sitemap';
+import {catalogSitemapEntries} from './catalog/seo';
 import {editorialContent, editorialPath, editorialTypeFor, editorialTypes} from './content/editorial-pages';
 import {localizedBlogPath} from './content/blog-locales';
 import {editorialMetadata} from './lib/editorial-metadata';
@@ -63,7 +64,7 @@ describe('RO/RU editorial pages', () => {
     const entries = sitemap();
     const urls = new Set(entries.map((entry) => entry.url));
     expect(urls.size).toBe(entries.length);
-    expect(entries).toHaveLength(4 + seoPages.ro.length * 2 + 2 + blogPosts.ro.length * 2 + legalTypes.length * 2 + editorialTypes.length * 2);
+    expect(entries).toHaveLength(catalogSitemapEntries().length + 4 + seoPages.ro.length * 2 + 2 + blogPosts.ro.length * 2 + legalTypes.length * 2 + editorialTypes.length * 2);
     for (const entry of entries) {
       const url = new URL(entry.url);
       expect(url.origin).toBe('https://volmer.md');

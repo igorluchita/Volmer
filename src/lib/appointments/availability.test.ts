@@ -6,7 +6,7 @@ const weekdayNow = new Date("2027-01-01T00:00:00.000Z");
 describe("Google Calendar slot calculations", () => {
   it("offers appointments every hour during weekday opening hours", () => {
     expect(getAvailableSlots("2027-01-04", [], weekdayNow).map((slot) => slot.time)).toEqual([
-      "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
+      "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00",
     ]);
   });
 
@@ -22,7 +22,7 @@ describe("Google Calendar slot calculations", () => {
 
   it("uses Saturday hours and closes Sunday", () => {
     expect(getAvailableSlots("2027-01-02", [], weekdayNow).map((slot) => slot.time)).toEqual([
-      "09:00", "10:00", "11:00", "12:00",
+      "09:00", "10:00", "11:00",
     ]);
     expect(getAvailableSlots("2027-01-03", [], weekdayNow)).toEqual([]);
   });
@@ -31,7 +31,7 @@ describe("Google Calendar slot calculations", () => {
     const now = new Date("2027-01-04T08:00:00.000Z"); // 10:00 local time
     expect(getAvailableSlots("2027-01-04", [], now)).toEqual([]);
     expect(getAvailableSlots("2027-01-05", [], now).map((slot) => slot.time)).toEqual([
-      "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00",
+      "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00",
     ]);
     expect(getAvailableSlots("2027-01-03", [], now)).toEqual([]);
   });

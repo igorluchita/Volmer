@@ -5,7 +5,7 @@ import type { BusyEvent } from "@/lib/appointments/availability";
 import { SlotUnavailableError } from "@/lib/appointments/service";
 
 export class CalendarConfigurationError extends Error {
-  constructor() {
+  constructor(readonly missingVariables: readonly string[]) {
     super("Google Calendar environment is not configured");
     this.name = "CalendarConfigurationError";
   }
@@ -18,7 +18,12 @@ export function getGoogleCalendar(): AppointmentCalendar {
   const calendarId = process.env.GOOGLE_CALENDAR_ID?.trim();
   const email = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL?.trim();
   const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n").trim();
-  if (!calendarId || !email || !privateKey) throw new CalendarConfigurationError();
+  const missingVariables = [
+    !calendarId && "GOOGLE_CALENDAR_ID",
+    !email && "GOOGLE_SERVICE_ACCOUNT_EMAIL",
+    !privateKey && "GOOGLE_PRIVATE_KEY",
+  ].filter((name): name is string => Boolean(name));
+  if (!calendarId || !email || !privateKey) throw new CalendarConfigurationError(missingVariables);
 
   if (!calendarClient || configuredCalendarId !== calendarId) {
     const jwt = new auth.JWT({

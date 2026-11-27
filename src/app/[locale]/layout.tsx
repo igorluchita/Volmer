@@ -17,6 +17,7 @@ import {GoogleTagManagerBody, GoogleTagManagerHead} from '@/components/google-ta
 import '../globals.css';
 import '../home-hero.css';
 import '../home-page.css';
+import '../header-navigation.css';
 import '../hearing-aids-page.css';
 import '../blog-test-pages.css';
 import '../editorial-pages.css';

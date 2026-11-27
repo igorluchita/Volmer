@@ -1,3 +1,4 @@
+import {catalogSitemapEntries} from "@/catalog/seo";
 import type { MetadataRoute } from "next";
 import { siteConfig } from "../config/site";
 import { blogPosts, seoPages } from "../content/seo";
@@ -80,7 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const alternates = {languages: {'ro-MD': ro, 'ru-MD': ru, 'x-default': ro}};
     return [{url: ro, alternates}, {url: ru, alternates}];
   });
-  const entries = [...base, ...seo, ...blog, ...legal, ...editorial];
+  const entries = [...base, ...seo, ...blog, ...legal, ...editorial, ...catalogSitemapEntries()];
   const urls = new Set(entries.map(({url}) => url));
 
   if (urls.size !== entries.length) {

@@ -3,7 +3,7 @@ import {getTranslations} from 'next-intl/server';
 import {siteConfig} from '@/config/site';
 import {appointmentConfig} from '@/config/appointments';
 
-export async function BusinessHours({className = '', showWeekdayBreak = false}: {className?: string; showWeekdayBreak?: boolean}) {
+export async function BusinessHours({className = '', showWeekdayBreak = true}: {className?: string; showWeekdayBreak?: boolean}) {
   const t = await getTranslations('BusinessHours');
   return <dl className={`business-hours ${className}`.trim()}>
     {siteConfig.businessHours.map(item => <div key={item.id}>

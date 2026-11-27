@@ -1,40 +1,57 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
-import { ChevronDown, Clock3, MapPin, Menu, Phone, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import {useLocale, useTranslations} from "next-intl";
+import {ChevronDown, Clock3, MapPin, Menu, Phone, X} from "lucide-react";
+import {useEffect, useRef, useState} from "react";
 import NextLink from "next/link";
-import { BrandLogo } from "./brand-logo";
-import { localizedBlogPath } from "@/content/blog-locales";
-import { usePathname } from "@/i18n/navigation";
-import { siteConfig } from "@/config/site";
-import {editorialPath, type EditorialType} from '@/content/editorial-routing';
-import {localizedNavigationHref} from '@/lib/localized-navigation';
+import {BrandLogo} from "./brand-logo";
+import {localizedBlogPath} from "@/content/blog-locales";
+import {usePathname} from "@/i18n/navigation";
+import {siteConfig} from "@/config/site";
+import {editorialPath, type EditorialLocale} from "@/content/editorial-routing";
+import {localizedNavigationHref} from "@/lib/localized-navigation";
 
-const items = [
-  ["/aparate-auditive", "aids"],
-  ["/test-auditiv", "test"],
-  ["/#problema", "problem"],
-  ["/#flex-trial", "flexTrial"],
-  ["/#de-ce-volmer", "whyVolmer"],
-  ["/#companie", "company"],
-  ["/echipa", "team"],
-  ["/#faq", "faq"],
-  ["/#contact", "contact"],
-  ["/blog", "blog"],
-] as const;
-const editorialNav: Partial<Record<(typeof items)[number][1], EditorialType>> = {
-  test: 'test', flexTrial: 'flex', company: 'about', team: 'team', faq: 'faq', contact: 'contact'
-};
+type NavKey = "catalog" | "aids" | "allAids" | "flexTrial" | "test" | "diaspora" | "about" |
+  "whyVolmer" | "company" | "team" | "information" | "faq" | "blog";
+type NavItem =
+  | {key: NavKey; href: string; children?: never}
+  | {key: NavKey; children: {key: NavKey; href: string}[]; href?: never};
+
+function navigationItems(locale: EditorialLocale): NavItem[] {
+  return [
+    {key: "aids", children: [
+      {key: "catalog", href: `/${locale}/catalog/`},
+      {key: "allAids", href: localizedNavigationHref(locale, "/aparate-auditive")},
+      {key: "flexTrial", href: editorialPath(locale, "flex")},
+    ]},
+    {key: "test", href: editorialPath(locale, "test")},
+    {key: "diaspora", href: editorialPath(locale, "diaspora")},
+    {key: "about", children: [
+      {key: "whyVolmer", href: localizedNavigationHref(locale, "/#de-ce-volmer")},
+      {key: "company", href: editorialPath(locale, "about")},
+      {key: "team", href: editorialPath(locale, "team")},
+    ]},
+    {key: "information", children: [
+      {key: "faq", href: editorialPath(locale, "faq")},
+      {key: "blog", href: localizedNavigationHref(locale, "/blog")},
+    ]},
+  ];
+}
 
 export function Header() {
   const t = useTranslations("Nav");
-  const locale = useLocale() as "ro" | "ru";
+  const locale = useLocale() as EditorialLocale;
   const path = usePathname();
-  const [open, setOpen] = useState(false);
+  const items = navigationItems(locale);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileGroup, setMobileGroup] = useState<NavKey | null>(null);
+  const [desktopGroup, setDesktopGroup] = useState<NavKey | null>(null);
   const [languageOpen, setLanguageOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const topbarRef = useRef<HTMLDivElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const desktopTriggers = useRef<Partial<Record<NavKey, HTMLButtonElement | null>>>({});
+  const suppressDesktopFocusOpen = useRef(false);
   const other = locale === "ro" ? "ru" : "ro";
   const languagePath = localizedBlogPath(path, locale);
 
@@ -42,11 +59,7 @@ export function Header() {
     const header = headerRef.current;
     const topbar = topbarRef.current;
     if (!header || !topbar) return;
-
-    const syncTopbarHeight = () => {
-      header.style.setProperty("--site-topbar-height", `${topbar.offsetHeight}px`);
-    };
-
+    const syncTopbarHeight = () => header.style.setProperty("--site-topbar-height", `${topbar.offsetHeight}px`);
     syncTopbarHeight();
     const observer = new ResizeObserver(syncTopbarHeight);
     observer.observe(topbar);
@@ -54,19 +67,54 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (!open && !languageOpen) return;
+    setMobileOpen(false);
+    setMobileGroup(null);
+    setDesktopGroup(null);
+    setLanguageOpen(false);
+  }, [path, locale]);
 
-    const closeOverlays = () => {
-      setOpen(false);
-      setLanguageOpen(false);
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setMobileOpen(false);
+        setMobileGroup(null);
+        setDesktopGroup(null);
+        setLanguageOpen(false);
+        return;
+      }
+      if (!(event.target as Element).closest(".desktop-nav")) setDesktopGroup(null);
+      if (!(event.target as Element).closest(".language-dropdown")) setLanguageOpen(false);
     };
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key !== "Escape") return;
+      if (mobileOpen) {
+        setMobileOpen(false);
+        setMobileGroup(null);
+        menuButtonRef.current?.focus();
+      } else if (desktopGroup) {
+        setDesktopGroup(null);
+        suppressDesktopFocusOpen.current = true;
+        desktopTriggers.current[desktopGroup]?.focus();
+        window.setTimeout(() => { suppressDesktopFocusOpen.current = false; }, 0);
+      } else if (languageOpen) {
+        setLanguageOpen(false);
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [mobileOpen, desktopGroup, languageOpen]);
 
-    window.addEventListener("scroll", closeOverlays, { passive: true });
-    return () => window.removeEventListener("scroll", closeOverlays);
-  }, [open, languageOpen]);
+  const closeMobile = () => {
+    setMobileOpen(false);
+    setMobileGroup(null);
+  };
 
   return (
-    <header ref={headerRef} className="site-header">
+    <header ref={headerRef} className={`site-header${mobileOpen ? " mobile-menu-open" : ""}`}>
       <div ref={topbarRef} className="site-topbar">
         <div className="hp-container site-topbar-inner">
           <div className="site-topbar-group">
@@ -78,54 +126,106 @@ export function Header() {
           </div>
           <div className="site-topbar-right">
             <span><MapPin size={14} aria-hidden="true" />{siteConfig.address}, {siteConfig.city}</span>
-            <NextLink href={editorialPath(locale, 'contact')}>{t("contact")}</NextLink>
+            <div className="site-topbar-links">
+              <NextLink href={editorialPath(locale, "contact")}>{t("contact")}</NextLink>
+              <NextLink href={`/${locale}/catalog/`}>{t("catalog")}</NextLink>
+            </div>
           </div>
         </div>
       </div>
       <div className="site-navbar">
         <div className="container site-navbar-inner">
           <BrandLogo locale={locale} />
-          <nav className={`main-nav ${open ? "is-open" : ""}`} aria-label={t("principalAria")}>
-            {items.map(([href, key]) => {
-              const type = editorialNav[key];
-              return type
-                ? <NextLink key={key} href={editorialPath(locale, type)} onClick={() => setOpen(false)}>{t(key)}</NextLink>
-                : <NextLink key={key} href={localizedNavigationHref(locale, href)} onClick={() => setOpen(false)}>{t(key)}</NextLink>;
-            })}
+          <nav className="main-nav desktop-nav" aria-label={t("principalAria")}>
+            {items.map((item) => item.children ? (
+              <div
+                className={`desktop-nav-group${desktopGroup === item.key ? " is-expanded" : ""}`}
+                key={item.key}
+                onMouseEnter={() => setDesktopGroup(item.key)}
+                onMouseLeave={() => setDesktopGroup(null)}
+                onFocusCapture={() => {
+                  if (!suppressDesktopFocusOpen.current) setDesktopGroup(item.key);
+                }}
+                onBlurCapture={(event) => {
+                  if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setDesktopGroup(null);
+                }}
+              >
+                <button
+                  ref={(element) => { desktopTriggers.current[item.key] = element; }}
+                  type="button"
+                  className="desktop-nav-trigger"
+                  aria-expanded={desktopGroup === item.key}
+                  aria-controls={`desktop-${item.key}-menu`}
+                  onClick={() => setDesktopGroup(item.key)}
+                >
+                  {t(item.key)} <ChevronDown size={15} aria-hidden="true" />
+                </button>
+                <div className="desktop-nav-menu" id={`desktop-${item.key}-menu`}>
+                  {item.children.map((child) => (
+                    <NextLink key={child.key} href={child.href} onClick={() => setDesktopGroup(null)}>
+                      {t(child.key)}
+                    </NextLink>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <NextLink key={item.key} href={item.href}>{t(item.key)}</NextLink>
+            ))}
           </nav>
 
           <div className="header-actions">
             <div className="language-dropdown">
-              <button
-                type="button"
-                className="language-trigger"
-                aria-label={t("language")}
-                aria-expanded={languageOpen}
-                onClick={() => setLanguageOpen((value) => !value)}
-              >
+              <button type="button" className="language-trigger" aria-label={t("language")}
+                aria-expanded={languageOpen} onClick={() => setLanguageOpen((value) => !value)}>
                 {locale.toUpperCase()} <ChevronDown size={15} aria-hidden="true" />
               </button>
               {languageOpen && (
                 <div className="language-menu">
-                  <NextLink
-                    href={`/${other}${languagePath === "/" ? "" : languagePath}/`}
-                    onClick={() => setLanguageOpen(false)}
-                  >
-                    {other.toUpperCase()}
-                  </NextLink>
+                  <NextLink href={`/${other}${languagePath === "/" ? "" : languagePath}/`}
+                    onClick={() => setLanguageOpen(false)}>{other.toUpperCase()}</NextLink>
                 </div>
               )}
             </div>
-            <a className="booking-mini" href={`/${locale}/#booking-form`}><Phone size={17} aria-hidden="true" />{t("booking")}</a>
-            <button
-              type="button"
-              className="menu"
-              aria-expanded={open}
-              aria-label={open ? t("closeMenuAria") : t("menuAria")}
-              onClick={() => setOpen((value) => !value)}
-            >
-              {open ? <X /> : <Menu />}
+            <a className="booking-mini" href={`/${locale}/#booking-form`}>
+              <Phone size={17} aria-hidden="true" />{t("booking")}
+            </a>
+            <button ref={menuButtonRef} type="button" className="menu" aria-expanded={mobileOpen}
+              aria-controls="mobile-navigation-panel"
+              aria-label={mobileOpen ? t("closeMenuAria") : t("menuAria")}
+              onClick={() => setMobileOpen((value) => !value)}>
+              {mobileOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
             </button>
+          </div>
+        </div>
+
+        <div id="mobile-navigation-panel" className={`mobile-navigation-panel${mobileOpen ? " is-open" : ""}`}>
+          <nav className="mobile-nav" aria-label={t("principalAria")}>
+            {items.map((item) => item.children ? (
+              <div className="mobile-nav-group" key={item.key}>
+                <button type="button" className="mobile-nav-trigger"
+                  aria-expanded={mobileGroup === item.key}
+                  aria-controls={`mobile-${item.key}-menu`}
+                  onClick={() => setMobileGroup((current) => current === item.key ? null : item.key)}>
+                  {t(item.key)} <ChevronDown size={17} aria-hidden="true" />
+                </button>
+                <div id={`mobile-${item.key}-menu`} className="mobile-nav-submenu"
+                  hidden={mobileGroup !== item.key}>
+                  {item.children.map((child) => (
+                    <NextLink key={child.key} href={child.href} onClick={closeMobile}>{t(child.key)}</NextLink>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <NextLink className="mobile-nav-link" key={item.key} href={item.href}
+                onClick={closeMobile}>{t(item.key)}</NextLink>
+            ))}
+          </nav>
+          <div className="mobile-nav-footer">
+            <a className="mobile-nav-phone" href={`tel:${siteConfig.phoneInternational}`} onClick={closeMobile}>
+              <Phone size={18} aria-hidden="true" /> {siteConfig.phoneDisplay}
+            </a>
+            <a className="booking-mini mobile-nav-booking" href={`/${locale}/#booking-form`}
+              onClick={closeMobile}>{t("booking")}</a>
           </div>
         </div>
       </div>
